@@ -1,33 +1,135 @@
-.wrap
-  display: flex
+.home
+  margin-bottom: 24px
+
+.logo
+  width: 116.5px
 
 .panel
   padding: 40px 24px 0 24px
   position: sticky
   width: 354px
-  &__logo
-    > img
-      width: 116.5px
-  &__citySelect
-    position: relative
-  &__userFilter
-    width: 100%
-    background-color: $bgGray
+  height: 100vh
+  +shadow
+  +mobile
+    position: fixed
+    width: 100vw
+    overflow: auto
+
+.filter
+  border-bottom: 1px solid $lineGray
+
+.citySelect, .search
+  width: 100%
+  background-color: $bgGray
+  margin-bottom: 24px
+  border-radius: 8px
+  border: 1px solid $lineGray
+  position: relative
 
 .citySelect
-  &__choose
-    display: flex
-    justify-content: space-between
-    padding: 8px 12px
-    border-radius: 8px
-    border: 1px solid $lineGray
-  &__city
-    display: flex
-    align-items: center
+  padding: 8px 12px
+  cursor: pointer
   &__cityName
+    line-height: 1.5
+    letter-spacing: .05rem
     color: $textLightGray
+    // js
     &--selected
       color: $textBlack
   &__filterList
+    padding: 12px
     position: absolute
-    display: none
+    left: 0
+    top: 100%
+    z-index: 3
+    // display: none
+    width: 100%
+    background-color: #fff
+    border: 1px solid $textBlack
+    &.active
+      display: block
+  &__filterItem
+  &__filterBtn
+    min-width: 78px
+    padding: 6px 0
+    text-align: center
+    line-height: 1.5
+
+.search
+  position: relative
+  &__input
+    padding: 8px 12px
+    width: 100%
+    background-color: inherit
+    border: none
+    border-radius: 8px
+    line-height: 1.5
+    +font(18)
+    letter-spacing: .05rem
+    &:focus
+      outline: 2px solid $primaryGreen
+    &::placeholder
+      color: $textLightGray
+      +ff
+  &__icon
+    position: absolute
+    right: 12px
+    top: 50%
+    transform: translateY(-50%)
+  &__confirm
+    width: 100%
+    padding: 8px 12px
+    margin-bottom: 24px
+    background-color: $primaryGreen
+    border-radius: 8px
+    color: #fff
+    position: relative
+    overflow: hidden
+    z-index: 2
+    +font(18)
+    +ff
+    &:before
+      content: ''
+      position: absolute
+      left: -40%
+      top: -50%
+      z-index: -1
+      width: 200px
+      height: 200px
+      border-radius: 400px
+      background-color: darken($primaryGreen, 10)
+      opacity: 0
+      transition: all .4s
+    &:hover
+      &:before
+        left: 0
+        opacity: 1
+        transform: scale(3)
+    &:active
+      background-color: darken($primaryGreen, 10)
+
+.theme
+  padding: 24px 0
+  &__title
+    +font(18, 700)
+    letter-spacing: .05rem
+  &__list
+    padding: 24px 0
+  &__item
+    width: calc(50% - 8px)
+    &:nth-child(2n+1)
+      margin-right: 16px
+  &__btn
+    width: 100%
+    padding: 8px 0
+    &-text
+      +font(14)
+      color: $textBlack
+      line-height: 1.5
+    &-icon
+      width: 70px
+      height: 70px
+      border-radius: 40px
+      > i
+        +font(48)
+        color: #fff

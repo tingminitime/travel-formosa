@@ -6,9 +6,15 @@
   @media (min-width: 1024px)
     @content
 
-// @mixin font($level: 0, $weight: normal)
-//   font-size: font($level)
-//   font-weight: $weight
+@mixin font($size: 18, $weight: 400, $unit: px)
+  font-size: #{$size}#{$unit}
+  font-weight: $weight
+
+@mixin shadow
+  box-shadow: $shadow
+
+@mixin ff
+  font-family: 'Noto Sans TC', Arial, sans-serif
 
 @mixin backgroundImg($imageLink)
   background-image: $imageLink

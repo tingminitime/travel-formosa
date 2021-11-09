@@ -32,22 +32,23 @@
 </head>
 
 <body>
-  <div class="wrap">
+  <div class="wrap flex">
     <div class="panel">
-      <div class="panel__container-filter">
+      <div class="filter">
         <a
           href="#/home"
-          class="panel__logo"
+          class="home"
           aria-label="回首頁"
         >
           <img
             src="img/logo.svg"
+            class="logo"
             alt="logo"
           >
         </a>
-        <div class="panel__citySelect panel__userFilter">
-          <div class="citySelect__choose">
-            <div class="citySelect__city">
+        <div class="citySelect">
+          <div class="citySelect__choose flex-sb">
+            <div class="citySelect__city flex-center">
               <span class="citySelect__cityName">目的地</span>
               <button
                 class="citySelect__close"
@@ -66,7 +67,7 @@
               >
             </button>
           </div>
-          <ul class="citySelect__filterList">
+          <ul class="citySelect__filterList flex-sb flex-wrap">
             <li class="citySelect__filterItem">
               <a
                 href="javascript:;"
@@ -111,10 +112,11 @@
             </li>
           </ul>
         </div>
-        <div class="panel__search panel__userFilter">
+        <div class="search flex-sb">
           <input
             type="text"
             placeholder="搜尋關鍵字"
+            class="search__input"
           >
           <div class="search__icon">
             <img
@@ -123,97 +125,123 @@
             >
           </div>
         </div>
-        <button class="panel__searchConfirm">搜尋</button>
+        <button class="search__confirm">搜尋</button>
       </div>
-      <div class="panel__container-theme">
-        <h3 class="">精選主題</h3>
-        <ul class="panel__themeList">
-          <li class="themeList__item">
+      <div class="theme">
+        <h3 class="theme__title">精選主題</h3>
+        <!-- 分類主題待整理 -->
+        <ul class="theme__list flex flex-wrap">
+          <li class="theme__item">
             <a
-              href=""
-              class="themeList__btn"
+              href="javascript:;"
+              class="theme__btn flex-center flex-col flex-center flex-col"
             >
-              <span class="themeList__icon">
-                <i class="twicon-zeelandia"></i>
+              <span class="theme__btn-icon theme__btn-icon--1 flex-center">
+                <img
+                  src="img/themeIcon-culture.svg"
+                  alt="culture"
+                >
               </span>
-              <span class="themeList__text">歷史文化</span>
+              <span class="theme__btn-text">歷史文化</span>
             </a>
           </li>
-          <li class="themeList__item">
+          <li class="theme__item">
             <a
-              href=""
-              class="themeList__btn"
+              href="javascript:;"
+              class="theme__btn flex-center flex-col"
             >
-              <span class="themeList__icon">
-                <i class="twicon-youbike"></i>
+              <span class="theme__btn-icon theme__btn-icon--2 flex-center">
+                <img
+                  src="img/themeIcon-bike.svg"
+                  alt="bike"
+                >
               </span>
-              <span class="themeList__text">戶外踏青</span>
+              <span class="theme__btn-text">戶外踏青</span>
             </a>
           </li>
-          <li class="themeList__item">
+          <li class="theme__item">
             <a
-              href=""
-              class="themeList__btn"
+              href="javascript:;"
+              class="theme__btn flex-center flex-col"
             >
-              <span class="themeList__icon">
-                <i class="twicon-xingtian-tmp"></i>
+              <span class="theme__btn-icon theme__btn-icon--3 flex-center">
+                <img
+                  src="img/themeIcon-religion.svg"
+                  alt="religion"
+                >
               </span>
-              <span class="themeList__text">宗教巡禮</span>
+              <span class="theme__btn-text">宗教巡禮</span>
             </a>
           </li>
-          <li class="themeList__item">
+          <li class="theme__item">
             <a
-              href=""
-              class="themeList__btn"
+              href="javascript:;"
+              class="theme__btn flex-center flex-col"
             >
-              <span class="themeList__icon">
-                <i class="twicon-sky-lantern"></i>
+              <span class="theme__btn-icon theme__btn-icon--4 flex-center">
+                <img
+                  src="img/themeIcon-lantern.svg"
+                  alt="family active"
+                >
               </span>
-              <span class="themeList__text">親子活動</span>
+              <span class="theme__btn-text">親子活動</span>
             </a>
           </li>
-          <li class="themeList__item">
+          <li class="theme__item">
             <a
-              href=""
-              class="themeList__btn"
+              href="javascript:;"
+              class="theme__btn flex-center flex-col"
             >
-              <span class="themeList__icon">
-                <i class="twicon-queens-head"></i>
+              <span class="theme__btn-icon theme__btn-icon--5 flex-center">
+                <img
+                  src="img/theme-queensHead.svg"
+                  alt="spots"
+                >
               </span>
-              <span class="themeList__text">風景區</span>
+              <span class="theme__btn-text">風景區</span>
             </a>
           </li>
-          <li class="themeList__item">
+          <li class="theme__item">
             <a
-              href=""
-              class="themeList__btn"
+              href="javascript:;"
+              class="theme__btn flex-center flex-col"
             >
-              <span class="themeList__icon">
-                <i class="twicon-tapioca"></i>
+              <span class="theme__btn-icon theme__btn-icon--6 flex-center">
+                <img
+                  src="img/themeIcon-tapioca.svg"
+                  alt="delicious"
+                >
               </span>
-              <span class="themeList__text">美食品嚐</span>
+              <span class="theme__btn-text">美食品嚐</span>
             </a>
           </li>
-          <li class="themeList__item">
+          <li class="theme__item">
             <a
-              href=""
-              class="themeList__btn"
+              href="javascript:;"
+              class="theme__btn flex-center flex-col"
             >
-              <span class="themeList__icon">
-                <i class="twicon-grand-hotel"></i>
+              <span class="theme__btn-icon theme__btn-icon--7 flex-center">
+                <img
+                  src="img/themeIcon-hotel.svg"
+                  alt="hotel"
+                >
               </span>
-              <span class="themeList__text">住宿推薦</span>
+              <span class="theme__btn-text">住宿推薦</span>
             </a>
           </li>
-          <li class="themeList__item">
+          <li class="theme__item">
             <a
-              href=""
-              class="themeList__btn"
+              href="javascript:;"
+              class="theme__btn flex-center flex-col"
             >
-              <span class="themeList__icon">
-                <i class="twicon-balloon"></i>
+              <span class="theme__btn-icon theme__btn-icon--8 flex-center">
+                <!-- <i class="twicon-balloon"></i> -->
+                <img
+                  src="img/themeIcon-balloon.svg"
+                  alt="active"
+                >
               </span>
-              <span class="themeList__text">觀光活動</span>
+              <span class="theme__btn-text">觀光活動</span>
             </a>
           </li>
         </ul>
