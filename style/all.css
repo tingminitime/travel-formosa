@@ -1,5 +1,11 @@
 /* ------ Module ------ */
 /* ------ Color ------ */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700&display=swap");
+:root {
+  --themeColor: #3FB195;
+}
+
 /* ------ shadow ------ */
 /* ------ Font ------ */
 /* ------ Banner ------ */
@@ -9,8 +15,6 @@
 /* http://meyerweb.com/eric/tools/css/reset/
  * v2.0 | 20110126
  * License: none (public domain) */
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@700&display=swap");
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
   margin: 0;
   padding: 0;
@@ -56,6 +60,7 @@ table {
 *, *:before, *:after {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  outline: 1px solid rgba(255, 0, 0, 0.25);
 }
 
 body {
@@ -72,6 +77,12 @@ img {
   max-width: 100%;
   height: auto;
   vertical-align: middle;
+}
+
+button {
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
 }
 
 /* ------ Container ------ */
@@ -239,7 +250,7 @@ img {
           order: 4;
 }
 
-@media (max-width: 767px) {
+@media (min-width: 1024px) {
   .order-mb-1 {
     -webkit-box-ordinal-group: 2;
         -ms-flex-order: 1;
@@ -247,7 +258,7 @@ img {
   }
 }
 
-@media (max-width: 767px) {
+@media (min-width: 1024px) {
   .order-mb-2 {
     -webkit-box-ordinal-group: 3;
         -ms-flex-order: 2;
@@ -255,7 +266,7 @@ img {
   }
 }
 
-@media (max-width: 767px) {
+@media (min-width: 1024px) {
   .order-mb-3 {
     -webkit-box-ordinal-group: 4;
         -ms-flex-order: 3;
@@ -263,10 +274,70 @@ img {
   }
 }
 
-@media (max-width: 767px) {
+@media (min-width: 1024px) {
   .order-mb-4 {
     -webkit-box-ordinal-group: 5;
         -ms-flex-order: 4;
             order: 4;
   }
+}
+
+.wrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.panel {
+  padding: 40px 24px 0 24px;
+  position: -webkit-sticky;
+  position: sticky;
+  width: 354px;
+}
+
+.panel__logo > img {
+  width: 116.5px;
+}
+
+.panel__citySelect {
+  position: relative;
+}
+
+.panel__userFilter {
+  width: 100%;
+  background-color: #FAFAFA;
+}
+
+.citySelect__choose {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #EBEBEB;
+}
+
+.citySelect__city {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.citySelect__cityName {
+  color: #9E9E9E;
+}
+
+.citySelect__cityName--selected {
+  color: #222222;
+}
+
+.citySelect__filterList {
+  position: absolute;
+  display: none;
 }

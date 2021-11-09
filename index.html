@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant-TW">
 
 <head>
   <meta charset="UTF-8">
@@ -10,6 +10,10 @@
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1.0"
+  >
+  <meta
+    name="theme-color"
+    content="#3FB195"
   >
   <title>TRAVEL 探索。福爾摩沙</title>
   <link
@@ -28,6 +32,198 @@
 </head>
 
 <body>
+  <div class="wrap">
+    <div class="panel">
+      <div class="panel__container-filter">
+        <a
+          href="#/home"
+          class="panel__logo"
+          aria-label="回首頁"
+        >
+          <img
+            src="img/logo.svg"
+            alt="logo"
+          >
+        </a>
+        <div class="panel__citySelect panel__userFilter">
+          <div class="citySelect__choose">
+            <div class="citySelect__city">
+              <span class="citySelect__cityName">目的地</span>
+              <button
+                class="citySelect__close"
+                aria-label="清除"
+              >
+                <img
+                  src="img/icon-close.svg"
+                  alt="clear button"
+                >
+              </button>
+            </div>
+            <button>
+              <img
+                src="img/icon-arrow-down.svg"
+                alt="show or hide select"
+              >
+            </button>
+          </div>
+          <ul class="citySelect__filterList">
+            <li class="citySelect__filterItem">
+              <a
+                href="javascript:;"
+                class="citySelect__filterBtn"
+              >基隆</a>
+            </li>
+            <li class="citySelect__filterItem">
+              <a
+                href="javascript:;"
+                class="citySelect__filterBtn"
+              >台北</a>
+            </li>
+            <li class="citySelect__filterItem">
+              <a
+                href="javascript:;"
+                class="citySelect__filterBtn"
+              >新北</a>
+            </li>
+            <li class="citySelect__filterItem">
+              <a
+                href="javascript:;"
+                class="citySelect__filterBtn"
+              >桃園</a>
+            </li>
+            <li class="citySelect__filterItem">
+              <a
+                href="javascript:;"
+                class="citySelect__filterBtn"
+              >台中</a>
+            </li>
+            <li class="citySelect__filterItem">
+              <a
+                href="javascript:;"
+                class="citySelect__filterBtn"
+              >台南</a>
+            </li>
+            <li class="citySelect__filterItem">
+              <a
+                href="javascript:;"
+                class="citySelect__filterBtn"
+              >高雄</a>
+            </li>
+          </ul>
+        </div>
+        <div class="panel__search panel__userFilter">
+          <input
+            type="text"
+            placeholder="搜尋關鍵字"
+          >
+          <div class="search__icon">
+            <img
+              src="img/icon-search.svg"
+              alt="search icon"
+            >
+          </div>
+        </div>
+        <button class="panel__searchConfirm">搜尋</button>
+      </div>
+      <div class="panel__container-theme">
+        <h3 class="">精選主題</h3>
+        <ul class="panel__themeList">
+          <li class="themeList__item">
+            <a
+              href=""
+              class="themeList__btn"
+            >
+              <span class="themeList__icon">
+                <i class="twicon-zeelandia"></i>
+              </span>
+              <span class="themeList__text">歷史文化</span>
+            </a>
+          </li>
+          <li class="themeList__item">
+            <a
+              href=""
+              class="themeList__btn"
+            >
+              <span class="themeList__icon">
+                <i class="twicon-youbike"></i>
+              </span>
+              <span class="themeList__text">戶外踏青</span>
+            </a>
+          </li>
+          <li class="themeList__item">
+            <a
+              href=""
+              class="themeList__btn"
+            >
+              <span class="themeList__icon">
+                <i class="twicon-xingtian-tmp"></i>
+              </span>
+              <span class="themeList__text">宗教巡禮</span>
+            </a>
+          </li>
+          <li class="themeList__item">
+            <a
+              href=""
+              class="themeList__btn"
+            >
+              <span class="themeList__icon">
+                <i class="twicon-sky-lantern"></i>
+              </span>
+              <span class="themeList__text">親子活動</span>
+            </a>
+          </li>
+          <li class="themeList__item">
+            <a
+              href=""
+              class="themeList__btn"
+            >
+              <span class="themeList__icon">
+                <i class="twicon-queens-head"></i>
+              </span>
+              <span class="themeList__text">風景區</span>
+            </a>
+          </li>
+          <li class="themeList__item">
+            <a
+              href=""
+              class="themeList__btn"
+            >
+              <span class="themeList__icon">
+                <i class="twicon-tapioca"></i>
+              </span>
+              <span class="themeList__text">美食品嚐</span>
+            </a>
+          </li>
+          <li class="themeList__item">
+            <a
+              href=""
+              class="themeList__btn"
+            >
+              <span class="themeList__icon">
+                <i class="twicon-grand-hotel"></i>
+              </span>
+              <span class="themeList__text">住宿推薦</span>
+            </a>
+          </li>
+          <li class="themeList__item">
+            <a
+              href=""
+              class="themeList__btn"
+            >
+              <span class="themeList__icon">
+                <i class="twicon-balloon"></i>
+              </span>
+              <span class="themeList__text">觀光活動</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="content">
+    </div>
+  </div>
+  <script src="all.js"></script>
 </body>
 
 </html>

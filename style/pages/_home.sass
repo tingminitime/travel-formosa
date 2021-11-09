@@ -1,1 +1,33 @@
+.wrap
+  display: flex
 
+.panel
+  padding: 40px 24px 0 24px
+  position: sticky
+  width: 354px
+  &__logo
+    > img
+      width: 116.5px
+  &__citySelect
+    position: relative
+  &__userFilter
+    width: 100%
+    background-color: $bgGray
+
+.citySelect
+  &__choose
+    display: flex
+    justify-content: space-between
+    padding: 8px 12px
+    border-radius: 8px
+    border: 1px solid $lineGray
+  &__city
+    display: flex
+    align-items: center
+  &__cityName
+    color: $textLightGray
+    &--selected
+      color: $textBlack
+  &__filterList
+    position: absolute
+    display: none
