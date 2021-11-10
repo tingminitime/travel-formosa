@@ -1,0 +1,29 @@
+.content
+  width: calc(100% - 354px)
+  padding: 24px 24px 0 24px
+  +pad
+    width: 100vw
+
+.swiper
+  width: 100%
+  height: \min(40vw, 335px)
+  border-radius: 16px
+  +shadow
+
+.banner
+  &__container
+    max-width: 100%
+    height: 100%
+    +backgroundImg($swipeBanner1)
+    background-size: contain
+    background-position: right center
+  &__title
+    margin-left: 40px
+    +font(58, 700)
+    color: $textBlack
+    line-height: 1.2
+    +mobile
+      +font(33, 700)
+
+.swiper-pagination-bullet
+  background-color: $textBlack

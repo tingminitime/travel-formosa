@@ -8,13 +8,17 @@
   padding: 40px 24px 0 24px
   position: sticky
   width: 354px
+  min-width: 354px
   height: 100vh
+  background-color: #fff
   overflow: auto
   +shadow
-  +mobile
+  +pad
     position: fixed
     width: 100vw
+    z-index: 10
     overflow: auto
+    transform: translateX(-100%)
   &::-webkit-scrollbar
     width: 6px
   &::-webkit-scrollbar-track
@@ -131,7 +135,7 @@
     &:hover
       color: #fff
       background-color: $primaryGreen
-      +pad
+      +desk
         transform: scale(1.1)
 
 .search

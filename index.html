@@ -21,10 +21,13 @@
     href="img/favicon.ico"
     type="image/x-icon"
   >
+  <!-- Swiper -->
   <link
-    rel="stylesheet"
-    href="twicon/twicon.css"
-  >
+    rel='stylesheet'
+    href='https://cdnjs.cloudflare.com/ajax/libs/Swiper/7.2.0/swiper-bundle.min.css'
+    integrity='sha512-BYn1UZcpzkgi4cForzUzU/FqsewIcfXDYAU0tThFfehimrUrp5hOtcWPI1Wpli8rKopUIhaDCbxXPttBDTISgA=='
+    crossorigin='anonymous'
+  />
   <link
     rel="stylesheet"
     href="style/all.css"
@@ -32,6 +35,26 @@
 </head>
 
 <body>
+  <nav class="nav">
+    <button class="nav__filterBtn">
+      <img
+        src="img/icon-filter.svg"
+        alt="filter button"
+      >
+    </button>
+    <div class="nav__logo">
+      <a
+        href="#/home"
+        class="nav__home"
+        aria-label="回首頁"
+      >
+        <img
+          src="img/logo.svg"
+          class="nav__logoImg"
+          alt="logo"
+        >
+      </a>
+  </nav>
   <div class="wrap flex">
     <div class="panel">
       <div class="filter">
@@ -250,11 +273,38 @@
         </ul>
       </div>
     </div>
-
-    <div id="content">
+    <div class="content">
+      <!-- Slider main container -->
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="banner__container flex-start-center">
+              <h2 class="banner__title">探索。<br>福爾摩沙1</h2>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="banner__container flex-start-center">
+              <h2 class="banner__title">探索。<br>福爾摩沙2</h2>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="banner__container flex-start-center">
+              <h2 class="banner__title">探索。<br>福爾摩沙3</h2>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
     </div>
   </div>
+
+  <script
+    src='https://cdnjs.cloudflare.com/ajax/libs/Swiper/7.2.0/swiper-bundle.min.js'
+    integrity='sha512-XHnWZWvy5TkCnPgLU7XsWhGAks1JQ3uFutVxRSH0Z4+djsGkCkxVsYu+JgfrDicvbCmjfUf1HeMWYUvUYKgjzQ=='
+    crossorigin='anonymous'
+  ></script>
   <script src="all.js"></script>
+  <script src="module/swiper.js"></script>
 </body>
 
 </html>
