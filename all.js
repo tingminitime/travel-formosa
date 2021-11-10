@@ -23,6 +23,7 @@ let cities = [
   { en: 'LienchiangCounty', zh: '連江', area: 'island' },
 ]
 
+const body = document.querySelector('body')
 const citySelect = document.querySelector('.citySelect__choose')
 const areaSection = document.querySelector('.citySelect__areaSection')
 const toggleIcon = document.querySelector('.citySelect__toggleIcon')
@@ -38,13 +39,6 @@ let filterObj = {
 
 // ----- 初始化 -----
 loadCitiesToFilter()
-
-// ----- 目的地篩選列表 展開 / 收合 -----
-function toggleFilterList(e) {
-  if (e.target.closest('.citySelect__close')) return
-  areaSection.classList.toggle('active')
-  toggleIcon.classList.toggle('active')
-}
 
 // ----- 載入地區資料至目的地篩選清單 -----
 function loadCitiesToFilter() {
@@ -65,6 +59,18 @@ function loadCitiesToFilter() {
     })
     area.innerHTML = areaItem
   })
+}
+
+// ----- 目的地篩選列表 展開 / 收合 -----
+function toggleFilterList(e) {
+  if (e.target.closest('.citySelect__close')) return
+  e.stopPropagation()
+  areaSection.classList.toggle('active')
+  toggleIcon.classList.toggle('active')
+}
+
+function closeFilterList(e) {
+  areaSection.classList.remove('active')
 }
 
 // ----- 點擊篩選地區後 => 傳入 cityName 文字  -----
@@ -94,6 +100,7 @@ function searchHandler() {
 
 // ----- 監聽 -----
 citySelect.addEventListener('click', toggleFilterList, false)
+body.addEventListener('click', closeFilterList, false)
 areaSection.addEventListener('click', selectCity, false)
 citySelect.addEventListener('click', clearCity, false)
 // searchKeyword.addEventListener('keyup', keywordHandler, false)
