@@ -3,15 +3,17 @@
     @content
 
 @mixin pad
-  @media (min-width: 1024px)
+  @media (min-width: 768px)
     @content
 
 @mixin font($size: 18, $weight: 400, $unit: px)
   font-size: #{$size}#{$unit}
   font-weight: $weight
+  @if $weight > 400
+    letter-spacing: .05rem
 
-@mixin shadow
-  box-shadow: $shadow
+@mixin shadow($x: 0, $y: 14, $blur: 24, $spread: 0, $color: $shadow)
+  box-shadow: #{$x}px #{$y}px #{$blur}px #{$spread}px $color
 
 @mixin ff
   font-family: 'Noto Sans TC', Arial, sans-serif

@@ -17,6 +17,7 @@ function renderByUrl(url) {
     return
   }
 
+  // google template
   if (url === "" ||
     url === "#/" ||
     url === "#/Home") {

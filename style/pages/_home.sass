@@ -9,11 +9,20 @@
   position: sticky
   width: 354px
   height: 100vh
+  overflow: auto
   +shadow
   +mobile
     position: fixed
     width: 100vw
     overflow: auto
+  &::-webkit-scrollbar
+    width: 6px
+  &::-webkit-scrollbar-track
+    background-color: #eee
+    border-radius: 6px
+  &::-webkit-scrollbar-thumb
+    background-color: $textGray
+    border-radius: 6px
 
 .filter
   border-bottom: 1px solid $lineGray
@@ -29,31 +38,101 @@
 .citySelect
   padding: 8px 12px
   cursor: pointer
+  z-index: 2
+  &__city
+    user-select: none
   &__cityName
     line-height: 1.5
     letter-spacing: .05rem
     color: $textLightGray
+    user-select: none
     // js
     &--selected
       color: $textBlack
-  &__filterList
+  &__close > img
+    transition: .2s
+    &:hover
+      transform: rotate(90deg)
+  &__toggleIcon
+    user-select: none
+    transition: .2s
+    &.active
+      transform: rotate(180deg)
+  &__areaSection
+    visibility: hidden
     padding: 12px
     position: absolute
     left: 0
-    top: 100%
+    top: 120%
     z-index: 3
-    // display: none
     width: 100%
+    max-height: 0
     background-color: #fff
-    border: 1px solid $textBlack
+    border-radius: 8px
+    overflow: auto
+    opacity: 0
+    transition: all .3s
+    +shadow
+    &::-webkit-scrollbar
+      width: 6px
+    &::-webkit-scrollbar-track
+      background-color: #eee
+      border-radius: 6px
+    &::-webkit-scrollbar-thumb
+      background-color: $textGray
+      border-radius: 6px
+    // js
     &.active
-      display: block
+      visibility: visible
+      opacity: 1
+      max-height: 50vh
+  &__areaTitle
+    display: inline-block
+    +font(18, 700)
+    color: $textBlack
+    padding: 8px 0
+    & ~ .citySelect__areaTitle
+      margin-top: 8px
+  &__filterList
+    padding: 12px 0
+    position: relative
+    +mobile
+      align-content: space-around
+    &:before
+      content: ''
+      position: absolute
+      width: 0
+      height: 100%
+      left: 50%
+      top: 0
+      z-index: -1
+      border-top: 2px solid $primaryGreen
+      border-bottom: 2px solid $primaryGreen
+      transform: translateX(-50%)
+      transition: all .3s
+    &:hover
+      &::before
+        width: 100%
   &__filterItem
+    margin: 0 8px 12px 0
+    &:nth-child(3) ~ .citySelect__filterItem
+      // margin-top: 12px
+    +mobile
+      &:nth-child(3) ~ .citySelect__filterItem
+        margin-top: 0
   &__filterBtn
     min-width: 78px
     padding: 6px 0
     text-align: center
     line-height: 1.5
+    border: 1px solid $primaryGreen
+    border-radius: 8px
+    transition: transform .2s
+    &:hover
+      color: #fff
+      background-color: $primaryGreen
+      +pad
+        transform: scale(1.1)
 
 .search
   position: relative
@@ -85,7 +164,7 @@
     color: #fff
     position: relative
     overflow: hidden
-    z-index: 2
+    z-index: 1
     +font(18)
     +ff
     &:before
@@ -109,19 +188,27 @@
       background-color: darken($primaryGreen, 10)
 
 .theme
-  padding: 24px 0
+  padding-top: 24px
   &__title
     +font(18, 700)
-    letter-spacing: .05rem
   &__list
     padding: 24px 0
   &__item
     width: calc(50% - 8px)
+    margin-bottom: 12px
     &:nth-child(2n+1)
       margin-right: 16px
   &__btn
     width: 100%
     padding: 8px 0
+    border-radius: 8px
+    border: 1px solid transparent
+    +shadow(0,0,0,0,rgba(0,0,0,0))
+    transition: all .2s
+    &:hover
+      transform: translate(-3px, -3px)
+      border: 1px solid $primaryGreen
+      +shadow
     &-text
       +font(14)
       color: $textBlack

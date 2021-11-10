@@ -60,57 +60,60 @@
                 >
               </button>
             </div>
-            <button>
+            <button class="citySelect__toggleIcon">
               <img
                 src="img/icon-arrow-down.svg"
                 alt="show or hide select"
               >
             </button>
           </div>
-          <ul class="citySelect__filterList flex-sb flex-wrap">
-            <li class="citySelect__filterItem">
-              <a
-                href="javascript:;"
-                class="citySelect__filterBtn"
-              >基隆</a>
-            </li>
-            <li class="citySelect__filterItem">
-              <a
-                href="javascript:;"
-                class="citySelect__filterBtn"
-              >台北</a>
-            </li>
-            <li class="citySelect__filterItem">
-              <a
-                href="javascript:;"
-                class="citySelect__filterBtn"
-              >新北</a>
-            </li>
-            <li class="citySelect__filterItem">
-              <a
-                href="javascript:;"
-                class="citySelect__filterBtn"
-              >桃園</a>
-            </li>
-            <li class="citySelect__filterItem">
-              <a
-                href="javascript:;"
-                class="citySelect__filterBtn"
-              >台中</a>
-            </li>
-            <li class="citySelect__filterItem">
-              <a
-                href="javascript:;"
-                class="citySelect__filterBtn"
-              >台南</a>
-            </li>
-            <li class="citySelect__filterItem">
-              <a
-                href="javascript:;"
-                class="citySelect__filterBtn"
-              >高雄</a>
-            </li>
-          </ul>
+          <div class="citySelect__areaSection">
+            <h3
+              class="citySelect__areaTitle"
+              data-area="north"
+            >北部地區</h3>
+            <ul
+              class="citySelect__filterList flex flex-wrap"
+              data-area="north"
+            >
+            </ul>
+            <h3
+              class="citySelect__areaTitle"
+              data-area="north"
+            >中部地區</h3>
+            <ul
+              class="citySelect__filterList flex flex-wrap"
+              data-area="central"
+            >
+            </ul>
+            <h3
+              class="citySelect__areaTitle"
+              data-area="north"
+            >南部地區</h3>
+            <ul
+              class="citySelect__filterList flex flex-wrap"
+              data-area="south"
+            >
+            </ul>
+            <h3
+              class="citySelect__areaTitle"
+              data-area="north"
+            >東部地區</h3>
+            <ul
+              class="citySelect__filterList flex flex-wrap"
+              data-area="east"
+            >
+            </ul>
+            <h3
+              class="citySelect__areaTitle"
+              data-area="north"
+            >離島地區</h3>
+            <ul
+              class="citySelect__filterList flex flex-wrap"
+              data-area="island"
+            >
+            </ul>
+          </div>
         </div>
         <div class="search flex-sb">
           <input
