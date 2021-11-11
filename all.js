@@ -24,6 +24,10 @@ let cities = [
 ]
 
 const body = document.querySelector('body')
+const panel = document.querySelector('.panel')
+const navFilterBtn = document.querySelector('.nav__filterBtn')
+const panelHideBtn = document.querySelector('.filter__toggle')
+
 const citySelect = document.querySelector('.citySelect__choose')
 const areaSection = document.querySelector('.citySelect__areaSection')
 const toggleIcon = document.querySelector('.citySelect__toggleIcon')
@@ -59,6 +63,11 @@ function loadCitiesToFilter() {
     })
     area.innerHTML = areaItem
   })
+}
+
+// ----- Panel 展開 / 收合 -----
+function togglePanel() {
+  panel.classList.toggle('show')
 }
 
 // ----- 目的地篩選列表 展開 / 收合 -----
@@ -99,6 +108,8 @@ function searchHandler() {
 }
 
 // ----- 監聽 -----
+navFilterBtn.addEventListener('click', togglePanel, false)
+panelHideBtn.addEventListener('click', togglePanel, false)
 citySelect.addEventListener('click', toggleFilterList, false)
 body.addEventListener('click', closeFilterList, false)
 areaSection.addEventListener('click', selectCity, false)

@@ -13,6 +13,7 @@
 /* ------ twicon ------ */
 /* ------ Select icon ------ */
 /* ------ Input icon ------ */
+/* ------ toggle icon ------ */
 /* ------ Share icon ------ */
 /* http://meyerweb.com/eric/tools/css/reset/
  * v2.0 | 20110126
@@ -69,6 +70,7 @@ button {
 *, *:before, *:after {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  outline: 1px solid rgba(255, 0, 0, 0.25);
 }
 
 body {
@@ -378,7 +380,106 @@ img {
      object-fit: cover;
 }
 
-.card-img-ab:after {
+.card-info {
+  padding: 8px 12px 4px 12px;
+}
+
+.card-title {
+  margin-bottom: 8px;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: .05rem;
+  line-height: 1.5;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+}
+
+.card-location, .card-operate, .card-class {
+  padding: 4px 0;
+}
+
+.card-location > img, .card-operate > img, .card-class > img {
+  margin-right: 4px;
+}
+
+.card-otherInfoText {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: #666666;
+  vertical-align: middle;
+  margin-right: 16px;
+}
+
+.cardSpec {
+  width: 100%;
+  height: 100%;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+.cardSpec:hover {
+  -webkit-transform: translate(-3px, -3px);
+          transform: translate(-3px, -3px);
+}
+
+.cardSpec__item {
+  width: 31.3333%;
+  min-width: 164px;
+  margin: 0 2% 1.5rem 0;
+}
+
+@media (max-width: 767px) {
+  .cardSpec__item {
+    margin: 0 0 1.5rem 0;
+  }
+}
+
+.cardSpec__more {
+  width: 31.3333%;
+  min-width: 164px;
+  height: 10vw;
+  min-height: 100px;
+  margin: 0 2% 2% 0;
+  -webkit-transition: .2s;
+  transition: .2s;
+  background-color: rgba(255, 255, 255, 0);
+  position: relative;
+}
+
+.cardSpec__more:hover {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+}
+
+.cardSpec__more:hover .food__moreText > span {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.cardSpec__more:active {
+  background-color: #328b75;
+}
+
+.cardSpec__moreText {
+  width: 100%;
+  height: 100%;
+}
+
+.cardSpec__moreText > span {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: .05rem;
+  color: #3FB195;
+  -webkit-transition: .2s .1s;
+  transition: .2s .1s;
+}
+
+.cardSpec-mask:after {
   content: '';
   position: absolute;
   left: 0;
@@ -389,38 +490,74 @@ img {
   background: linear-gradient(180deg, transparent 30%, rgba(0, 0, 0, 0.8));
 }
 
-.card-info {
+.cardSpec-img {
+  position: relative;
+  height: 163px;
+}
+
+.cardSpec-img > img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.cardSpec-info {
   padding: 8px 12px 4px 12px;
 }
 
-.card-title {
-  margin-bottom: 10px;
+.cardSpec-title {
+  margin-bottom: 8px;
   font-size: 18px;
   font-weight: 700;
   letter-spacing: .05rem;
   line-height: 1.5;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+  -webkit-line-clamp: 1;
 }
 
-.card-location, .card-operate {
+.cardSpec-title-ab {
+  color: #fff;
+  position: absolute;
+  left: 12px;
+  bottom: 0;
+  z-index: 2;
+  -webkit-line-clamp: 2;
+}
+
+.cardSpec-location, .cardSpec-operate {
   padding: 4px 0;
 }
 
-.card-location > img, .card-operate > img {
-  margin-right: 8px;
+.cardSpec-location > img, .cardSpec-operate > img {
+  margin-right: 4px;
 }
 
-@media (max-width: 767px) {
-  .card-operate-mb-hide {
-    display: none;
-  }
+.cardSpec-location > p {
+  color: #222222;
 }
 
-.card-otherInfoText {
+.cardSpec-otherInfoText {
   font-size: 14px;
   font-weight: 400;
   line-height: 1.2;
   color: #666666;
   vertical-align: middle;
+  margin-right: 16px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+}
+
+.cardFull {
+  width: 100%;
 }
 
 .card-shareBtn {
@@ -467,6 +604,8 @@ img {
   background-color: #fff;
   overflow: auto;
   overscroll-behavior: contain;
+  -webkit-transition: all .3s;
+  transition: all .3s;
   -webkit-box-shadow: 0px 14px 24px 0px rgba(0, 0, 0, 0.04);
           box-shadow: 0px 14px 24px 0px rgba(0, 0, 0, 0.04);
 }
@@ -480,6 +619,11 @@ img {
     -webkit-transform: translateX(-100%);
             transform: translateX(-100%);
   }
+}
+
+.panel.show {
+  -webkit-transform: translateX(0%);
+          transform: translateX(0%);
 }
 
 .panel::-webkit-scrollbar {
@@ -498,6 +642,21 @@ img {
 
 .filter {
   border-bottom: 1px solid #EBEBEB;
+}
+
+.filter__toggle {
+  width: 40px;
+  height: 40px;
+  background-image: url(../img/icon-arrow-left.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .filter__toggle {
+    display: block;
+  }
 }
 
 .citySelect, .search {
@@ -932,96 +1091,6 @@ img {
   width: 254px;
 }
 
-.hotSpot__card-otherInfoText, .hotSpot__card-otherInfoText {
-  margin-right: 16px;
-}
-
-.food__list {
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
-.food__item {
-  width: 31.3333%;
-  min-width: 164px;
-  margin: 0 2% 1.5rem 0;
-}
-
-@media (max-width: 767px) {
-  .food__item {
-    margin: 0 0 1.5rem 0;
-  }
-}
-
-.food__more {
-  width: 31.3333%;
-  min-width: 164px;
-  height: 10vw;
-  min-height: 100px;
-  margin: 0 2% 2% 0;
-  -webkit-transition: .2s;
-  transition: .2s;
-  background-color: rgba(255, 255, 255, 0);
-  position: relative;
-}
-
-.food__more:hover {
-  -webkit-transform: scale(1.05);
-          transform: scale(1.05);
-}
-
-.food__more:hover .food__moreText > span {
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
-}
-
-.food__more:active {
-  background-color: #328b75;
-}
-
-.food__moreText {
-  width: 100%;
-  height: 100%;
-}
-
-.food__moreText > span {
-  font-size: 24px;
-  font-weight: 700;
-  letter-spacing: .05rem;
-  color: #3FB195;
-  -webkit-transition: .2s .1s;
-  transition: .2s .1s;
-}
-
-.food__card {
-  width: 100%;
-  height: 100%;
-  -webkit-transition: .2s;
-  transition: .2s;
-}
-
-.food__card:hover {
-  -webkit-transform: translate(-3px, -3px);
-          transform: translate(-3px, -3px);
-}
-
-.food__card-title-ab {
-  position: absolute;
-  left: 12px;
-  bottom: 0;
-  color: #fff;
-  z-index: 2;
-}
-
-.food__card-location > p {
-  color: #222222;
-}
-
-.food__card-otherInfoText {
-  text-align: justify;
-}
-
 .nav {
   display: none;
   position: fixed;
@@ -1056,8 +1125,14 @@ img {
   position: absolute;
   top: 50%;
   left: 16px;
+  width: 32px;
+  height: 32px;
+  padding: 8px;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
   background-color: rgba(63, 177, 149, 0.08);
   border-radius: 8px;
+  background-image: url(../img/icon-filter.svg);
+  background-repeat: no-repeat;
+  background-position: center;
 }

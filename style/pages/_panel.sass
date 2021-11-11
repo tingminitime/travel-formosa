@@ -14,6 +14,7 @@
   background-color: #fff
   overflow: auto
   overscroll-behavior: contain
+  transition: all .3s
   +shadow
   +pad
     position: fixed
@@ -21,6 +22,8 @@
     z-index: 10
     overflow: auto
     transform: translateX(-100%)
+  &.show
+    transform: translateX(0%)
   &::-webkit-scrollbar
     width: 6px
   &::-webkit-scrollbar-track
@@ -32,6 +35,14 @@
 
 .filter
   border-bottom: 1px solid $lineGray
+  &__toggle
+    width: 40px
+    height: 40px
+    +backgroundImg($icon-toggle-hz)
+    background-size: contain
+    display: none
+    +pad
+      display: block
 
 .citySelect, .search
   width: 100%
