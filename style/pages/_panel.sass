@@ -7,11 +7,13 @@
 .panel
   padding: 40px 24px 0 24px
   position: sticky
+  top: 0
   width: 354px
   min-width: 354px
   height: 100vh
   background-color: #fff
   overflow: auto
+  overscroll-behavior: contain
   +shadow
   +pad
     position: fixed
@@ -215,7 +217,6 @@
       +shadow
     &-text
       +font(14)
-      color: $textBlack
       line-height: 1.5
     &-icon
       width: 70px

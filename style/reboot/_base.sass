@@ -10,12 +10,20 @@
 body
   font-size: 18px
   +ff
+  color: $textBlack
   background-color: $bgGray
-  // overflow-x: hidden
+  &::-webkit-scrollbar
+    width: 6px
+  &::-webkit-scrollbar-track
+    background-color: #eee
+    border-radius: 6px
+  &::-webkit-scrollbar-thumb
+    background-color: $textGray
+    border-radius: 6px
 
 a
   text-decoration: none
-  color: #000
+  color: $textBlack
   display: inline-block
 
 img

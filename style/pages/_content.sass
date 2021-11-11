@@ -1,14 +1,39 @@
 .content
   width: calc(100% - 354px)
+  max-width: 100%
   padding: 24px 24px 0 24px
+  flex: 1
+  overflow: auto
+  > div
+    margin-bottom: 40px
   +pad
     width: 100vw
+    margin-top: 56px
+  +mobile
+    padding: 24px 16px 0 16px
+  &__title
+    margin-bottom: 16px
+  &__titleText
+    +font(24, 700)
+    > span
+      vertical-align: middle
+  &__more
+    padding: 8px 1rem
+    margin-right: -1rem
+    +font(16, 400)
+    color: $primaryGreen
+    &:hover
+      color: darken($primaryGreen, 10)
 
-.swiper
+.swiper-header
   width: 100%
-  height: \min(40vw, 335px)
+  height: \min(30vw, 335px)
+  min-height: 152px
   border-radius: 16px
   +shadow
+
+.swiper-pagination-bullet
+  background-color: rgba($textBlack, .75)
 
 .banner
   &__container
@@ -20,10 +45,70 @@
   &__title
     margin-left: 40px
     +font(58, 700)
-    color: $textBlack
     line-height: 1.2
+    mix-blend-mode: luminosity
     +mobile
       +font(33, 700)
 
-.swiper-pagination-bullet
-  background-color: $textBlack
+.swiper-hotSpot
+  width: 100%
+
+.swiper-button-prev-hotSpot, .swiper-button-next-hotSpot
+  color: $primaryGreen
+
+.swiper-slide-hotSpot
+  width: 254px
+
+.hotSpot
+  &__card-otherInfoText, &__card-otherInfoText
+    margin-right: 16px
+
+.food
+  &__list
+    justify-content: space-between
+  &__item
+    width: 31.3333%
+    min-width: 164px
+    margin: 0 2% 1.5rem 0
+    +mobile
+      margin: 0 0 1.5rem 0
+  &__more
+    width: 31.3333%
+    min-width: 164px
+    height: 10vw
+    min-height: 100px
+    margin: 0 2% 2% 0
+    transition: .2s
+    background-color: rgba(255,255,255,0)
+    position: relative
+    &:hover
+      transform: scale(1.05)
+      .food__moreText
+        > span
+          transform: scale(1.1)
+    &:active
+      background-color: darken($primaryGreen, 10)
+  &__moreText
+    width: 100%
+    height: 100%
+    > span
+      +font(24, 700)
+      color: $primaryGreen
+      transition: .2s .1s
+  &__card
+    width: 100%
+    height: 100%
+    transition: .2s
+    &:hover
+      transform: translate(-3px, -3px)
+  &__card-title-ab
+    position: absolute
+    left: 12px
+    bottom: 0
+    color: #fff
+    z-index: 2
+  &__card-location
+    > p
+      color: $textBlack
+  &__card-otherInfoText
+    text-align: justify

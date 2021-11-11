@@ -4,9 +4,20 @@
   top: 0
   left: 0
   z-index: 9
+  width: 100vw
+  background-color: #fff
   +pad
     display: flex
+    justify-content: center
   &__logo
-    // width: 100%
+    padding: 8px 16px
   &__logoImg
     height: 40px
+  &__filterBtn
+    padding: 8px
+    position: absolute
+    top: 50%
+    left: 16px
+    transform: translateY(-50%)
+    background-color: $lighterGreen
+    border-radius: 8px
