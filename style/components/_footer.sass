@@ -5,6 +5,8 @@
   bottom: 0
   z-index: 10
   background-color: $primaryGreen
+  +mobile
+    padding: 4px 8px
   &__info, &__title
     +font(14, 400)
     color: #fff
@@ -14,3 +16,8 @@
       +font(12, 400)
   &__info
     padding: 0 12px
+    +pad
+      padding: 0
+  &__author
+    +mobile
+      display: none

@@ -4,8 +4,6 @@
   padding: 24px
   flex: 1
   overflow: auto
-  > div
-    margin-bottom: 40px
   +pad
     width: 100vw
     margin-top: 56px
@@ -65,15 +63,19 @@
   width: 254px
 
 .title
-  &__info
   &__backBtn
     width: 64px
     height: 40px
     +backgroundImg($arrow-back)
     background-position: center
     background-size: contain
+    +pad
+      width: 40px
   &__text
     +font(33, 700)
+    line-height: 1.5
+    +mobile
+      +font(24, 700)
   &__funcs
     font-size: 0
   &__funcsBtn
@@ -87,6 +89,9 @@
       +shadow(0,8,8,0,rgba(0,0,0,.04))
     & + .title__funcsBtn
       margin-left: 12px
+    &-print
+      +mobile
+        display: none
 
 .page
   &__img
@@ -97,7 +102,7 @@
     > img
       width: 100%
       height: 100%
-      object-fit: contain
+      object-fit: cover
 
 .swiper-page
   width: 100%
@@ -111,3 +116,28 @@
 
 .swiper-pagination-page .swiper-pagination-bullet
   background-color: rgba(#fff, .75)
+
+.info
+  padding: 8px 16px
+  background-color: $lighterGreen
+  border-radius: 16px
+  &__item
+    padding: 8px 0
+    +mobile
+      +font(16, 400)
+  &__title
+    flex-shrink: 0
+    margin-right: .8rem
+  &__content
+    line-height: 1.2
+  &__content-tag
+    padding: 8px
+    color: $primaryGreen
+    background-color: #fff
+    border-radius: 8px
+    +shadow
+    transition: all .2s
+    &:hover
+      transform: translate(-2px, -2px)
+  &__content-tag + .info__content-tag
+    margin-left: .5rem

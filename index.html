@@ -278,7 +278,7 @@
     </div>
     <div class="content">
       <!-- 主頁 -->
-      <div class="swiper swiper-header d-n">
+      <div class="swiper swiper-header mb-40 d-n">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
             <div class="banner__container flex-start-center">
@@ -298,7 +298,7 @@
         </div>
         <div class="swiper-pagination swiper-pagination-header"></div>
       </div>
-      <div class="hotSpot d-n">
+      <div class="hotSpot mb-40 d-n">
         <div class="content__title flex-sb-center">
           <h3 class="content__titleText flex-start-center">
             <div class="icon-location-purple"></div>
@@ -457,7 +457,7 @@
           <div class="swiper-button-next swiper-button-next-hotSpot"></div>
         </div>
       </div>
-      <div class="food d-n">
+      <div class="food mb-40 d-n">
         <div class="content__title flex-sb-center">
           <h3 class="content__titleText flex-start-center">
             <div class="icon-location icon-mr4-purple"></div>
@@ -503,7 +503,7 @@
           </li>
         </ul>
       </div>
-      <div class="hotel d-n">
+      <div class="hotel mb-40 d-n">
         <div class="content__title flex-sb-center">
           <h3 class="content__titleText flex-start-center">
             <div class="icon-location icon-mr4-purple"></div>
@@ -548,7 +548,7 @@
           </li>
         </ul>
       </div>
-      <div class="active d-n">
+      <div class="active mb-40 d-n">
         <div class="content__title flex-sb-center">
           <h3 class="content__titleText">
             <img
@@ -588,18 +588,18 @@
         </ul>
       </div>
       <!-- 內頁 -->
-      <div class="title flex-sb-center">
+      <div class="title mb-24 flex-sb-center">
         <div class="title__info flex-start-center">
           <button class="title__backBtn"></button>
           <h2 class="title__text">風櫃東港、西港、北港</h2>
         </div>
         <div class="title__funcs">
-          <button class="title__funcsBtn icon-print"></button>
+          <button class="title__funcsBtn title__funcsBtn-print icon-print"></button>
           <button class="title__funcsBtn icon-share"></button>
         </div>
       </div>
       <!-- 內頁 - 照片 -->
-      <div class="swiper swiper-page">
+      <div class="swiper swiper-page mb-24">
         <div class="swiper-wrapper">
           <div class="swiper-slide swiper-slide-page">
             <div class="page__img">
@@ -634,19 +634,73 @@
         <div class="swiper-button-next swiper-button-next-page"></div>
       </div>
       <!-- 內頁 - 資訊 -->
-      <!-- 景點資訊 : 時段、地點、電話、類別、網站 -->
+      <!-- 景點資訊 : 時段、地點、電話、票價、類別、網站 -->
       <!-- 美食資訊 : 時段、地點、電話、類別 -->
       <!-- 住宿資訊 : 地點、電話、類別、 -->
       <!-- 活動資訊 : 時段、地點、主辦單位、備註(Cycle)、類別 -->
-      <div class="info">
-
+      <div class="info mb-24">
+        <ul class="info__list">
+          <li class="info__item info__item-time flex-start-stretch">
+            <div class="info__title flex">
+              <div class="icon-time icon-mr4"></div>
+              <span class="info__text">開放時段 :</span>
+            </div>
+            <p class="info__content">
+              每日開放每日開放每日開放每日開放每日開放每日開放每日開放每日開放每日開放每日開放每日開放每日開放</p>
+          </li>
+          <li class="info__item info__item-location flex-start-stretch">
+            <div class="info__title flex">
+              <div class="icon-location icon-mr4"></div>
+              <span class="info__text">所在地點 :</span>
+            </div>
+            <p class="info__content">花蓮縣975鳳林鎮林榮里永福街20號</p>
+          </li>
+          <li class="info__item info__item-call flex-start-stretch">
+            <div class="info__title flex">
+              <div class="icon-call icon-mr4"></div>
+              <span class="info__text">聯絡電話 :</span>
+            </div>
+            <p class="info__content"><a href="tel:886-3-8771410">886-3-8771410</a></p>
+          </li>
+          <li class="info__item info__item-ticket flex-start-stretch">
+            <div class="info__title flex">
+              <div class="icon-ticket icon-mr4"></div>
+              <span class="info__text">票價資訊 :</span>
+            </div>
+            <p class="info__content">
+              1.全票：$350元2.優待票：$250元（13歲(含)以上至18歲以下青少年、65歲以上老人）3.學童票：$200元（6歲-12歲(含)之童）4.博幼票：$175元（身障朋友及陪...</p>
+          </li>
+          <li class="info__item info__item-class flex-start-stretch">
+            <div class="info__title flex-self-center">
+              <div class="icon-tag icon-mr4"></div>
+              <span class="info__text">分類標籤 :</span>
+            </div>
+            <p class="info__content">
+              <a
+                href="javascript:;"
+                class="info__content-tag"
+              >遊憩類</a>
+              <a
+                href="javascript:;"
+                class="info__content-tag"
+              >自然風景類</a>
+            </p>
+          </li>
+          <li class="info__item info__item-web flex-start-stretch">
+            <div class="info__title flex">
+              <div class="icon-web icon-mr4"></div>
+              <span class="info__text">網站連結 :</span>
+            </div>
+            <p class="info__content"><a href="javascript:;">http://www.erv-nsa.gov.tw</a></p>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
   <footer class="footer flex-sb-center">
     <p class="footer__title">TAIWAN TRAVEL</p>
     <div class="footer__info flex">
-      <p class="footer__info">UI Design : jhen | Front-end : Tim Lin</p>
+      <p class="footer__info footer__author">UI Design : jhen | Front-end : Tim Lin</p>
       <p class="footer__info">資料來源 : 交通部 PTX 服務平台</p>
     </div>
   </footer>
