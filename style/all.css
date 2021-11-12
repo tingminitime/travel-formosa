@@ -299,6 +299,9 @@ button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -ms-flex-item-align: center;
       align-self: center;
 }
@@ -1533,7 +1536,7 @@ button {
 .page__img {
   max-width: 100%;
   height: 100%;
-  border-radius: 16px;
+  border-radius: 12px;
   overflow: hidden;
 }
 
@@ -1548,7 +1551,7 @@ button {
   width: 100%;
   height: \min(30vw, 364px);
   min-height: 160px;
-  border-radius: 16px;
+  border-radius: 12px;
   -webkit-box-shadow: 0px 14px 24px 0px rgba(0, 0, 0, 0.04);
           box-shadow: 0px 14px 24px 0px rgba(0, 0, 0, 0.04);
 }
@@ -1562,9 +1565,9 @@ button {
 }
 
 .info {
-  padding: 8px 16px;
+  padding: 16px;
   background-color: rgba(63, 177, 149, 0.08);
-  border-radius: 16px;
+  border-radius: 12px;
 }
 
 .info__item {
@@ -1584,12 +1587,11 @@ button {
   margin-right: .8rem;
 }
 
-.info__content {
-  line-height: 1.2;
+.info__text, .info__content {
+  line-height: 1.5;
 }
 
-.info__content-tag {
-  padding: 8px;
+.info__content-tag, .info__url {
   color: #3FB195;
   background-color: #fff;
   border-radius: 8px;
@@ -1599,13 +1601,65 @@ button {
   transition: all .2s;
 }
 
-.info__content-tag:hover {
+.info__content-tag:hover, .info__url:hover {
   -webkit-transform: translate(-2px, -2px);
           transform: translate(-2px, -2px);
 }
 
 .info__content-tag + .info__content-tag {
   margin-left: .5rem;
+}
+
+.info__content-tag {
+  padding: 8px;
+}
+
+.info__url {
+  padding: 4px 8px;
+}
+
+.intro__title {
+  margin-bottom: 16px;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: .05rem;
+  color: #3FB195;
+  line-height: 1.5;
+}
+
+@media (max-width: 767px) {
+  .intro__title {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: .05rem;
+  }
+}
+
+.intro__content > p {
+  line-height: 1.5;
+}
+
+.intro__content > p + p {
+  margin-top: 12px;
+}
+
+#myMap {
+  z-index: 8;
+  width: 100%;
+  height: \min(40vh, 380px);
+  border-radius: 12px;
+}
+
+.swiper-nearSpot {
+  border-radius: 16px;
+}
+
+.swiper-slide-nearSpot {
+  width: 254px;
+}
+
+.swiper-button-prev-nearSpot, .swiper-button-next-nearSpot {
+  color: #3FB195;
 }
 
 .nav {

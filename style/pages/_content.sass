@@ -97,7 +97,7 @@
   &__img
     max-width: 100%
     height: 100%
-    border-radius: 16px
+    border-radius: 12px
     overflow: hidden
     > img
       width: 100%
@@ -108,7 +108,7 @@
   width: 100%
   height: \min(30vw, 364px)
   min-height: 160px
-  border-radius: 16px
+  border-radius: 12px
   +shadow
 
 .swiper-button-prev-page, .swiper-button-next-page
@@ -118,9 +118,9 @@
   background-color: rgba(#fff, .75)
 
 .info
-  padding: 8px 16px
+  padding: 16px
   background-color: $lighterGreen
-  border-radius: 16px
+  border-radius: 12px
   &__item
     padding: 8px 0
     +mobile
@@ -128,10 +128,9 @@
   &__title
     flex-shrink: 0
     margin-right: .8rem
-  &__content
-    line-height: 1.2
-  &__content-tag
-    padding: 8px
+  &__text, &__content
+    line-height: 1.5
+  &__content-tag, &__url
     color: $primaryGreen
     background-color: #fff
     border-radius: 8px
@@ -141,3 +140,36 @@
       transform: translate(-2px, -2px)
   &__content-tag + .info__content-tag
     margin-left: .5rem
+  &__content-tag
+    padding: 8px
+  &__url
+    padding: 4px 8px
+
+.intro
+  &__title
+    margin-bottom: 16px
+    +font(24, 700)
+    color: $primaryGreen
+    line-height: 1.5
+    +mobile
+      +font(18, 700)
+  &__content
+    > p
+      line-height: 1.5
+    > p + p
+      margin-top: 12px
+
+#myMap
+  z-index: 8
+  width: 100%
+  height: \min(40vh, 380px)
+  border-radius: 12px
+
+.swiper-nearSpot
+  border-radius: 16px
+
+.swiper-slide-nearSpot
+  width: 254px
+
+.swiper-button-prev-nearSpot, .swiper-button-next-nearSpot
+  color: $primaryGreen

@@ -91,3 +91,40 @@ const swiper_page = new Swiper('.swiper-page', {
     el: '.swiper-scrollbar',
   },
 })
+
+const swiper_nearSpot = new Swiper('.swiper-nearSpot', {
+  speed: 400,
+  spaceBetween: 12,
+  grabCursor: true,
+  slidesPerView: 'auto',
+  lazy: {
+    loadPrevNext: true,
+    loadPrevNextAmount: 100,
+  },
+  breakpoints: {
+    320: {
+      spaceBetween: 12
+    },
+    767: {
+      spaceBetween: 12
+    },
+    992: {
+      spaceBetween: 24
+    },
+  },
+
+  // Optional parameters
+  direction: 'horizontal',
+  loop: false,
+
+  // Navigation arrows
+  navigation: {
+    nextEl: '.swiper-button-next-nearSpot',
+    prevEl: '.swiper-button-prev-nearSpot',
+  },
+
+  // And if we need scrollbar
+  scrollbar: {
+    el: '.swiper-scrollbar',
+  },
+})
