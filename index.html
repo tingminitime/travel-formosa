@@ -21,6 +21,11 @@
     href="img/favicon.ico"
     type="image/x-icon"
   >
+  <!-- Material Icons -->
+  <link
+    href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    rel="stylesheet"
+  >
   <!-- Swiper -->
   <link
     rel='stylesheet'
@@ -272,8 +277,8 @@
       </div>
     </div>
     <div class="content">
-      <!-- Slider main container -->
-      <div class="swiper swiper-header">
+      <!-- 主頁 -->
+      <div class="swiper swiper-header d-n">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
             <div class="banner__container flex-start-center">
@@ -293,13 +298,10 @@
         </div>
         <div class="swiper-pagination swiper-pagination-header"></div>
       </div>
-      <div class="hotSpot">
+      <div class="hotSpot d-n">
         <div class="content__title flex-sb-center">
-          <h3 class="content__titleText">
-            <img
-              src="img/icon-location-purple.svg"
-              alt="location icon"
-            >
+          <h3 class="content__titleText flex-start-center">
+            <div class="icon-location-purple"></div>
             <span class="d-ib">熱門景點</span>
           </h3>
           <a
@@ -307,11 +309,8 @@
             class="content__more"
           >更多熱門景點</a>
         </div>
-        <!-- Slider main container -->
         <div class="swiper swiper-hotSpot">
-          <!-- Additional required wrapper -->
           <div class="swiper-wrapper">
-            <!-- Slides -->
             <div class="swiper-slide swiper-slide-hotSpot">
               <a
                 href="javascript:;"
@@ -320,26 +319,132 @@
                 <div class="card-img">
                   <button class="card-shareBtn"></button>
                   <img
-                    src="https://picsum.photos/500/400?random=2"
-                    alt="hot spot photo"
+                    data-src="https://picsum.photos/500/400?random=2"
+                    class="swiper-lazy"
                   >
+                  <div class="swiper-lazy-preloader"></div>
                 </div>
                 <div class="card-info">
                   <h3 class="card-title">天長地久橋</h3>
-                  <div class="card-otherInfo flex flex-wrap">
-                    <div class="card-location">
-                      <img
-                        src="img/icon-location.svg"
-                        alt="location icon"
-                      >
+                  <div class="card-otherInfo flex-start-center">
+                    <div class="card-location flex-start-center">
+                      <div class="icon-location icon-mr4"></div>
                       <span class="card-otherInfoText">嘉義縣</span>
                     </div>
-                    <div class="card-class">
-                      <img
-                        style="width: 18px"
-                        src="img/icon-tag.svg"
-                        alt="operate icon"
-                      >
+                    <div class="card-class flex-start-center">
+                      <div class="icon-tag icon-mr4"></div>
+                      <span class="card-otherInfoText">自然風景類</span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="swiper-slide swiper-slide-hotSpot">
+              <a
+                href="javascript:;"
+                class="card d-b"
+              >
+                <div class="card-img">
+                  <button class="card-shareBtn"></button>
+                  <img
+                    data-src="https://picsum.photos/500/400?random=2"
+                    class="swiper-lazy"
+                  >
+                  <div class="swiper-lazy-preloader"></div>
+                </div>
+                <div class="card-info">
+                  <h3 class="card-title">天長地久橋</h3>
+                  <div class="card-otherInfo flex-start-center">
+                    <div class="card-location flex-start-center">
+                      <div class="icon-location icon-mr4"></div>
+                      <span class="card-otherInfoText">嘉義縣</span>
+                    </div>
+                    <div class="card-class flex-start-center">
+                      <div class="icon-tag icon-mr4"></div>
+                      <span class="card-otherInfoText">自然風景類</span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="swiper-slide swiper-slide-hotSpot">
+              <a
+                href="javascript:;"
+                class="card d-b"
+              >
+                <div class="card-img">
+                  <button class="card-shareBtn"></button>
+                  <img
+                    data-src="https://picsum.photos/500/400?random=2"
+                    class="swiper-lazy"
+                  >
+                  <div class="swiper-lazy-preloader"></div>
+                </div>
+                <div class="card-info">
+                  <h3 class="card-title">天長地久橋</h3>
+                  <div class="card-otherInfo flex-start-center">
+                    <div class="card-location flex-start-center">
+                      <div class="icon-location icon-mr4"></div>
+                      <span class="card-otherInfoText">嘉義縣</span>
+                    </div>
+                    <div class="card-class flex-start-center">
+                      <div class="icon-tag icon-mr4"></div>
+                      <span class="card-otherInfoText">自然風景類</span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="swiper-slide swiper-slide-hotSpot">
+              <a
+                href="javascript:;"
+                class="card d-b"
+              >
+                <div class="card-img">
+                  <button class="card-shareBtn"></button>
+                  <img
+                    data-src="https://picsum.photos/500/400?random=2"
+                    class="swiper-lazy"
+                  >
+                  <div class="swiper-lazy-preloader"></div>
+                </div>
+                <div class="card-info">
+                  <h3 class="card-title">天長地久橋</h3>
+                  <div class="card-otherInfo flex-start-center">
+                    <div class="card-location flex-start-center">
+                      <div class="icon-location icon-mr4"></div>
+                      <span class="card-otherInfoText">嘉義縣</span>
+                    </div>
+                    <div class="card-class flex-start-center">
+                      <div class="icon-tag icon-mr4"></div>
+                      <span class="card-otherInfoText">自然風景類</span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="swiper-slide swiper-slide-hotSpot">
+              <a
+                href="javascript:;"
+                class="card d-b"
+              >
+                <div class="card-img">
+                  <button class="card-shareBtn"></button>
+                  <img
+                    data-src="https://picsum.photos/500/400?random=2"
+                    class="swiper-lazy"
+                  >
+                  <div class="swiper-lazy-preloader"></div>
+                </div>
+                <div class="card-info">
+                  <h3 class="card-title">天長地久橋</h3>
+                  <div class="card-otherInfo flex-start-center">
+                    <div class="card-location flex-start-center">
+                      <div class="icon-location icon-mr4"></div>
+                      <span class="card-otherInfoText">嘉義縣</span>
+                    </div>
+                    <div class="card-class flex-start-center">
+                      <div class="icon-tag icon-mr4"></div>
                       <span class="card-otherInfoText">自然風景類</span>
                     </div>
                   </div>
@@ -347,18 +452,15 @@
               </a>
             </div>
           </div>
-          <!-- If we need navigation buttons -->
+          <!-- navigation buttons -->
           <div class="swiper-button-prev swiper-button-prev-hotSpot"></div>
           <div class="swiper-button-next swiper-button-next-hotSpot"></div>
         </div>
       </div>
-      <div class="food">
+      <div class="food d-n">
         <div class="content__title flex-sb-center">
-          <h3 class="content__titleText">
-            <img
-              src="img/icon-location-purple.svg"
-              alt="location icon"
-            >
+          <h3 class="content__titleText flex-start-center">
+            <div class="icon-location icon-mr4-purple"></div>
             <span class="d-ib">美食品嚐</span>
           </h3>
         </div>
@@ -378,163 +480,13 @@
               </div>
               <div class="cardSpec-info flex flex-wrap">
                 <div class="cardSpec-location flex-center">
-                  <img
-                    src="img/icon-location.svg"
-                    alt="location icon"
-                  >
+                  <div class="icon-location icon-mr4"></div>
                   <p class="cardSpec-otherInfoText">
                     臺南市724七股區中寮里8-41號（七股鹽山光復國小旁）
                   </p>
                 </div>
                 <div class="cardSpec-operate flex-center">
-                  <img
-                    src="img/icon-time.svg"
-                    alt="operate icon"
-                  >
-                  <p class="cardSpec-otherInfoText">
-                    週一~週五：10:00~15:00（週二公休）
-                    週六~週日：10:00~21:00
-                  </p>
-                </div>
-              </div>
-            </a>
-          </li>
-          <li class="cardSpec__item">
-            <a
-              href="javascript:;"
-              class="card cardSpec d-b"
-            >
-              <div class="cardSpec-img cardSpec-mask">
-                <button class="card-shareBtn"></button>
-                <h3 class="cardSpec-title cardSpec-title-ab">七股 / 龍門客棧餐廳(獲選參加2010台灣美食展特色餐廳)</h3>
-                <img
-                  src="https://picsum.photos/500/400?random=4"
-                  alt="food photo"
-                >
-              </div>
-              <div class="cardSpec-info flex flex-wrap">
-                <div class="cardSpec-location flex-center">
-                  <img
-                    src="img/icon-location.svg"
-                    alt="location icon"
-                  >
-                  <p class="cardSpec-otherInfoText">
-                    臺南市724七股區中寮里8-41號（七股鹽山光復國小旁）
-                  </p>
-                </div>
-                <div class="cardSpec-operate flex-center">
-                  <img
-                    src="img/icon-time.svg"
-                    alt="operate icon"
-                  >
-                  <p class="cardSpec-otherInfoText">
-                    週一~週五：10:00~15:00（週二公休）
-                    週六~週日：10:00~21:00
-                  </p>
-                </div>
-              </div>
-            </a>
-          </li>
-          <li class="cardSpec__item">
-            <a
-              href="javascript:;"
-              class="card cardSpec d-b"
-            >
-              <div class="cardSpec-img cardSpec-mask">
-                <button class="card-shareBtn"></button>
-                <h3 class="cardSpec-title cardSpec-title-ab">七股 / 龍門客棧餐廳(獲選參加2010台灣美食展特色餐廳)</h3>
-                <img
-                  src="https://picsum.photos/500/400?random=4"
-                  alt="food photo"
-                >
-              </div>
-              <div class="cardSpec-info flex flex-wrap">
-                <div class="cardSpec-location flex-center">
-                  <img
-                    src="img/icon-location.svg"
-                    alt="location icon"
-                  >
-                  <p class="cardSpec-otherInfoText">
-                    臺南市724七股區中寮里8-41號（七股鹽山光復國小旁）
-                  </p>
-                </div>
-                <div class="cardSpec-operate flex-center">
-                  <img
-                    src="img/icon-time.svg"
-                    alt="operate icon"
-                  >
-                  <p class="cardSpec-otherInfoText">
-                    週一~週五：10:00~15:00（週二公休）
-                    週六~週日：10:00~21:00
-                  </p>
-                </div>
-              </div>
-            </a>
-          </li>
-          <li class="cardSpec__item">
-            <a
-              href="javascript:;"
-              class="card cardSpec d-b"
-            >
-              <div class="cardSpec-img cardSpec-mask">
-                <button class="card-shareBtn"></button>
-                <h3 class="cardSpec-title cardSpec-title-ab">七股 / 龍門客棧餐廳(獲選參加2010台灣美食展特色餐廳)</h3>
-                <img
-                  src="https://picsum.photos/500/400?random=4"
-                  alt="food photo"
-                >
-              </div>
-              <div class="cardSpec-info flex flex-wrap">
-                <div class="cardSpec-location flex-center">
-                  <img
-                    src="img/icon-location.svg"
-                    alt="location icon"
-                  >
-                  <p class="cardSpec-otherInfoText">
-                    臺南市724七股區中寮里8-41號（七股鹽山光復國小旁）
-                  </p>
-                </div>
-                <div class="cardSpec-operate flex-center">
-                  <img
-                    src="img/icon-time.svg"
-                    alt="operate icon"
-                  >
-                  <p class="cardSpec-otherInfoText">
-                    週一~週五：10:00~15:00（週二公休）
-                    週六~週日：10:00~21:00
-                  </p>
-                </div>
-              </div>
-            </a>
-          </li>
-          <li class="cardSpec__item">
-            <a
-              href="javascript:;"
-              class="card cardSpec d-b"
-            >
-              <div class="cardSpec-img cardSpec-mask">
-                <button class="card-shareBtn"></button>
-                <h3 class="cardSpec-title cardSpec-title-ab">七股 / 龍門客棧餐廳(獲選參加2010台灣美食展特色餐廳)</h3>
-                <img
-                  src="https://picsum.photos/500/400?random=4"
-                  alt="food photo"
-                >
-              </div>
-              <div class="cardSpec-info flex flex-wrap">
-                <div class="cardSpec-location flex-center">
-                  <img
-                    src="img/icon-location.svg"
-                    alt="location icon"
-                  >
-                  <p class="cardSpec-otherInfoText">
-                    臺南市724七股區中寮里8-41號（七股鹽山光復國小旁）
-                  </p>
-                </div>
-                <div class="cardSpec-operate flex-center">
-                  <img
-                    src="img/icon-time.svg"
-                    alt="operate icon"
-                  >
+                  <div class="icon-time icon-mr4"></div>
                   <p class="cardSpec-otherInfoText">
                     週一~週五：10:00~15:00（週二公休）
                     週六~週日：10:00~21:00
@@ -551,13 +503,10 @@
           </li>
         </ul>
       </div>
-      <div class="hotel">
+      <div class="hotel d-n">
         <div class="content__title flex-sb-center">
-          <h3 class="content__titleText">
-            <img
-              src="img/icon-location-purple.svg"
-              alt="location icon"
-            >
+          <h3 class="content__titleText flex-start-center">
+            <div class="icon-location icon-mr4-purple"></div>
             <span class="d-ib">住宿推薦</span>
           </h3>
         </div>
@@ -570,166 +519,20 @@
               <div class="cardSpec-img cardSpec-mask">
                 <button class="card-shareBtn"></button>
                 <img
-                  src="https://picsum.photos/500/400?random=4"
+                  src="https://picsum.photos/500/400?random=5"
                   alt="food photo"
                 >
               </div>
               <div class="cardSpec-info flex flex-wrap">
                 <h3 class="cardSpec-title">七股 / 龍門客棧餐廳(獲選參加2010台灣美食展特色餐廳)</h3>
                 <div class="cardSpec-location flex-center">
-                  <img
-                    src="img/icon-location.svg"
-                    alt="location icon"
-                  >
+                  <div class="icon-location icon-mr4"></div>
                   <p class="cardSpec-otherInfoText">
                     臺南市724七股區中寮里8-41號（七股鹽山光復國小旁）
                   </p>
                 </div>
-                <div class="cardSpec-operate flex-center">
-                  <img
-                    src="img/icon-call.svg"
-                    alt="operate icon"
-                  >
-                  <p class="cardSpec-otherInfoText">
-                    886-4-25855997
-                  </p>
-                </div>
-              </div>
-            </a>
-          </li>
-          <li class="cardSpec__item">
-            <a
-              href="javascript:;"
-              class="card cardSpec d-b"
-            >
-              <div class="cardSpec-img cardSpec-mask">
-                <button class="card-shareBtn"></button>
-                <img
-                  src="https://picsum.photos/500/400?random=4"
-                  alt="food photo"
-                >
-              </div>
-              <div class="cardSpec-info flex flex-wrap">
-                <h3 class="cardSpec-title">七股 / 龍門客棧餐廳(獲選參加2010台灣美食展特色餐廳)</h3>
-                <div class="cardSpec-location flex-center">
-                  <img
-                    src="img/icon-location.svg"
-                    alt="location icon"
-                  >
-                  <p class="cardSpec-otherInfoText">
-                    臺南市724七股區中寮里8-41號（七股鹽山光復國小旁）
-                  </p>
-                </div>
-                <div class="cardSpec-operate flex-center">
-                  <img
-                    src="img/icon-call.svg"
-                    alt="operate icon"
-                  >
-                  <p class="cardSpec-otherInfoText">
-                    886-4-25855997
-                  </p>
-                </div>
-              </div>
-            </a>
-          </li>
-          <li class="cardSpec__item">
-            <a
-              href="javascript:;"
-              class="card cardSpec d-b"
-            >
-              <div class="cardSpec-img cardSpec-mask">
-                <button class="card-shareBtn"></button>
-                <img
-                  src="https://picsum.photos/500/400?random=4"
-                  alt="food photo"
-                >
-              </div>
-              <div class="cardSpec-info flex flex-wrap">
-                <h3 class="cardSpec-title">七股 / 龍門客棧餐廳(獲選參加2010台灣美食展特色餐廳)</h3>
-                <div class="cardSpec-location flex-center">
-                  <img
-                    src="img/icon-location.svg"
-                    alt="location icon"
-                  >
-                  <p class="cardSpec-otherInfoText">
-                    臺南市724七股區中寮里8-41號（七股鹽山光復國小旁）
-                  </p>
-                </div>
-                <div class="cardSpec-operate flex-center">
-                  <img
-                    src="img/icon-call.svg"
-                    alt="operate icon"
-                  >
-                  <p class="cardSpec-otherInfoText">
-                    886-4-25855997
-                  </p>
-                </div>
-              </div>
-            </a>
-          </li>
-          <li class="cardSpec__item">
-            <a
-              href="javascript:;"
-              class="card cardSpec d-b"
-            >
-              <div class="cardSpec-img cardSpec-mask">
-                <button class="card-shareBtn"></button>
-                <img
-                  src="https://picsum.photos/500/400?random=4"
-                  alt="food photo"
-                >
-              </div>
-              <div class="cardSpec-info flex flex-wrap">
-                <h3 class="cardSpec-title">七股 / 龍門客棧餐廳(獲選參加2010台灣美食展特色餐廳)</h3>
-                <div class="cardSpec-location flex-center">
-                  <img
-                    src="img/icon-location.svg"
-                    alt="location icon"
-                  >
-                  <p class="cardSpec-otherInfoText">
-                    臺南市724七股區中寮里8-41號（七股鹽山光復國小旁）
-                  </p>
-                </div>
-                <div class="cardSpec-operate flex-center">
-                  <img
-                    src="img/icon-call.svg"
-                    alt="operate icon"
-                  >
-                  <p class="cardSpec-otherInfoText">
-                    886-4-25855997
-                  </p>
-                </div>
-              </div>
-            </a>
-          </li>
-          <li class="cardSpec__item">
-            <a
-              href="javascript:;"
-              class="card cardSpec d-b"
-            >
-              <div class="cardSpec-img cardSpec-mask">
-                <button class="card-shareBtn"></button>
-                <img
-                  src="https://picsum.photos/500/400?random=4"
-                  alt="food photo"
-                >
-              </div>
-              <div class="cardSpec-info flex flex-wrap">
-                <h3 class="cardSpec-title">七股 / 龍門客棧餐廳(獲選參加2010台灣美食展特色餐廳)</h3>
-                <div class="cardSpec-location flex-center">
-                  <img
-                    src="img/icon-location.svg"
-                    alt="location icon"
-                  >
-                  <p class="cardSpec-otherInfoText">
-                    臺南市724七股區中寮里8-41號（七股鹽山光復國小旁）
-                  </p>
-                </div>
-                <div class="cardSpec-operate flex-center">
-                  <img
-                    src="img/icon-call.svg"
-                    alt="operate icon"
-                  >
+                <div class="cardSpec-call flex-center">
+                  <div class="icon-call icon-mr4"></div>
                   <p class="cardSpec-otherInfoText">
                     886-4-25855997
                   </p>
@@ -745,11 +548,11 @@
           </li>
         </ul>
       </div>
-      <div class="active">
+      <div class="active d-n">
         <div class="content__title flex-sb-center">
           <h3 class="content__titleText">
             <img
-              src="img/icon-location-purple.svg"
+              src="img/icon-location icon-mr4-purple.svg"
               alt="location icon"
             >
             <span class="d-ib">活動快訊</span>
@@ -759,15 +562,94 @@
           <li class="cardFull__item">
             <a
               href="javascript:;"
-              class="cardFull"
+              class="cardFull flex-sb-center"
             >
-
+              <div class="cardFull__info">
+                <h3 class="cardFull__title">新竹市玻璃設計藝術節</h3>
+                <div class="cardFull__location flex-start-center">
+                  <div class="icon-location icon-mr4"></div>
+                  <p class="cardFull__otherInfoText">
+                    新竹市
+                  </p>
+                </div>
+                <div class="cardFull__date flex-start-center">
+                  <div class="icon-time icon-mr4"></div>
+                  <p class="cardFull__otherInfoText">2021-10-01 ~ 2021-10-31</p>
+                </div>
+              </div>
+              <div class="cardFull__img">
+                <img
+                  src="https://picsum.photos/200/300?random=8"
+                  alt="active photo"
+                >
+              </div>
             </a>
           </li>
         </ul>
       </div>
+      <!-- 內頁 -->
+      <div class="title flex-sb-center">
+        <div class="title__info flex-start-center">
+          <button class="title__backBtn"></button>
+          <h2 class="title__text">風櫃東港、西港、北港</h2>
+        </div>
+        <div class="title__funcs">
+          <button class="title__funcsBtn icon-print"></button>
+          <button class="title__funcsBtn icon-share"></button>
+        </div>
+      </div>
+      <!-- 內頁 - 照片 -->
+      <div class="swiper swiper-page">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide swiper-slide-page">
+            <div class="page__img">
+              <img
+                data-src="https://picsum.photos/600/600?random=12"
+                class="swiper-lazy"
+              >
+              <div class="swiper-lazy-preloader"></div>
+            </div>
+          </div>
+          <div class="swiper-slide swiper-slide-page">
+            <div class="page__img">
+              <img
+                data-src="https://picsum.photos/600/600?random=13"
+                class="swiper-lazy"
+              >
+              <div class="swiper-lazy-preloader"></div>
+            </div>
+          </div>
+          <div class="swiper-slide swiper-slide-page">
+            <div class="page__img">
+              <img
+                data-src="https://picsum.photos/600/600?random=14"
+                class="swiper-lazy"
+              >
+              <div class="swiper-lazy-preloader"></div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-pagination swiper-pagination-page"></div>
+        <div class="swiper-button-prev swiper-button-prev-page"></div>
+        <div class="swiper-button-next swiper-button-next-page"></div>
+      </div>
+      <!-- 內頁 - 資訊 -->
+      <!-- 景點資訊 : 時段、地點、電話、類別、網站 -->
+      <!-- 美食資訊 : 時段、地點、電話、類別 -->
+      <!-- 住宿資訊 : 地點、電話、類別、 -->
+      <!-- 活動資訊 : 時段、地點、主辦單位、備註(Cycle)、類別 -->
+      <div class="info">
+
+      </div>
     </div>
   </div>
+  <footer class="footer flex-sb-center">
+    <p class="footer__title">TAIWAN TRAVEL</p>
+    <div class="footer__info flex">
+      <p class="footer__info">UI Design : jhen | Front-end : Tim Lin</p>
+      <p class="footer__info">資料來源 : 交通部 PTX 服務平台</p>
+    </div>
+  </footer>
 
   <script
     src='https://cdnjs.cloudflare.com/ajax/libs/Swiper/7.2.0/swiper-bundle.min.js'

@@ -7,7 +7,7 @@
     @content
 
 @mixin desk
-  @media (min-width: 768px)
+  @media (min-width: 769px)
     @content
 
 @mixin font($size: 18, $weight: 400, $unit: px)
@@ -25,3 +25,12 @@
 @mixin backgroundImg($imageLink)
   background-image: $imageLink
   background-repeat: no-repeat
+
+// 超出字數設置 ...
+@mixin wordsEllipsis($row: 1)
+  text-overflow: ellipsis
+  overflow: hidden
+  display: -webkit-box
+  -webkit-line-clamp: $row //行數
+  -webkit-box-orient: vertical
+  white-space: normal

@@ -1,0 +1,16 @@
+.footer
+  position: fixed
+  padding: 8px 36px
+  width: 100vw
+  bottom: 0
+  z-index: 10
+  background-color: $primaryGreen
+  &__info, &__title
+    +font(14, 400)
+    color: #fff
+    letter-spacing: .05rem
+    text-align: center
+    +mobile
+      +font(12, 400)
+  &__info
+    padding: 0 12px

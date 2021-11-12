@@ -27,6 +27,10 @@ const swiper_hotSpot = new Swiper('.swiper-hotSpot', {
   spaceBetween: 12,
   grabCursor: true,
   slidesPerView: 'auto',
+  lazy: {
+    loadPrevNext: true,
+    loadPrevNextAmount: 100,
+  },
   breakpoints: {
     320: {
       spaceBetween: 12
@@ -45,8 +49,41 @@ const swiper_hotSpot = new Swiper('.swiper-hotSpot', {
 
   // Navigation arrows
   navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
+    nextEl: '.swiper-button-next-hotSpot',
+    prevEl: '.swiper-button-prev-hotSpot',
+  },
+
+  // And if we need scrollbar
+  scrollbar: {
+    el: '.swiper-scrollbar',
+  },
+})
+
+const swiper_page = new Swiper('.swiper-page', {
+  speed: 800,
+  spaceBetween: 20,
+  grabCursor: true,
+  lazy: {
+    loadPrevNext: true,
+    loadPrevNextAmount: 10,
+  },
+
+  // Optional parameters
+  direction: 'horizontal',
+  loop: false,
+  autoplay: {
+    delay: 3000,
+    disableOnInteraction: false,
+  },
+
+  // If we need pagination
+  pagination: {
+    el: '.swiper-pagination-page',
+  },
+
+  navigation: {
+    nextEl: '.swiper-button-next-page',
+    prevEl: '.swiper-button-prev-page',
   },
 
   // And if we need scrollbar

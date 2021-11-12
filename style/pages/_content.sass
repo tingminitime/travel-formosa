@@ -1,7 +1,7 @@
 .content
   width: calc(100% - 354px)
   max-width: 100%
-  padding: 24px 24px 0 24px
+  padding: 24px
   flex: 1
   overflow: auto
   > div
@@ -20,10 +20,15 @@
   &__more
     padding: 8px 1rem
     margin-right: -1rem
+    border-radius: 8px
     +font(16, 400)
     color: $primaryGreen
+    +shadow(0,0,0,0,rgba(0,0,0,0))
+    transition: all .2s
     &:hover
       color: darken($primaryGreen, 10)
+      background-color: #fff
+      +shadow
 
 .swiper-header
   width: 100%
@@ -32,7 +37,7 @@
   border-radius: 16px
   +shadow
 
-.swiper-pagination-bullet
+.swiper-pagination-header .swiper-pagination-bullet
   background-color: rgba($textBlack, .75)
 
 .banner
@@ -58,3 +63,51 @@
 
 .swiper-slide-hotSpot
   width: 254px
+
+.title
+  &__info
+  &__backBtn
+    width: 64px
+    height: 40px
+    +backgroundImg($arrow-back)
+    background-position: center
+    background-size: contain
+  &__text
+    +font(33, 700)
+  &__funcs
+    font-size: 0
+  &__funcsBtn
+    width: 40px
+    height: 40px
+    border-radius: 8px
+    +shadow(0,0,0,0,rgba(0,0,0,0))
+    transition: all .2s
+    &:hover
+      background-color: #fff
+      +shadow(0,8,8,0,rgba(0,0,0,.04))
+    & + .title__funcsBtn
+      margin-left: 12px
+
+.page
+  &__img
+    max-width: 100%
+    height: 100%
+    border-radius: 16px
+    overflow: hidden
+    > img
+      width: 100%
+      height: 100%
+      object-fit: contain
+
+.swiper-page
+  width: 100%
+  height: \min(30vw, 364px)
+  min-height: 160px
+  border-radius: 16px
+  +shadow
+
+.swiper-button-prev-page, .swiper-button-next-page
+  color: $primaryGreen
+
+.swiper-pagination-page .swiper-pagination-bullet
+  background-color: rgba(#fff, .75)
