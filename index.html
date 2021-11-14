@@ -314,156 +314,11 @@
       </div>
       <button class="search__confirm">搜尋</button>
     </div>
-    <div class="content">
+    <div
+      class="content"
+      id="content"
+    >
       <!-- ----- 主頁 ----- -->
-      <div class="homePage">
-        <!-- Banner -->
-        <div class="swiper swiper-header mb-40">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide">
-              <div class="banner__container flex-start-center">
-                <h2 class="banner__title">探索。<br>福爾摩沙</h2>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <div class="banner__container flex-start-center">
-                <h2 class="banner__title">尋找。<br>熱門景點</h2>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <div class="banner__container flex-start-center">
-                <h2 class="banner__title">參與。<br>文化活動</h2>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-pagination swiper-pagination-header"></div>
-        </div>
-        <!-- 熱門景點 -->
-        <div class="hotSpot mb-40">
-          <div class="content__title flex-sb-center">
-            <h3 class="content__titleText flex-start-center">
-              <div class="icon-location-purple icon-mr4"></div>
-              <span class="d-ib">熱門景點</span>
-            </h3>
-            <a
-              href="javascript:;"
-              class="content__more"
-            >更多熱門景點</a>
-          </div>
-          <!-- 最多 8 個 -->
-          <div class="swiper swiper-hotSpot">
-            <div class="swiper-wrapper swiper-wrapper-hotSpot">
-              <!-- 載入資料 -->
-            </div>
-            <!-- navigation buttons -->
-            <div class="swiper-button-prev swiper-button-prev-hotSpot"></div>
-            <div class="swiper-button-next swiper-button-next-hotSpot"></div>
-          </div>
-        </div>
-        <!-- 美食品嚐 -->
-        <div class="food mb-40">
-          <div class="content__title flex-sb-center">
-            <h3 class="content__titleText flex-start-center">
-              <div class="icon-location-purple icon-mr4"></div>
-              <span class="d-ib">美食品嚐</span>
-            </h3>
-          </div>
-          <!-- 最多 5 個 -->
-          <ul class="cardSpec__list flex-sb-center flex-wrap">
-          </ul>
-        </div>
-        <!-- 住宿推薦 -->
-        <div class="hotel mb-40">
-          <div class="content__title flex-sb-center">
-            <h3 class="content__titleText flex-start-center">
-              <div class="icon-location-purple icon-mr4"></div>
-              <span class="d-ib">住宿推薦</span>
-            </h3>
-          </div>
-          <!-- 最多 5 個 -->
-          <ul class="cardSpec__list flex-sb-center flex-wrap">
-            <!-- <li class="cardSpec__item">
-              <a
-                href="javascript:;"
-                class="card cardSpec d-b"
-              >
-                <div class="cardSpec-img cardSpec-mask">
-                  <button class="card-shareBtn"></button>
-                  <img
-                    src="https://picsum.photos/500/400?random=5"
-                    alt="food photo"
-                  >
-                </div>
-                <div class="cardSpec-info flex flex-wrap">
-                  <h3 class="cardSpec-title">七股 / 龍門客棧餐廳(獲選參加2010台灣美食展特色餐廳)</h3>
-                  <div class="cardSpec-location flex-center">
-                    <div class="icon-location icon-mr4"></div>
-                    <p class="cardSpec-otherInfoText">
-                      臺南市724七股區中寮里8-41號（七股鹽山光復國小旁）
-                    </p>
-                  </div>
-                  <div class="cardSpec-call flex-center">
-                    <div class="icon-call icon-mr4"></div>
-                    <p class="cardSpec-otherInfoText">
-                      886-4-25855997
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </li> -->
-            <li class="cardSpec__more card">
-              <a
-                href="javascript:;"
-                class="cardSpec__moreText flex-center"
-              ><span>更多住宿...</span></a>
-            </li>
-          </ul>
-        </div>
-        <!-- 活動快訊 -->
-        <div class="active mb-40">
-          <div class="content__title flex-sb-center">
-            <h3 class="content__titleText flex-start-center">
-              <div class="icon-location-purple icon-mr4"></div>
-              <span class="d-ib">活動快訊</span>
-            </h3>
-          </div>
-          <!-- 最多 5 個 -->
-          <ul class="cardFull__list">
-            <!-- <li class="cardFull__item mb-24">
-              <a
-                href="javascript:;"
-                class="cardFull flex-sb-center"
-              >
-                <div class="cardFull__info">
-                  <h3 class="cardFull__title">新竹市玻璃設計藝術節</h3>
-                  <div class="cardFull__location flex-start-center">
-                    <div class="icon-location icon-mr4"></div>
-                    <p class="cardFull__otherInfoText">
-                      新竹市
-                    </p>
-                  </div>
-                  <div class="cardFull__date flex-start-center">
-                    <div class="icon-time icon-mr4"></div>
-                    <p class="cardFull__otherInfoText">2021-10-01 ~ 2021-10-31</p>
-                  </div>
-                </div>
-                <div class="cardFull__img">
-                  <img
-                    src="https://picsum.photos/200/300?random=8"
-                    alt="active photo"
-                  >
-                </div>
-              </a>
-            </li> -->
-          </ul>
-          <a
-            href="javascript:;"
-            class="cardSpec__moreText cardSpec__moreText-full flex-center"
-          >
-            <span>更多活動...</span>
-          </a>
-        </div>
-      </div>
       <!-- ----- 內頁 ----- -->
       <div class="page d-n">
         <div class="title mb-24 flex-sb-center">
@@ -518,6 +373,7 @@
         <!-- 活動資訊 : 時段、地點、主辦單位、備註(Cycle)、類別 -->
         <div class="info mb-24">
           <ul class="info__list">
+            <!-- 開放時段 -->
             <li class="info__item info__item-time flex-start-start">
               <div class="info__title flex-center">
                 <div class="icon-time icon-mr4"></div>
@@ -526,6 +382,7 @@
               <p class="info__content">
                 每日開放每日開放每日開放每日開放每日開放每日開放每日開放每日開放每日開放每日開放每日開放每日開放</p>
             </li>
+            <!-- 所在地點 -->
             <li class="info__item info__item-location flex-start-start">
               <div class="info__title flex-center">
                 <div class="icon-location icon-mr4"></div>
@@ -533,6 +390,7 @@
               </div>
               <p class="info__content">花蓮縣975鳳林鎮林榮里永福街20號</p>
             </li>
+            <!-- 聯絡電話 -->
             <li class="info__item info__item-call flex-start-start">
               <div class="info__title flex-center">
                 <div class="icon-call icon-mr4"></div>
@@ -540,6 +398,7 @@
               </div>
               <p class="info__content"><a href="tel:886-3-8771410">886-3-8771410</a></p>
             </li>
+            <!-- 票價資訊 -->
             <li class="info__item info__item-ticket flex-start-start">
               <div class="info__title flex-center">
                 <div class="icon-ticket icon-mr4"></div>
@@ -548,6 +407,7 @@
               <p class="info__content">
                 1.全票：$350元2.優待票：$250元（13歲(含)以上至18歲以下青少年、65歲以上老人）3.學童票：$200元（6歲-12歲(含)之童）4.博幼票：$175元（身障朋友及陪...</p>
             </li>
+            <!-- 分類標籤 -->
             <li class="info__item info__item-class flex-start-start">
               <div class="info__title flex-self-center">
                 <div class="icon-tag icon-mr4"></div>
@@ -564,6 +424,7 @@
                 >自然風景類</a>
               </p>
             </li>
+            <!-- 網站連結 -->
             <li class="info__item info__item-web flex-start-start">
               <div class="info__title flex-self-center">
                 <div class="icon-web icon-mr4"></div>
@@ -1776,7 +1637,15 @@
   <!-- my js -->
   <script
     type="module"
+    src="module/swiper.js"
+  ></script>
+  <script
+    type="module"
     src="api.js"
+  ></script>
+  <script
+    type="module"
+    src="url.js"
   ></script>
   <script
     type="module"
@@ -1785,10 +1654,6 @@
   <script
     type="module"
     src="all.js"
-  ></script>
-  <script
-    type="module"
-    src="module/swiper.js"
   ></script>
 </body>
 

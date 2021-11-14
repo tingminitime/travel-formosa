@@ -38,6 +38,8 @@ export const SORT_apiRequest = () => {
 export const SPOT_apiRequest = () => {
   // 關鍵字搜尋
   const spotAllFilter = keyword => spotRequest.get(`?$filter=contains(Name,'${keyword}')&$format=JSON`)
+  // 點擊卡片 => ID搜尋
+  const spotIdFilter = id => spotRequest.get(`?$filter=ID eq ${id}&$format=JSON`)
   // 取隨機首幾筆 (必須有照片)
   const spotAllTop = (top, skip) => spotRequest.get(`?$filter=Picture/PictureUrl1 ne null&$top=${top}&$skip=${skip}&$format=JSON`)
   // 取得城市景點
@@ -45,7 +47,7 @@ export const SPOT_apiRequest = () => {
   // 取得附近景點
   const spotNear = (lat, lon) => spotRequest.get(`?$spatialFilter=nearby(${lat},${lon},1000)&$format=JSON
   `)
-  return { spotAllFilter, spotAllTop, spotCity, spotNear }
+  return { spotAllFilter, spotIdFilter, spotAllTop, spotCity, spotNear }
 }
 
 // 美食 api
