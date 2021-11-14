@@ -119,6 +119,6 @@ function renderByUrl(url) {
 }
 
 // ----- 監聽歷史紀錄變化 -----
-window.addEventListener('pop', function (e) {
+window.addEventListener('hashchange', function (e) {
   renderByUrl(location.hash)
 })
