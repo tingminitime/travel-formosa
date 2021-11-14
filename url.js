@@ -6,11 +6,11 @@ const content = document.querySelector('#content')
 // ----- 預設連結並渲染畫面 -----
 window.onload = function () {
   // ----- My Desktop -----
-  history.pushState(null, null, '/F2E_3rd/week1/')
+  // history.pushState(null, null, '/F2E_3rd/week1/')
   // ----- My Notebook -----
   // history.pushState(null, null, '/F2E_3rd/travel-formosa/')
   // ----- Github -----
-  // history.pushState(null, null, '/travel-formosa/')
+  history.pushState(null, null, '/travel-formosa/')
   renderByUrl(location.hash)
 }
 
