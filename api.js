@@ -1,3 +1,9 @@
+// ------ 全部 -----
+const sortRequest = axios.create({
+  baseURL: 'https://ptx.transportdata.tw/MOTC/v2/Tourism',
+  headers: GetAuthorizationHeader()
+})
+
 // ------ 景點 -----
 const spotRequest = axios.create({
   baseURL: 'https://ptx.transportdata.tw/MOTC/v2/Tourism/ScenicSpot',
@@ -22,25 +28,35 @@ const activityRequest = axios.create({
   headers: GetAuthorizationHeader()
 })
 
+// 全部分類 api
+export const SORT_apiRequest = () => {
+  const sortFilter = sort => sortRequest.get()
+  return { sortFilter }
+}
+
 // 景點 api
 export const SPOT_apiRequest = () => {
   // 關鍵字搜尋
   const spotAllFilter = keyword => spotRequest.get(`?$filter=contains(Name,'${keyword}')&$format=JSON`)
   // 取隨機首幾筆 (必須有照片)
   const spotAllTop = (top, skip) => spotRequest.get(`?$filter=Picture/PictureUrl1 ne null&$top=${top}&$skip=${skip}&$format=JSON`)
+  // 取得城市景點
   const spotCity = city => spotRequest.get(`/${city}?$format=JSON`)
-  return { spotAllFilter, spotAllTop, spotCity }
+  // 取得附近景點
+  const spotNear = (lat, lon) => spotRequest.get(`?$spatialFilter=nearby(${lat},${lon},1000)&$format=JSON
+  `)
+  return { spotAllFilter, spotAllTop, spotCity, spotNear }
 }
 
 // 美食 api
 export const FOOD_apiRequest = () => {
   // 關鍵字搜尋
-  const foodAllfilter = keyword => foodRequest.get(`?$filter=contains(Name,'${keyword}')&$format=JSON`)
+  const foodAllFilter = keyword => foodRequest.get(`?$filter=contains(Name,'${keyword}')&$format=JSON`)
   // 取隨機首幾筆 (必須有照片)
   const foodAllTop = (top, skip) => foodRequest.get(`?$filter=Picture/PictureUrl1 ne null&$top=${top}&$skip=${skip}&$format=JSON`)
   const foodCity = city => foodRequest.get(`/${city}?$format=JSON`)
 
-  return { foodAllfilter, foodAllTop, foodCity }
+  return { foodAllFilter, foodAllTop, foodCity }
 }
 
 // 住宿 api

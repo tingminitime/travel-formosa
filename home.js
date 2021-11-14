@@ -32,7 +32,7 @@ async function HOME_hotSpotRender() {
   const { spotAllTop } = SPOT_apiRequest()
   let data = []
   // 取得熱門景點資料 (必須有照片 )
-  await spotAllTop(8, randomNum(500))
+  await spotAllTop(8, randomNum(1000))
     .then(res => {
       data = res.data
     })

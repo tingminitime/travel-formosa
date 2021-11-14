@@ -907,10 +907,12 @@ button {
   font-weight: 700;
   letter-spacing: .05rem;
   line-height: 1.5;
+  height: 84px;
 }
 
 @media (max-width: 767px) {
   .cardFull__title {
+    height: 36px;
     font-size: 18px;
     font-weight: 700;
     letter-spacing: .05rem;
@@ -1436,7 +1438,6 @@ button {
 .theme__btn:hover {
   -webkit-transform: translate(-3px, -3px);
           transform: translate(-3px, -3px);
-  border: 1px solid #3FB195;
   -webkit-box-shadow: 0px 14px 24px 0px rgba(0, 0, 0, 0.04);
           box-shadow: 0px 14px 24px 0px rgba(0, 0, 0, 0.04);
 }
@@ -1462,7 +1463,7 @@ button {
 .theme__btn.active {
   -webkit-transform: translate(-3px, -3px);
           transform: translate(-3px, -3px);
-  border: 1px solid #3FB195;
+  border: 2px solid #3FB195;
   -webkit-box-shadow: 0px 14px 24px 0px rgba(0, 0, 0, 0.04);
           box-shadow: 0px 14px 24px 0px rgba(0, 0, 0, 0.04);
 }

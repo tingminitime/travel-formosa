@@ -1,28 +1,28 @@
-// import { tdxApiRequest } from "./api.js";
+import { SORT_apiRequest } from "./api.js"
 
 let cities = [
-  { en: 'Taipei', zh: '台北', area: 'north' },
-  { en: 'NewTaipei', zh: '新北', area: 'north' },
-  { en: 'Taoyuan', zh: '桃園', area: 'north' },
-  { en: 'Hsinchu', zh: '竹市', area: 'north' },
-  { en: 'HsinchuCounty', zh: '竹縣', area: 'north' },
-  { en: 'YilanCounty', zh: '宜蘭', area: 'north' },
-  { en: 'Keelung', zh: '基隆', area: 'north' },
-  { en: 'MiaoliCounty', zh: '苗栗', area: 'central' },
-  { en: 'Taichung', zh: '台中', area: 'central' },
-  { en: 'ChanghuaCounty', zh: '彰化', area: 'central' },
-  { en: 'NantouCounty', zh: '南投', area: 'central' },
-  { en: 'YunlinCounty', zh: '雲林', area: 'central' },
-  { en: 'ChiayiCounty', zh: '嘉縣', area: 'south' },
-  { en: 'Chiayi', zh: '嘉市', area: 'south' },
-  { en: 'Tainan', zh: '台南', area: 'south' },
-  { en: 'Kaohsiung', zh: '高雄', area: 'south' },
-  { en: 'PingtungCounty', zh: '屏東', area: 'south' },
-  { en: 'HualienCounty', zh: '花蓮', area: 'east' },
-  { en: 'TaitungCounty', zh: '臺東', area: 'east' },
-  { en: 'KinmenCounty', zh: '金門', area: 'island' },
-  { en: 'PenghuCounty', zh: '澎湖', area: 'island' },
-  { en: 'LienchiangCounty', zh: '連江', area: 'island' },
+  { en: 'Keelung', zh: '基隆市', name: '基隆', area: 'north' },
+  { en: 'Taipei', zh: '臺北市', name: '台北', area: 'north' },
+  { en: 'NewTaipei', zh: '新北市', name: '新北', area: 'north' },
+  { en: 'Taoyuan', zh: '桃園市', name: '桃園', area: 'north' },
+  { en: 'Hsinchu', zh: '新竹市', name: '竹市', area: 'north' },
+  { en: 'HsinchuCounty', zh: '新竹縣', name: '竹縣', area: 'north' },
+  { en: 'YilanCounty', zh: '宜蘭縣', name: '宜蘭', area: 'north' },
+  { en: 'MiaoliCounty', zh: '苗栗縣', name: '苗栗', area: 'central' },
+  { en: 'Taichung', zh: '臺中市', name: '台中', area: 'central' },
+  { en: 'ChanghuaCounty', zh: '彰化縣', name: '彰化', area: 'central' },
+  { en: 'NantouCounty', zh: '南投縣', name: '南投', area: 'central' },
+  { en: 'YunlinCounty', zh: '雲林縣', name: '雲林', area: 'central' },
+  { en: 'ChiayiCounty', zh: '嘉義縣', name: '嘉縣', area: 'south' },
+  { en: 'Chiayi', zh: '嘉義市', name: '嘉市', area: 'south' },
+  { en: 'Tainan', zh: '臺南市', name: '台南', area: 'south' },
+  { en: 'Kaohsiung', zh: '高雄市', name: '高雄', area: 'south' },
+  { en: 'PingtungCounty', zh: '屏東縣', name: '屏東', area: 'south' },
+  { en: 'HualienCounty', zh: '花蓮縣', name: '花蓮', area: 'east' },
+  { en: 'TaitungCounty', zh: '臺東縣', name: '臺東', area: 'east' },
+  { en: 'KinmenCounty', zh: '金門縣', name: '金門', area: 'island' },
+  { en: 'PenghuCounty', zh: '澎湖縣', name: '澎湖', area: 'island' },
+  { en: 'LienchiangCounty', zh: '連江縣', name: '連江', area: 'island' },
 ]
 
 const body = document.querySelector('body')
@@ -30,14 +30,19 @@ const panel = document.querySelector('.panel')
 const navFilterBtn = document.querySelector('.nav__filterBtn')
 
 // ----- Pannel 元件 -----
+// 手機版收和按鈕
 const panelHideBtn = document.querySelector('.filter__toggle')
+// 目的地選擇
 const citySelect = document.querySelector('.citySelect__choose')
 const areaSection = document.querySelector('.citySelect__areaSection')
 const toggleIcon = document.querySelector('.citySelect__toggleIcon')
 const filterList = document.querySelectorAll('.citySelect__filterList')
 const cityName = document.querySelector('.citySelect__cityName')
-const searchKeyword = document.querySelector('.search__input')
+// 搜尋關鍵字 input
+// const searchKeyword = document.querySelector('.search__input')
+// 精選主題
 const themeList = document.querySelector('.theme__list')
+// 搜尋按鈕
 const search = document.querySelector('.search__confirm')
 
 // ----- 初始化 -----
@@ -55,7 +60,7 @@ function loadCitiesToFilter() {
             href="javascript:;"
             class="citySelect__filterBtn"
             data-city="${item['en']}"
-          >${item['zh']}</a>
+          >${item['name']}</a>
         </li>
         `
       }
@@ -87,40 +92,60 @@ function selectCity(e) {
   if (!e.target.classList.contains('citySelect__filterBtn')) return
   cityName.textContent = e.target.textContent
   cityName.classList.add('citySelect__cityName--selected')
+  cityName.dataset.city = e.target.dataset.city
 }
 
 // 清除目的地
 function clearCity(e) {
   if (!e.target.closest('.citySelect__close')) return
   cityName.textContent = '目的地'
-  filterObj['city'] = ''
   cityName.classList.remove('citySelect__cityName--selected')
-}
-
-// 搜尋關鍵字功能
-function keywordHandler(e) {
-  // --- 待新增活動資訊 ---
-  filterObj['keyword'] = e.target.value
+  cityName.dataset.city = ''
 }
 
 // 精選主題選擇
+let prevThemeBtn
 function themeSelect(e) {
   if (!e.target.closest('.theme__item')) return
   let themeBtn = e.target.closest('.theme__item .theme__btn')
   themeBtn.classList.toggle('active')
+
   themeBtn.dataset.select === 'false' ?
     themeBtn.dataset.select = true :
     themeBtn.dataset.select = false
-  console.log(themeBtn)
+
+  if (prevThemeBtn) {
+    prevThemeBtn.classList.remove('active')
+    prevThemeBtn.dataset.select = 'false'
+  }
+  prevThemeBtn = themeBtn
 }
 
 // 搜尋 Task
+let filterObj = {}
 function searchHandler() {
-  let filterObj = {
-    city: '',
-    keyword: '',
-    sort: ''
+  // 檢查 精選主題 是否有選擇
+  const themeBtn = document.querySelectorAll('.theme__btn')
+  const themeSelectStatus = [...themeBtn].every(item => {
+    return item.dataset.select === 'false'
+  })
+  if (themeSelectStatus) {
+    alert('請選擇「精選主題」')
+    return
   }
+
+  // 關鍵字
+  const searchKeyword = document.querySelector('.search__input')
+  filterObj['keyword'] = searchKeyword.value
+  // 目的地
+  const selectCity = document.querySelector('.citySelect__cityName')
+  filterObj['city'] = selectCity.dataset.city
+  // 精選主題
+  const selectThemeBtn = [...themeBtn].find(item => {
+    return item.dataset.select === 'true'
+  })
+  filterObj['sort'] = selectThemeBtn.dataset.sort
+
   console.log(filterObj)
 }
 
@@ -133,8 +158,6 @@ body.addEventListener('click', closeFilterList, false)
 areaSection.addEventListener('click', selectCity, false)
 citySelect.addEventListener('click', clearCity, false)
 themeList.addEventListener('click', themeSelect, false)
-// searchKeyword.addEventListener('keyup', keywordHandler, false)
-searchKeyword.addEventListener('change', keywordHandler, false)
 search.addEventListener('click', searchHandler, false)
 
 
