@@ -4,7 +4,7 @@
   padding: 24px
   flex: 1
   overflow: auto
-  +pad
+  +padPro
     width: 100vw
     margin-top: 56px
   +mobile
@@ -62,6 +62,7 @@
 .swiper-slide-hotSpot
   width: 254px
 
+// ----- 內頁 -----
 .title
   &__backBtn
     width: 64px
@@ -173,3 +174,51 @@
 
 .swiper-button-prev-nearSpot, .swiper-button-next-nearSpot
   color: $primaryGreen
+
+// ----- 篩選頁面 -----
+.filterPage
+  &__title
+    +font(33, 700)
+    line-height: 1.5
+    +mobile
+      +font(24, 700)
+  &__sortSelect
+    padding: 8px 12px
+    +font(18, 400)
+    border: 1px solid $primaryGreen
+    border-radius: 8px
+    &:hover
+      color: #fff
+      background-color: $primaryGreen
+  &__item
+    width: \min(31.3333%, 330px)
+    min-width: 229px
+    +mobile
+      width: 100%
+  &__pagination
+    &-list
+      > li + li
+        margin-left: 12px
+        +mobile
+          margin-left: 8px
+    &-prev, &-next, &-num
+      width: 44px
+      height: 44px
+    &-prev, &-next, &-num > a
+      color: $primaryGreen
+      border: 1px solid $primaryGreen
+      border-radius: 8px
+      &:hover
+        color: #fff
+        background-color: $primaryGreen
+    &-num > a
+      width: 100%
+    &-prev, &-next
+      > span
+        vertical-align: middle
+    &-num > a, &-omit
+      text-align: center
+      line-height: 44px
+    &-omit > a
+      color: $primaryGreen
+      width: 44px

@@ -94,6 +94,19 @@
           </a>
           <button class="filter__toggle"></button>
         </div>
+        <div class="search flex-sb">
+          <input
+            type="text"
+            placeholder="搜尋關鍵字"
+            class="search__input"
+          >
+          <div class="search__icon">
+            <img
+              src="img/icon-search.svg"
+              alt="search icon"
+            >
+          </div>
+        </div>
         <div class="citySelect">
           <div class="citySelect__choose flex-sb">
             <div class="citySelect__city flex-center">
@@ -163,20 +176,6 @@
             </ul>
           </div>
         </div>
-        <div class="search flex-sb">
-          <input
-            type="text"
-            placeholder="搜尋關鍵字"
-            class="search__input"
-          >
-          <div class="search__icon">
-            <img
-              src="img/icon-search.svg"
-              alt="search icon"
-            >
-          </div>
-        </div>
-        <button class="search__confirm">搜尋</button>
       </div>
       <div class="theme">
         <h3 class="theme__title">精選主題</h3>
@@ -185,63 +184,9 @@
           <li class="theme__item">
             <a
               href="javascript:;"
-              class="theme__btn flex-center flex-col flex-center flex-col"
-            >
-              <span class="theme__btn-icon theme__btn-icon--1 flex-center">
-                <img
-                  src="img/themeIcon-culture.svg"
-                  alt="culture"
-                >
-              </span>
-              <span class="theme__btn-text">歷史文化</span>
-            </a>
-          </li>
-          <li class="theme__item">
-            <a
-              href="javascript:;"
               class="theme__btn flex-center flex-col"
-            >
-              <span class="theme__btn-icon theme__btn-icon--2 flex-center">
-                <img
-                  src="img/themeIcon-bike.svg"
-                  alt="bike"
-                >
-              </span>
-              <span class="theme__btn-text">戶外踏青</span>
-            </a>
-          </li>
-          <li class="theme__item">
-            <a
-              href="javascript:;"
-              class="theme__btn flex-center flex-col"
-            >
-              <span class="theme__btn-icon theme__btn-icon--3 flex-center">
-                <img
-                  src="img/themeIcon-religion.svg"
-                  alt="religion"
-                >
-              </span>
-              <span class="theme__btn-text">宗教巡禮</span>
-            </a>
-          </li>
-          <li class="theme__item">
-            <a
-              href="javascript:;"
-              class="theme__btn flex-center flex-col"
-            >
-              <span class="theme__btn-icon theme__btn-icon--4 flex-center">
-                <img
-                  src="img/themeIcon-lantern.svg"
-                  alt="family active"
-                >
-              </span>
-              <span class="theme__btn-text">親子活動</span>
-            </a>
-          </li>
-          <li class="theme__item">
-            <a
-              href="javascript:;"
-              class="theme__btn flex-center flex-col"
+              data-sort="ScenicSpot"
+              data-select="false"
             >
               <span class="theme__btn-icon theme__btn-icon--5 flex-center">
                 <img
@@ -256,6 +201,8 @@
             <a
               href="javascript:;"
               class="theme__btn flex-center flex-col"
+              data-sort="Restaurant"
+              data-select="false"
             >
               <span class="theme__btn-icon theme__btn-icon--6 flex-center">
                 <img
@@ -270,6 +217,8 @@
             <a
               href="javascript:;"
               class="theme__btn flex-center flex-col"
+              data-sort="Hotel"
+              data-select="false"
             >
               <span class="theme__btn-icon theme__btn-icon--7 flex-center">
                 <img
@@ -284,6 +233,8 @@
             <a
               href="javascript:;"
               class="theme__btn flex-center flex-col"
+              data-sort="Activity"
+              data-select="false"
             >
               <span class="theme__btn-icon theme__btn-icon--8 flex-center">
                 <!-- <i class="twicon-balloon"></i> -->
@@ -295,199 +246,785 @@
               <span class="theme__btn-text">觀光活動</span>
             </a>
           </li>
+          <li class="theme__item">
+            <a
+              href="javascript:;"
+              class="theme__btn flex-center flex-col flex-center flex-col"
+              data-select="false"
+            >
+              <span class="theme__btn-icon theme__btn-icon--1 flex-center">
+                <img
+                  src="img/themeIcon-culture.svg"
+                  alt="culture"
+                >
+              </span>
+              <span class="theme__btn-text">歷史文化</span>
+            </a>
+          </li>
+          <li class="theme__item">
+            <a
+              href="javascript:;"
+              class="theme__btn flex-center flex-col"
+              data-select="false"
+            >
+              <span class="theme__btn-icon theme__btn-icon--2 flex-center">
+                <img
+                  src="img/themeIcon-bike.svg"
+                  alt="bike"
+                >
+              </span>
+              <span class="theme__btn-text">戶外踏青</span>
+            </a>
+          </li>
+          <li class="theme__item">
+            <a
+              href="javascript:;"
+              class="theme__btn flex-center flex-col"
+              data-select="false"
+            >
+              <span class="theme__btn-icon theme__btn-icon--3 flex-center">
+                <img
+                  src="img/themeIcon-religion.svg"
+                  alt="religion"
+                >
+              </span>
+              <span class="theme__btn-text">宗教巡禮</span>
+            </a>
+          </li>
+          <li class="theme__item">
+            <a
+              href="javascript:;"
+              class="theme__btn flex-center flex-col"
+              data-select="false"
+            >
+              <span class="theme__btn-icon theme__btn-icon--4 flex-center">
+                <img
+                  src="img/themeIcon-lantern.svg"
+                  alt="family active"
+                >
+              </span>
+              <span class="theme__btn-text">親子活動</span>
+            </a>
+          </li>
         </ul>
       </div>
+      <button class="search__confirm">搜尋</button>
     </div>
     <div class="content">
-      <!-- 主頁 -->
-      <div class="swiper swiper-header mb-40 d-n">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <div class="banner__container flex-start-center">
-              <h2 class="banner__title">探索。<br>福爾摩沙1</h2>
+      <!-- ----- 主頁 ----- -->
+      <div class="homePage">
+        <!-- Banner -->
+        <div class="swiper swiper-header mb-40">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="banner__container flex-start-center">
+                <h2 class="banner__title">探索。<br>福爾摩沙</h2>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="banner__container flex-start-center">
+                <h2 class="banner__title">尋找。<br>熱門景點</h2>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="banner__container flex-start-center">
+                <h2 class="banner__title">參與。<br>文化活動</h2>
+              </div>
             </div>
           </div>
-          <div class="swiper-slide">
-            <div class="banner__container flex-start-center">
-              <h2 class="banner__title">探索。<br>福爾摩沙2</h2>
-            </div>
+          <div class="swiper-pagination swiper-pagination-header"></div>
+        </div>
+        <!-- 熱門景點 -->
+        <div class="hotSpot mb-40">
+          <div class="content__title flex-sb-center">
+            <h3 class="content__titleText flex-start-center">
+              <div class="icon-location-purple icon-mr4"></div>
+              <span class="d-ib">熱門景點</span>
+            </h3>
+            <a
+              href="javascript:;"
+              class="content__more"
+            >更多熱門景點</a>
           </div>
-          <div class="swiper-slide">
-            <div class="banner__container flex-start-center">
-              <h2 class="banner__title">探索。<br>福爾摩沙3</h2>
+          <!-- 最多 8 個 -->
+          <div class="swiper swiper-hotSpot">
+            <div class="swiper-wrapper swiper-wrapper-hotSpot">
+              <!-- 載入資料 -->
             </div>
+            <!-- navigation buttons -->
+            <div class="swiper-button-prev swiper-button-prev-hotSpot"></div>
+            <div class="swiper-button-next swiper-button-next-hotSpot"></div>
           </div>
         </div>
-        <div class="swiper-pagination swiper-pagination-header"></div>
-      </div>
-      <div class="hotSpot mb-40 d-n">
-        <div class="content__title flex-sb-center">
-          <h3 class="content__titleText flex-start-center">
-            <div class="icon-location-purple"></div>
-            <span class="d-ib">熱門景點</span>
-          </h3>
+        <!-- 美食品嚐 -->
+        <div class="food mb-40">
+          <div class="content__title flex-sb-center">
+            <h3 class="content__titleText flex-start-center">
+              <div class="icon-location-purple icon-mr4"></div>
+              <span class="d-ib">美食品嚐</span>
+            </h3>
+          </div>
+          <!-- 最多 5 個 -->
+          <ul class="cardSpec__list flex-sb-center flex-wrap">
+          </ul>
+        </div>
+        <!-- 住宿推薦 -->
+        <div class="hotel mb-40">
+          <div class="content__title flex-sb-center">
+            <h3 class="content__titleText flex-start-center">
+              <div class="icon-location-purple icon-mr4"></div>
+              <span class="d-ib">住宿推薦</span>
+            </h3>
+          </div>
+          <!-- 最多 5 個 -->
+          <ul class="cardSpec__list flex-sb-center flex-wrap">
+            <!-- <li class="cardSpec__item">
+              <a
+                href="javascript:;"
+                class="card cardSpec d-b"
+              >
+                <div class="cardSpec-img cardSpec-mask">
+                  <button class="card-shareBtn"></button>
+                  <img
+                    src="https://picsum.photos/500/400?random=5"
+                    alt="food photo"
+                  >
+                </div>
+                <div class="cardSpec-info flex flex-wrap">
+                  <h3 class="cardSpec-title">七股 / 龍門客棧餐廳(獲選參加2010台灣美食展特色餐廳)</h3>
+                  <div class="cardSpec-location flex-center">
+                    <div class="icon-location icon-mr4"></div>
+                    <p class="cardSpec-otherInfoText">
+                      臺南市724七股區中寮里8-41號（七股鹽山光復國小旁）
+                    </p>
+                  </div>
+                  <div class="cardSpec-call flex-center">
+                    <div class="icon-call icon-mr4"></div>
+                    <p class="cardSpec-otherInfoText">
+                      886-4-25855997
+                    </p>
+                  </div>
+                </div>
+              </a>
+            </li> -->
+            <li class="cardSpec__more card">
+              <a
+                href="javascript:;"
+                class="cardSpec__moreText flex-center"
+              ><span>更多住宿...</span></a>
+            </li>
+          </ul>
+        </div>
+        <!-- 活動快訊 -->
+        <div class="active mb-40">
+          <div class="content__title flex-sb-center">
+            <h3 class="content__titleText flex-start-center">
+              <div class="icon-location-purple icon-mr4"></div>
+              <span class="d-ib">活動快訊</span>
+            </h3>
+          </div>
+          <!-- 最多 5 個 -->
+          <ul class="cardFull__list">
+            <!-- <li class="cardFull__item mb-24">
+              <a
+                href="javascript:;"
+                class="cardFull flex-sb-center"
+              >
+                <div class="cardFull__info">
+                  <h3 class="cardFull__title">新竹市玻璃設計藝術節</h3>
+                  <div class="cardFull__location flex-start-center">
+                    <div class="icon-location icon-mr4"></div>
+                    <p class="cardFull__otherInfoText">
+                      新竹市
+                    </p>
+                  </div>
+                  <div class="cardFull__date flex-start-center">
+                    <div class="icon-time icon-mr4"></div>
+                    <p class="cardFull__otherInfoText">2021-10-01 ~ 2021-10-31</p>
+                  </div>
+                </div>
+                <div class="cardFull__img">
+                  <img
+                    src="https://picsum.photos/200/300?random=8"
+                    alt="active photo"
+                  >
+                </div>
+              </a>
+            </li> -->
+          </ul>
           <a
             href="javascript:;"
-            class="content__more"
-          >更多熱門景點</a>
-        </div>
-        <div class="swiper swiper-hotSpot">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide swiper-slide-hotSpot">
-              <a
-                href="javascript:;"
-                class="card d-b"
-              >
-                <div class="card-img">
-                  <button class="card-shareBtn"></button>
-                  <img
-                    data-src="https://picsum.photos/500/400?random=2"
-                    class="swiper-lazy"
-                  >
-                  <div class="swiper-lazy-preloader"></div>
-                </div>
-                <div class="card-info">
-                  <h3 class="card-title">天長地久橋</h3>
-                  <div class="card-otherInfo flex-start-center">
-                    <div class="card-location flex-start-center">
-                      <div class="icon-location icon-mr4"></div>
-                      <span class="card-otherInfoText">嘉義縣</span>
-                    </div>
-                    <div class="card-class flex-start-center">
-                      <div class="icon-tag icon-mr4"></div>
-                      <span class="card-otherInfoText">自然風景類</span>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </div>
-            <div class="swiper-slide swiper-slide-hotSpot">
-              <a
-                href="javascript:;"
-                class="card d-b"
-              >
-                <div class="card-img">
-                  <button class="card-shareBtn"></button>
-                  <img
-                    data-src="https://picsum.photos/500/400?random=2"
-                    class="swiper-lazy"
-                  >
-                  <div class="swiper-lazy-preloader"></div>
-                </div>
-                <div class="card-info">
-                  <h3 class="card-title">天長地久橋</h3>
-                  <div class="card-otherInfo flex-start-center">
-                    <div class="card-location flex-start-center">
-                      <div class="icon-location icon-mr4"></div>
-                      <span class="card-otherInfoText">嘉義縣</span>
-                    </div>
-                    <div class="card-class flex-start-center">
-                      <div class="icon-tag icon-mr4"></div>
-                      <span class="card-otherInfoText">自然風景類</span>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </div>
-            <div class="swiper-slide swiper-slide-hotSpot">
-              <a
-                href="javascript:;"
-                class="card d-b"
-              >
-                <div class="card-img">
-                  <button class="card-shareBtn"></button>
-                  <img
-                    data-src="https://picsum.photos/500/400?random=2"
-                    class="swiper-lazy"
-                  >
-                  <div class="swiper-lazy-preloader"></div>
-                </div>
-                <div class="card-info">
-                  <h3 class="card-title">天長地久橋</h3>
-                  <div class="card-otherInfo flex-start-center">
-                    <div class="card-location flex-start-center">
-                      <div class="icon-location icon-mr4"></div>
-                      <span class="card-otherInfoText">嘉義縣</span>
-                    </div>
-                    <div class="card-class flex-start-center">
-                      <div class="icon-tag icon-mr4"></div>
-                      <span class="card-otherInfoText">自然風景類</span>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </div>
-            <div class="swiper-slide swiper-slide-hotSpot">
-              <a
-                href="javascript:;"
-                class="card d-b"
-              >
-                <div class="card-img">
-                  <button class="card-shareBtn"></button>
-                  <img
-                    data-src="https://picsum.photos/500/400?random=2"
-                    class="swiper-lazy"
-                  >
-                  <div class="swiper-lazy-preloader"></div>
-                </div>
-                <div class="card-info">
-                  <h3 class="card-title">天長地久橋</h3>
-                  <div class="card-otherInfo flex-start-center">
-                    <div class="card-location flex-start-center">
-                      <div class="icon-location icon-mr4"></div>
-                      <span class="card-otherInfoText">嘉義縣</span>
-                    </div>
-                    <div class="card-class flex-start-center">
-                      <div class="icon-tag icon-mr4"></div>
-                      <span class="card-otherInfoText">自然風景類</span>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </div>
-            <div class="swiper-slide swiper-slide-hotSpot">
-              <a
-                href="javascript:;"
-                class="card d-b"
-              >
-                <div class="card-img">
-                  <button class="card-shareBtn"></button>
-                  <img
-                    data-src="https://picsum.photos/500/400?random=2"
-                    class="swiper-lazy"
-                  >
-                  <div class="swiper-lazy-preloader"></div>
-                </div>
-                <div class="card-info">
-                  <h3 class="card-title">天長地久橋</h3>
-                  <div class="card-otherInfo flex-start-center">
-                    <div class="card-location flex-start-center">
-                      <div class="icon-location icon-mr4"></div>
-                      <span class="card-otherInfoText">嘉義縣</span>
-                    </div>
-                    <div class="card-class flex-start-center">
-                      <div class="icon-tag icon-mr4"></div>
-                      <span class="card-otherInfoText">自然風景類</span>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </div>
-          </div>
-          <!-- navigation buttons -->
-          <div class="swiper-button-prev swiper-button-prev-hotSpot"></div>
-          <div class="swiper-button-next swiper-button-next-hotSpot"></div>
+            class="cardSpec__moreText cardSpec__moreText-full flex-center"
+          >
+            <span>更多活動...</span>
+          </a>
         </div>
       </div>
-      <div class="food mb-40 d-n">
-        <div class="content__title flex-sb-center">
-          <h3 class="content__titleText flex-start-center">
-            <div class="icon-location icon-mr4-purple"></div>
-            <span class="d-ib">美食品嚐</span>
-          </h3>
+      <!-- ----- 內頁 ----- -->
+      <div class="page d-n">
+        <div class="title mb-24 flex-sb-center">
+          <div class="title__info flex-start-center">
+            <button class="title__backBtn"></button>
+            <h2 class="title__text">風櫃東港、西港、北港</h2>
+          </div>
+          <div class="title__funcs">
+            <button class="title__funcsBtn title__funcsBtn-print icon-print"></button>
+            <button class="title__funcsBtn icon-share"></button>
+          </div>
         </div>
-        <ul class="cardSpec__list flex-sb-center flex-wrap">
-          <li class="cardSpec__item">
+        <!-- 內頁 - 照片 -->
+        <div class="swiper swiper-page mb-24">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide swiper-slide-page">
+              <div class="page__img">
+                <img
+                  data-src="https://picsum.photos/600/600?random=12"
+                  class="swiper-lazy"
+                >
+                <div class="swiper-lazy-preloader"></div>
+              </div>
+            </div>
+            <div class="swiper-slide swiper-slide-page">
+              <div class="page__img">
+                <img
+                  data-src="https://picsum.photos/600/600?random=13"
+                  class="swiper-lazy"
+                >
+                <div class="swiper-lazy-preloader"></div>
+              </div>
+            </div>
+            <div class="swiper-slide swiper-slide-page">
+              <div class="page__img">
+                <img
+                  data-src="https://picsum.photos/600/600?random=14"
+                  class="swiper-lazy"
+                >
+                <div class="swiper-lazy-preloader"></div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-pagination swiper-pagination-page"></div>
+          <div class="swiper-button-prev swiper-button-prev-page"></div>
+          <div class="swiper-button-next swiper-button-next-page"></div>
+        </div>
+        <!-- 內頁 - 資訊 -->
+        <!-- 景點資訊 : 時段、地點、電話、票價、類別、網站 -->
+        <!-- 美食資訊 : 時段、地點、電話、類別 -->
+        <!-- 住宿資訊 : 地點、電話、類別、 -->
+        <!-- 活動資訊 : 時段、地點、主辦單位、備註(Cycle)、類別 -->
+        <div class="info mb-24">
+          <ul class="info__list">
+            <li class="info__item info__item-time flex-start-start">
+              <div class="info__title flex-center">
+                <div class="icon-time icon-mr4"></div>
+                <span class="info__text">開放時段 :</span>
+              </div>
+              <p class="info__content">
+                每日開放每日開放每日開放每日開放每日開放每日開放每日開放每日開放每日開放每日開放每日開放每日開放</p>
+            </li>
+            <li class="info__item info__item-location flex-start-start">
+              <div class="info__title flex-center">
+                <div class="icon-location icon-mr4"></div>
+                <span class="info__text">所在地點 :</span>
+              </div>
+              <p class="info__content">花蓮縣975鳳林鎮林榮里永福街20號</p>
+            </li>
+            <li class="info__item info__item-call flex-start-start">
+              <div class="info__title flex-center">
+                <div class="icon-call icon-mr4"></div>
+                <span class="info__text">聯絡電話 :</span>
+              </div>
+              <p class="info__content"><a href="tel:886-3-8771410">886-3-8771410</a></p>
+            </li>
+            <li class="info__item info__item-ticket flex-start-start">
+              <div class="info__title flex-center">
+                <div class="icon-ticket icon-mr4"></div>
+                <span class="info__text">票價資訊 :</span>
+              </div>
+              <p class="info__content">
+                1.全票：$350元2.優待票：$250元（13歲(含)以上至18歲以下青少年、65歲以上老人）3.學童票：$200元（6歲-12歲(含)之童）4.博幼票：$175元（身障朋友及陪...</p>
+            </li>
+            <li class="info__item info__item-class flex-start-start">
+              <div class="info__title flex-self-center">
+                <div class="icon-tag icon-mr4"></div>
+                <span class="info__text">分類標籤 :</span>
+              </div>
+              <p class="info__content">
+                <a
+                  href="javascript:;"
+                  class="info__content-tag"
+                >遊憩類</a>
+                <a
+                  href="javascript:;"
+                  class="info__content-tag"
+                >自然風景類</a>
+              </p>
+            </li>
+            <li class="info__item info__item-web flex-start-start">
+              <div class="info__title flex-self-center">
+                <div class="icon-web icon-mr4"></div>
+                <span class="info__text">網站連結 :</span>
+              </div>
+              <p class="info__content">
+                <a
+                  class="info__url"
+                  href="http://www.erv-nsa.gov.tw"
+                  target="_blank"
+                >http://www.erv-nsa.gov.tw</a>
+              </p>
+            </li>
+          </ul>
+        </div>
+        <!-- 介紹 -->
+        <div class="intro mb-24">
+          <h2 class="intro__title">景點介紹</h2>
+          <div class="intro__content">
+            <!-- 載入 DescriptionDetail -->
+          </div>
+        </div>
+        <!-- 地圖 -->
+        <div class="map mb-40">
+          <h2 class="intro__title">地圖位置</h2>
+          <div id="myMap"></div>
+        </div>
+        <!-- 鄰近的景點 -->
+        <div class="nearSpot mb-40">
+          <h2 class="intro__title">鄰近的景點</h2>
+          <div class="swiper swiper-nearSpot">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide swiper-slide-nearSpot">
+                <a
+                  href="javascript:;"
+                  class="card d-b"
+                >
+                  <div class="card-img">
+                    <button class="card-shareBtn"></button>
+                    <img
+                      data-src="https://picsum.photos/500/400?random=2"
+                      class="swiper-lazy"
+                    >
+                    <div class="swiper-lazy-preloader"></div>
+                  </div>
+                  <div class="card-info">
+                    <h3 class="card-title">天長地久橋</h3>
+                    <div class="card-otherInfo flex-start-center">
+                      <div class="card-location flex-start-center">
+                        <div class="icon-location icon-mr4"></div>
+                        <span class="card-otherInfoText">嘉義縣</span>
+                      </div>
+                      <div class="card-class flex-start-center">
+                        <div class="icon-tag icon-mr4"></div>
+                        <span class="card-otherInfoText">自然風景類</span>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="swiper-slide swiper-slide-nearSpot">
+                <a
+                  href="javascript:;"
+                  class="card d-b"
+                >
+                  <div class="card-img">
+                    <button class="card-shareBtn"></button>
+                    <img
+                      data-src="https://picsum.photos/500/400?random=20"
+                      class="swiper-lazy"
+                    >
+                    <div class="swiper-lazy-preloader"></div>
+                  </div>
+                  <div class="card-info">
+                    <h3 class="card-title">天長地久橋</h3>
+                    <div class="card-otherInfo flex-start-center">
+                      <div class="card-location flex-start-center">
+                        <div class="icon-location icon-mr4"></div>
+                        <span class="card-otherInfoText">嘉義縣</span>
+                      </div>
+                      <div class="card-class flex-start-center">
+                        <div class="icon-tag icon-mr4"></div>
+                        <span class="card-otherInfoText">自然風景類</span>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="swiper-slide swiper-slide-nearSpot">
+                <a
+                  href="javascript:;"
+                  class="card d-b"
+                >
+                  <div class="card-img">
+                    <button class="card-shareBtn"></button>
+                    <img
+                      data-src="https://picsum.photos/500/400?random=21"
+                      class="swiper-lazy"
+                    >
+                    <div class="swiper-lazy-preloader"></div>
+                  </div>
+                  <div class="card-info">
+                    <h3 class="card-title">天長地久橋</h3>
+                    <div class="card-otherInfo flex-start-center">
+                      <div class="card-location flex-start-center">
+                        <div class="icon-location icon-mr4"></div>
+                        <span class="card-otherInfoText">嘉義縣</span>
+                      </div>
+                      <div class="card-class flex-start-center">
+                        <div class="icon-tag icon-mr4"></div>
+                        <span class="card-otherInfoText">自然風景類</span>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="swiper-slide swiper-slide-nearSpot">
+                <a
+                  href="javascript:;"
+                  class="card d-b"
+                >
+                  <div class="card-img">
+                    <button class="card-shareBtn"></button>
+                    <img
+                      data-src="https://picsum.photos/500/400?random=22"
+                      class="swiper-lazy"
+                    >
+                    <div class="swiper-lazy-preloader"></div>
+                  </div>
+                  <div class="card-info">
+                    <h3 class="card-title">天長地久橋</h3>
+                    <div class="card-otherInfo flex-start-center">
+                      <div class="card-location flex-start-center">
+                        <div class="icon-location icon-mr4"></div>
+                        <span class="card-otherInfoText">嘉義縣</span>
+                      </div>
+                      <div class="card-class flex-start-center">
+                        <div class="icon-tag icon-mr4"></div>
+                        <span class="card-otherInfoText">自然風景類</span>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="swiper-slide swiper-slide-nearSpot">
+                <a
+                  href="javascript:;"
+                  class="card d-b"
+                >
+                  <div class="card-img">
+                    <button class="card-shareBtn"></button>
+                    <img
+                      data-src="https://picsum.photos/500/400?random=23"
+                      class="swiper-lazy"
+                    >
+                    <div class="swiper-lazy-preloader"></div>
+                  </div>
+                  <div class="card-info">
+                    <h3 class="card-title">天長地久橋</h3>
+                    <div class="card-otherInfo flex-start-center">
+                      <div class="card-location flex-start-center">
+                        <div class="icon-location icon-mr4"></div>
+                        <span class="card-otherInfoText">嘉義縣</span>
+                      </div>
+                      <div class="card-class flex-start-center">
+                        <div class="icon-tag icon-mr4"></div>
+                        <span class="card-otherInfoText">自然風景類</span>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="swiper-slide swiper-slide-nearSpot">
+                <a
+                  href="javascript:;"
+                  class="card d-b"
+                >
+                  <div class="card-img">
+                    <button class="card-shareBtn"></button>
+                    <img
+                      data-src="https://picsum.photos/500/400?random=24"
+                      class="swiper-lazy"
+                    >
+                    <div class="swiper-lazy-preloader"></div>
+                  </div>
+                  <div class="card-info">
+                    <h3 class="card-title">天長地久橋</h3>
+                    <div class="card-otherInfo flex-start-center">
+                      <div class="card-location flex-start-center">
+                        <div class="icon-location icon-mr4"></div>
+                        <span class="card-otherInfoText">嘉義縣</span>
+                      </div>
+                      <div class="card-class flex-start-center">
+                        <div class="icon-tag icon-mr4"></div>
+                        <span class="card-otherInfoText">自然風景類</span>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <!-- navigation buttons -->
+            <div class="swiper-button-prev swiper-button-prev-nearSpot"></div>
+            <div class="swiper-button-next swiper-button-next-nearSpot"></div>
+          </div>
+        </div>
+      </div>
+      <!-- ----- 篩選後頁面 ----- -->
+      <div class="filterPage d-n">
+        <h2 class="filterPage__title mb-16">嘉義</h2>
+        <div class="filterPage__sort flex-start-center mb-24">
+          <div class="icon-sort mr-12"></div>
+          <button class="filterPage__sortSelect mr-12">全部</button>
+          <button class="filterPage__sortSelect mr-12">🔥 熱門程度</button>
+          <button class="filterPage__sortSelect mr-12">👍 推薦</button>
+        </div>
+        <!-- 景點 -->
+        <ul class="filterPage__list flex-sb-start flex-wrap mb-24 d-n">
+          <li class="filterPage__item mb-24">
+            <a
+              href="javascript:;"
+              class="card d-b"
+            >
+              <div class="card-img">
+                <button class="card-shareBtn"></button>
+                <img
+                  src="https://picsum.photos/200/300?random=1"
+                  alt="filter page item photo"
+                >
+              </div>
+              <div class="card-info">
+                <h3 class="card-title">天長地久橋</h3>
+                <div class="card-otherInfo flex-start-center">
+                  <div class="card-location flex-start-center">
+                    <div class="icon-location icon-mr4"></div>
+                    <span class="card-otherInfoText">嘉義縣</span>
+                  </div>
+                  <div class="card-class flex-start-center">
+                    <div class="icon-tag icon-mr4"></div>
+                    <span class="card-otherInfoText">自然風景類</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li class="filterPage__item mb-24">
+            <a
+              href="javascript:;"
+              class="card d-b"
+            >
+              <div class="card-img">
+                <button class="card-shareBtn"></button>
+                <img
+                  src="https://picsum.photos/200/300?random=1"
+                  alt="filter page item photo"
+                >
+              </div>
+              <div class="card-info">
+                <h3 class="card-title">天長地久橋</h3>
+                <div class="card-otherInfo flex-start-center">
+                  <div class="card-location flex-start-center">
+                    <div class="icon-location icon-mr4"></div>
+                    <span class="card-otherInfoText">嘉義縣</span>
+                  </div>
+                  <div class="card-class flex-start-center">
+                    <div class="icon-tag icon-mr4"></div>
+                    <span class="card-otherInfoText">自然風景類</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li class="filterPage__item mb-24">
+            <a
+              href="javascript:;"
+              class="card d-b"
+            >
+              <div class="card-img">
+                <button class="card-shareBtn"></button>
+                <img
+                  src="https://picsum.photos/200/300?random=1"
+                  alt="filter page item photo"
+                >
+              </div>
+              <div class="card-info">
+                <h3 class="card-title">天長地久橋</h3>
+                <div class="card-otherInfo flex-start-center">
+                  <div class="card-location flex-start-center">
+                    <div class="icon-location icon-mr4"></div>
+                    <span class="card-otherInfoText">嘉義縣</span>
+                  </div>
+                  <div class="card-class flex-start-center">
+                    <div class="icon-tag icon-mr4"></div>
+                    <span class="card-otherInfoText">自然風景類</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li class="filterPage__item mb-24">
+            <a
+              href="javascript:;"
+              class="card d-b"
+            >
+              <div class="card-img">
+                <button class="card-shareBtn"></button>
+                <img
+                  src="https://picsum.photos/200/300?random=1"
+                  alt="filter page item photo"
+                >
+              </div>
+              <div class="card-info">
+                <h3 class="card-title">天長地久橋</h3>
+                <div class="card-otherInfo flex-start-center">
+                  <div class="card-location flex-start-center">
+                    <div class="icon-location icon-mr4"></div>
+                    <span class="card-otherInfoText">嘉義縣</span>
+                  </div>
+                  <div class="card-class flex-start-center">
+                    <div class="icon-tag icon-mr4"></div>
+                    <span class="card-otherInfoText">自然風景類</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li class="filterPage__item mb-24">
+            <a
+              href="javascript:;"
+              class="card d-b"
+            >
+              <div class="card-img">
+                <button class="card-shareBtn"></button>
+                <img
+                  src="https://picsum.photos/200/300?random=1"
+                  alt="filter page item photo"
+                >
+              </div>
+              <div class="card-info">
+                <h3 class="card-title">天長地久橋</h3>
+                <div class="card-otherInfo flex-start-center">
+                  <div class="card-location flex-start-center">
+                    <div class="icon-location icon-mr4"></div>
+                    <span class="card-otherInfoText">嘉義縣</span>
+                  </div>
+                  <div class="card-class flex-start-center">
+                    <div class="icon-tag icon-mr4"></div>
+                    <span class="card-otherInfoText">自然風景類</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li class="filterPage__item mb-24">
+            <a
+              href="javascript:;"
+              class="card d-b"
+            >
+              <div class="card-img">
+                <button class="card-shareBtn"></button>
+                <img
+                  src="https://picsum.photos/200/300?random=1"
+                  alt="filter page item photo"
+                >
+              </div>
+              <div class="card-info">
+                <h3 class="card-title">天長地久橋</h3>
+                <div class="card-otherInfo flex-start-center">
+                  <div class="card-location flex-start-center">
+                    <div class="icon-location icon-mr4"></div>
+                    <span class="card-otherInfoText">嘉義縣</span>
+                  </div>
+                  <div class="card-class flex-start-center">
+                    <div class="icon-tag icon-mr4"></div>
+                    <span class="card-otherInfoText">自然風景類</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li class="filterPage__item mb-24">
+            <a
+              href="javascript:;"
+              class="card d-b"
+            >
+              <div class="card-img">
+                <button class="card-shareBtn"></button>
+                <img
+                  src="https://picsum.photos/200/300?random=1"
+                  alt="filter page item photo"
+                >
+              </div>
+              <div class="card-info">
+                <h3 class="card-title">天長地久橋</h3>
+                <div class="card-otherInfo flex-start-center">
+                  <div class="card-location flex-start-center">
+                    <div class="icon-location icon-mr4"></div>
+                    <span class="card-otherInfoText">嘉義縣</span>
+                  </div>
+                  <div class="card-class flex-start-center">
+                    <div class="icon-tag icon-mr4"></div>
+                    <span class="card-otherInfoText">自然風景類</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li class="filterPage__item mb-24">
+            <a
+              href="javascript:;"
+              class="card d-b"
+            >
+              <div class="card-img">
+                <button class="card-shareBtn"></button>
+                <img
+                  src="https://picsum.photos/200/300?random=1"
+                  alt="filter page item photo"
+                >
+              </div>
+              <div class="card-info">
+                <h3 class="card-title">天長地久橋</h3>
+                <div class="card-otherInfo flex-start-center">
+                  <div class="card-location flex-start-center">
+                    <div class="icon-location icon-mr4"></div>
+                    <span class="card-otherInfoText">嘉義縣</span>
+                  </div>
+                  <div class="card-class flex-start-center">
+                    <div class="icon-tag icon-mr4"></div>
+                    <span class="card-otherInfoText">自然風景類</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li class="filterPage__item mb-24">
+            <a
+              href="javascript:;"
+              class="card d-b"
+            >
+              <div class="card-img">
+                <button class="card-shareBtn"></button>
+                <img
+                  src="https://picsum.photos/200/300?random=1"
+                  alt="filter page item photo"
+                >
+              </div>
+              <div class="card-info">
+                <h3 class="card-title">天長地久橋</h3>
+                <div class="card-otherInfo flex-start-center">
+                  <div class="card-location flex-start-center">
+                    <div class="icon-location icon-mr4"></div>
+                    <span class="card-otherInfoText">嘉義縣</span>
+                  </div>
+                  <div class="card-class flex-start-center">
+                    <div class="icon-tag icon-mr4"></div>
+                    <span class="card-otherInfoText">自然風景類</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </li>
+        </ul>
+        <!-- 美食 -->
+        <ul class="filterPage__list flex-sb-start flex-wrap mb-24 d-n">
+          <li class="filterPage__item mb-24">
             <a
               href="javascript:;"
               class="card cardSpec d-b"
@@ -517,23 +1054,250 @@
               </div>
             </a>
           </li>
-          <li class="cardSpec__more card">
+          <li class="filterPage__item mb-24">
             <a
               href="javascript:;"
-              class="cardSpec__moreText flex-center"
-            ><span>更多美食...</span></a>
+              class="card cardSpec d-b"
+            >
+              <div class="cardSpec-img cardSpec-mask">
+                <button class="card-shareBtn"></button>
+                <h3 class="cardSpec-title cardSpec-title-ab">七股 / 龍門客棧餐廳(獲選參加2010台灣美食展特色餐廳)</h3>
+                <img
+                  src="https://picsum.photos/500/400?random=4"
+                  alt="food photo"
+                >
+              </div>
+              <div class="cardSpec-info flex flex-wrap">
+                <div class="cardSpec-location flex-center">
+                  <div class="icon-location icon-mr4"></div>
+                  <p class="cardSpec-otherInfoText">
+                    臺南市724七股區中寮里8-41號（七股鹽山光復國小旁）
+                  </p>
+                </div>
+                <div class="cardSpec-operate flex-center">
+                  <div class="icon-time icon-mr4"></div>
+                  <p class="cardSpec-otherInfoText">
+                    週一~週五：10:00~15:00（週二公休）
+                    週六~週日：10:00~21:00
+                  </p>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li class="filterPage__item mb-24">
+            <a
+              href="javascript:;"
+              class="card cardSpec d-b"
+            >
+              <div class="cardSpec-img cardSpec-mask">
+                <button class="card-shareBtn"></button>
+                <h3 class="cardSpec-title cardSpec-title-ab">七股 / 龍門客棧餐廳(獲選參加2010台灣美食展特色餐廳)</h3>
+                <img
+                  src="https://picsum.photos/500/400?random=4"
+                  alt="food photo"
+                >
+              </div>
+              <div class="cardSpec-info flex flex-wrap">
+                <div class="cardSpec-location flex-center">
+                  <div class="icon-location icon-mr4"></div>
+                  <p class="cardSpec-otherInfoText">
+                    臺南市724七股區中寮里8-41號（七股鹽山光復國小旁）
+                  </p>
+                </div>
+                <div class="cardSpec-operate flex-center">
+                  <div class="icon-time icon-mr4"></div>
+                  <p class="cardSpec-otherInfoText">
+                    週一~週五：10:00~15:00（週二公休）
+                    週六~週日：10:00~21:00
+                  </p>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li class="filterPage__item mb-24">
+            <a
+              href="javascript:;"
+              class="card cardSpec d-b"
+            >
+              <div class="cardSpec-img cardSpec-mask">
+                <button class="card-shareBtn"></button>
+                <h3 class="cardSpec-title cardSpec-title-ab">七股 / 龍門客棧餐廳(獲選參加2010台灣美食展特色餐廳)</h3>
+                <img
+                  src="https://picsum.photos/500/400?random=4"
+                  alt="food photo"
+                >
+              </div>
+              <div class="cardSpec-info flex flex-wrap">
+                <div class="cardSpec-location flex-center">
+                  <div class="icon-location icon-mr4"></div>
+                  <p class="cardSpec-otherInfoText">
+                    臺南市724七股區中寮里8-41號（七股鹽山光復國小旁）
+                  </p>
+                </div>
+                <div class="cardSpec-operate flex-center">
+                  <div class="icon-time icon-mr4"></div>
+                  <p class="cardSpec-otherInfoText">
+                    週一~週五：10:00~15:00（週二公休）
+                    週六~週日：10:00~21:00
+                  </p>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li class="filterPage__item mb-24">
+            <a
+              href="javascript:;"
+              class="card cardSpec d-b"
+            >
+              <div class="cardSpec-img cardSpec-mask">
+                <button class="card-shareBtn"></button>
+                <h3 class="cardSpec-title cardSpec-title-ab">七股 / 龍門客棧餐廳(獲選參加2010台灣美食展特色餐廳)</h3>
+                <img
+                  src="https://picsum.photos/500/400?random=4"
+                  alt="food photo"
+                >
+              </div>
+              <div class="cardSpec-info flex flex-wrap">
+                <div class="cardSpec-location flex-center">
+                  <div class="icon-location icon-mr4"></div>
+                  <p class="cardSpec-otherInfoText">
+                    臺南市724七股區中寮里8-41號（七股鹽山光復國小旁）
+                  </p>
+                </div>
+                <div class="cardSpec-operate flex-center">
+                  <div class="icon-time icon-mr4"></div>
+                  <p class="cardSpec-otherInfoText">
+                    週一~週五：10:00~15:00（週二公休）
+                    週六~週日：10:00~21:00
+                  </p>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li class="filterPage__item mb-24">
+            <a
+              href="javascript:;"
+              class="card cardSpec d-b"
+            >
+              <div class="cardSpec-img cardSpec-mask">
+                <button class="card-shareBtn"></button>
+                <h3 class="cardSpec-title cardSpec-title-ab">七股 / 龍門客棧餐廳(獲選參加2010台灣美食展特色餐廳)</h3>
+                <img
+                  src="https://picsum.photos/500/400?random=4"
+                  alt="food photo"
+                >
+              </div>
+              <div class="cardSpec-info flex flex-wrap">
+                <div class="cardSpec-location flex-center">
+                  <div class="icon-location icon-mr4"></div>
+                  <p class="cardSpec-otherInfoText">
+                    臺南市724七股區中寮里8-41號（七股鹽山光復國小旁）
+                  </p>
+                </div>
+                <div class="cardSpec-operate flex-center">
+                  <div class="icon-time icon-mr4"></div>
+                  <p class="cardSpec-otherInfoText">
+                    週一~週五：10:00~15:00（週二公休）
+                    週六~週日：10:00~21:00
+                  </p>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li class="filterPage__item mb-24">
+            <a
+              href="javascript:;"
+              class="card cardSpec d-b"
+            >
+              <div class="cardSpec-img cardSpec-mask">
+                <button class="card-shareBtn"></button>
+                <h3 class="cardSpec-title cardSpec-title-ab">七股 / 龍門客棧餐廳(獲選參加2010台灣美食展特色餐廳)</h3>
+                <img
+                  src="https://picsum.photos/500/400?random=4"
+                  alt="food photo"
+                >
+              </div>
+              <div class="cardSpec-info flex flex-wrap">
+                <div class="cardSpec-location flex-center">
+                  <div class="icon-location icon-mr4"></div>
+                  <p class="cardSpec-otherInfoText">
+                    臺南市724七股區中寮里8-41號（七股鹽山光復國小旁）
+                  </p>
+                </div>
+                <div class="cardSpec-operate flex-center">
+                  <div class="icon-time icon-mr4"></div>
+                  <p class="cardSpec-otherInfoText">
+                    週一~週五：10:00~15:00（週二公休）
+                    週六~週日：10:00~21:00
+                  </p>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li class="filterPage__item mb-24">
+            <a
+              href="javascript:;"
+              class="card cardSpec d-b"
+            >
+              <div class="cardSpec-img cardSpec-mask">
+                <button class="card-shareBtn"></button>
+                <h3 class="cardSpec-title cardSpec-title-ab">七股 / 龍門客棧餐廳(獲選參加2010台灣美食展特色餐廳)</h3>
+                <img
+                  src="https://picsum.photos/500/400?random=4"
+                  alt="food photo"
+                >
+              </div>
+              <div class="cardSpec-info flex flex-wrap">
+                <div class="cardSpec-location flex-center">
+                  <div class="icon-location icon-mr4"></div>
+                  <p class="cardSpec-otherInfoText">
+                    臺南市724七股區中寮里8-41號（七股鹽山光復國小旁）
+                  </p>
+                </div>
+                <div class="cardSpec-operate flex-center">
+                  <div class="icon-time icon-mr4"></div>
+                  <p class="cardSpec-otherInfoText">
+                    週一~週五：10:00~15:00（週二公休）
+                    週六~週日：10:00~21:00
+                  </p>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li class="filterPage__item mb-24">
+            <a
+              href="javascript:;"
+              class="card cardSpec d-b"
+            >
+              <div class="cardSpec-img cardSpec-mask">
+                <button class="card-shareBtn"></button>
+                <h3 class="cardSpec-title cardSpec-title-ab">七股 / 龍門客棧餐廳(獲選參加2010台灣美食展特色餐廳)</h3>
+                <img
+                  src="https://picsum.photos/500/400?random=4"
+                  alt="food photo"
+                >
+              </div>
+              <div class="cardSpec-info flex flex-wrap">
+                <div class="cardSpec-location flex-center">
+                  <div class="icon-location icon-mr4"></div>
+                  <p class="cardSpec-otherInfoText">
+                    臺南市724七股區中寮里8-41號（七股鹽山光復國小旁）
+                  </p>
+                </div>
+                <div class="cardSpec-operate flex-center">
+                  <div class="icon-time icon-mr4"></div>
+                  <p class="cardSpec-otherInfoText">
+                    週一~週五：10:00~15:00（週二公休）
+                    週六~週日：10:00~21:00
+                  </p>
+                </div>
+              </div>
+            </a>
           </li>
         </ul>
-      </div>
-      <div class="hotel mb-40 d-n">
-        <div class="content__title flex-sb-center">
-          <h3 class="content__titleText flex-start-center">
-            <div class="icon-location icon-mr4-purple"></div>
-            <span class="d-ib">住宿推薦</span>
-          </h3>
-        </div>
-        <ul class="cardSpec__list flex-sb-center flex-wrap">
-          <li class="cardSpec__item">
+        <!-- 住宿 -->
+        <ul class="filterPage__list flex-sb-start flex-wrap mb-24 d-n">
+          <li class="filterPage__item mb-24">
             <a
               href="javascript:;"
               class="card cardSpec d-b"
@@ -546,7 +1310,7 @@
                 >
               </div>
               <div class="cardSpec-info flex flex-wrap">
-                <h3 class="cardSpec-title">七股 / 龍門客棧餐廳(獲選參加2010台灣美食展特色餐廳)</h3>
+                <h3 class="cardSpec-title">台北商旅(大安館)</h3>
                 <div class="cardSpec-location flex-center">
                   <div class="icon-location icon-mr4"></div>
                   <p class="cardSpec-otherInfoText">
@@ -562,26 +1326,346 @@
               </div>
             </a>
           </li>
-          <li class="cardSpec__more card">
+          <li class="filterPage__item mb-24">
             <a
               href="javascript:;"
-              class="cardSpec__moreText flex-center"
-            ><span>更多住宿...</span></a>
+              class="card cardSpec d-b"
+            >
+              <div class="cardSpec-img cardSpec-mask">
+                <button class="card-shareBtn"></button>
+                <img
+                  src="https://picsum.photos/500/400?random=5"
+                  alt="food photo"
+                >
+              </div>
+              <div class="cardSpec-info flex flex-wrap">
+                <h3 class="cardSpec-title">台北商旅(大安館)</h3>
+                <div class="cardSpec-location flex-center">
+                  <div class="icon-location icon-mr4"></div>
+                  <p class="cardSpec-otherInfoText">
+                    臺南市724七股區中寮里8-41號（七股鹽山光復國小旁）
+                  </p>
+                </div>
+                <div class="cardSpec-call flex-center">
+                  <div class="icon-call icon-mr4"></div>
+                  <p class="cardSpec-otherInfoText">
+                    886-4-25855997
+                  </p>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li class="filterPage__item mb-24">
+            <a
+              href="javascript:;"
+              class="card cardSpec d-b"
+            >
+              <div class="cardSpec-img cardSpec-mask">
+                <button class="card-shareBtn"></button>
+                <img
+                  src="https://picsum.photos/500/400?random=5"
+                  alt="food photo"
+                >
+              </div>
+              <div class="cardSpec-info flex flex-wrap">
+                <h3 class="cardSpec-title">台北商旅(大安館)</h3>
+                <div class="cardSpec-location flex-center">
+                  <div class="icon-location icon-mr4"></div>
+                  <p class="cardSpec-otherInfoText">
+                    臺南市724七股區中寮里8-41號（七股鹽山光復國小旁）
+                  </p>
+                </div>
+                <div class="cardSpec-call flex-center">
+                  <div class="icon-call icon-mr4"></div>
+                  <p class="cardSpec-otherInfoText">
+                    886-4-25855997
+                  </p>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li class="filterPage__item mb-24">
+            <a
+              href="javascript:;"
+              class="card cardSpec d-b"
+            >
+              <div class="cardSpec-img cardSpec-mask">
+                <button class="card-shareBtn"></button>
+                <img
+                  src="https://picsum.photos/500/400?random=5"
+                  alt="food photo"
+                >
+              </div>
+              <div class="cardSpec-info flex flex-wrap">
+                <h3 class="cardSpec-title">台北商旅(大安館)</h3>
+                <div class="cardSpec-location flex-center">
+                  <div class="icon-location icon-mr4"></div>
+                  <p class="cardSpec-otherInfoText">
+                    臺南市724七股區中寮里8-41號（七股鹽山光復國小旁）
+                  </p>
+                </div>
+                <div class="cardSpec-call flex-center">
+                  <div class="icon-call icon-mr4"></div>
+                  <p class="cardSpec-otherInfoText">
+                    886-4-25855997
+                  </p>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li class="filterPage__item mb-24">
+            <a
+              href="javascript:;"
+              class="card cardSpec d-b"
+            >
+              <div class="cardSpec-img cardSpec-mask">
+                <button class="card-shareBtn"></button>
+                <img
+                  src="https://picsum.photos/500/400?random=5"
+                  alt="food photo"
+                >
+              </div>
+              <div class="cardSpec-info flex flex-wrap">
+                <h3 class="cardSpec-title">台北商旅(大安館)</h3>
+                <div class="cardSpec-location flex-center">
+                  <div class="icon-location icon-mr4"></div>
+                  <p class="cardSpec-otherInfoText">
+                    臺南市724七股區中寮里8-41號（七股鹽山光復國小旁）
+                  </p>
+                </div>
+                <div class="cardSpec-call flex-center">
+                  <div class="icon-call icon-mr4"></div>
+                  <p class="cardSpec-otherInfoText">
+                    886-4-25855997
+                  </p>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li class="filterPage__item mb-24">
+            <a
+              href="javascript:;"
+              class="card cardSpec d-b"
+            >
+              <div class="cardSpec-img cardSpec-mask">
+                <button class="card-shareBtn"></button>
+                <img
+                  src="https://picsum.photos/500/400?random=5"
+                  alt="food photo"
+                >
+              </div>
+              <div class="cardSpec-info flex flex-wrap">
+                <h3 class="cardSpec-title">台北商旅(大安館)</h3>
+                <div class="cardSpec-location flex-center">
+                  <div class="icon-location icon-mr4"></div>
+                  <p class="cardSpec-otherInfoText">
+                    臺南市724七股區中寮里8-41號（七股鹽山光復國小旁）
+                  </p>
+                </div>
+                <div class="cardSpec-call flex-center">
+                  <div class="icon-call icon-mr4"></div>
+                  <p class="cardSpec-otherInfoText">
+                    886-4-25855997
+                  </p>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li class="filterPage__item mb-24">
+            <a
+              href="javascript:;"
+              class="card cardSpec d-b"
+            >
+              <div class="cardSpec-img cardSpec-mask">
+                <button class="card-shareBtn"></button>
+                <img
+                  src="https://picsum.photos/500/400?random=5"
+                  alt="food photo"
+                >
+              </div>
+              <div class="cardSpec-info flex flex-wrap">
+                <h3 class="cardSpec-title">台北商旅(大安館)</h3>
+                <div class="cardSpec-location flex-center">
+                  <div class="icon-location icon-mr4"></div>
+                  <p class="cardSpec-otherInfoText">
+                    臺南市724七股區中寮里8-41號（七股鹽山光復國小旁）
+                  </p>
+                </div>
+                <div class="cardSpec-call flex-center">
+                  <div class="icon-call icon-mr4"></div>
+                  <p class="cardSpec-otherInfoText">
+                    886-4-25855997
+                  </p>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li class="filterPage__item mb-24">
+            <a
+              href="javascript:;"
+              class="card cardSpec d-b"
+            >
+              <div class="cardSpec-img cardSpec-mask">
+                <button class="card-shareBtn"></button>
+                <img
+                  src="https://picsum.photos/500/400?random=5"
+                  alt="food photo"
+                >
+              </div>
+              <div class="cardSpec-info flex flex-wrap">
+                <h3 class="cardSpec-title">台北商旅(大安館)</h3>
+                <div class="cardSpec-location flex-center">
+                  <div class="icon-location icon-mr4"></div>
+                  <p class="cardSpec-otherInfoText">
+                    臺南市724七股區中寮里8-41號（七股鹽山光復國小旁）
+                  </p>
+                </div>
+                <div class="cardSpec-call flex-center">
+                  <div class="icon-call icon-mr4"></div>
+                  <p class="cardSpec-otherInfoText">
+                    886-4-25855997
+                  </p>
+                </div>
+              </div>
+            </a>
+          </li>
+          <li class="filterPage__item mb-24">
+            <a
+              href="javascript:;"
+              class="card cardSpec d-b"
+            >
+              <div class="cardSpec-img cardSpec-mask">
+                <button class="card-shareBtn"></button>
+                <img
+                  src="https://picsum.photos/500/400?random=5"
+                  alt="food photo"
+                >
+              </div>
+              <div class="cardSpec-info flex flex-wrap">
+                <h3 class="cardSpec-title">台北商旅(大安館)</h3>
+                <div class="cardSpec-location flex-center">
+                  <div class="icon-location icon-mr4"></div>
+                  <p class="cardSpec-otherInfoText">
+                    臺南市724七股區中寮里8-41號（七股鹽山光復國小旁）
+                  </p>
+                </div>
+                <div class="cardSpec-call flex-center">
+                  <div class="icon-call icon-mr4"></div>
+                  <p class="cardSpec-otherInfoText">
+                    886-4-25855997
+                  </p>
+                </div>
+              </div>
+            </a>
           </li>
         </ul>
-      </div>
-      <div class="active mb-40 d-n">
-        <div class="content__title flex-sb-center">
-          <h3 class="content__titleText">
-            <img
-              src="img/icon-location-purple.svg"
-              alt="location icon"
+        <!-- 活動 最多 5 個 -->
+        <ul class="filterPage__list flex-sb-start flex-wrap mb-24">
+          <li class="cardFull__item mb-24">
+            <a
+              href="javascript:;"
+              class="cardFull flex-sb-center"
             >
-            <span class="d-ib">活動快訊</span>
-          </h3>
-        </div>
-        <ul class="cardFull__list">
-          <li class="cardFull__item">
+              <div class="cardFull__info">
+                <h3 class="cardFull__title">新竹市玻璃設計藝術節</h3>
+                <div class="cardFull__location flex-start-center">
+                  <div class="icon-location icon-mr4"></div>
+                  <p class="cardFull__otherInfoText">
+                    新竹市
+                  </p>
+                </div>
+                <div class="cardFull__date flex-start-center">
+                  <div class="icon-time icon-mr4"></div>
+                  <p class="cardFull__otherInfoText">2021-10-01 ~ 2021-10-31</p>
+                </div>
+              </div>
+              <div class="cardFull__img">
+                <img
+                  src="https://picsum.photos/200/300?random=8"
+                  alt="active photo"
+                >
+              </div>
+            </a>
+          </li>
+          <li class="cardFull__item mb-24">
+            <a
+              href="javascript:;"
+              class="cardFull flex-sb-center"
+            >
+              <div class="cardFull__info">
+                <h3 class="cardFull__title">新竹市玻璃設計藝術節</h3>
+                <div class="cardFull__location flex-start-center">
+                  <div class="icon-location icon-mr4"></div>
+                  <p class="cardFull__otherInfoText">
+                    新竹市
+                  </p>
+                </div>
+                <div class="cardFull__date flex-start-center">
+                  <div class="icon-time icon-mr4"></div>
+                  <p class="cardFull__otherInfoText">2021-10-01 ~ 2021-10-31</p>
+                </div>
+              </div>
+              <div class="cardFull__img">
+                <img
+                  src="https://picsum.photos/200/300?random=8"
+                  alt="active photo"
+                >
+              </div>
+            </a>
+          </li>
+          <li class="cardFull__item mb-24">
+            <a
+              href="javascript:;"
+              class="cardFull flex-sb-center"
+            >
+              <div class="cardFull__info">
+                <h3 class="cardFull__title">新竹市玻璃設計藝術節</h3>
+                <div class="cardFull__location flex-start-center">
+                  <div class="icon-location icon-mr4"></div>
+                  <p class="cardFull__otherInfoText">
+                    新竹市
+                  </p>
+                </div>
+                <div class="cardFull__date flex-start-center">
+                  <div class="icon-time icon-mr4"></div>
+                  <p class="cardFull__otherInfoText">2021-10-01 ~ 2021-10-31</p>
+                </div>
+              </div>
+              <div class="cardFull__img">
+                <img
+                  src="https://picsum.photos/200/300?random=8"
+                  alt="active photo"
+                >
+              </div>
+            </a>
+          </li>
+          <li class="cardFull__item mb-24">
+            <a
+              href="javascript:;"
+              class="cardFull flex-sb-center"
+            >
+              <div class="cardFull__info">
+                <h3 class="cardFull__title">新竹市玻璃設計藝術節</h3>
+                <div class="cardFull__location flex-start-center">
+                  <div class="icon-location icon-mr4"></div>
+                  <p class="cardFull__otherInfoText">
+                    新竹市
+                  </p>
+                </div>
+                <div class="cardFull__date flex-start-center">
+                  <div class="icon-time icon-mr4"></div>
+                  <p class="cardFull__otherInfoText">2021-10-01 ~ 2021-10-31</p>
+                </div>
+              </div>
+              <div class="cardFull__img">
+                <img
+                  src="https://picsum.photos/200/300?random=8"
+                  alt="active photo"
+                >
+              </div>
+            </a>
+          </li>
+          <li class="cardFull__item mb-24">
             <a
               href="javascript:;"
               class="cardFull flex-sb-center"
@@ -608,310 +1692,35 @@
             </a>
           </li>
         </ul>
-      </div>
-      <!-- 內頁 -->
-      <div class="title mb-24 flex-sb-center">
-        <div class="title__info flex-start-center">
-          <button class="title__backBtn"></button>
-          <h2 class="title__text">風櫃東港、西港、北港</h2>
-        </div>
-        <div class="title__funcs">
-          <button class="title__funcsBtn title__funcsBtn-print icon-print"></button>
-          <button class="title__funcsBtn icon-share"></button>
-        </div>
-      </div>
-      <!-- 內頁 - 照片 -->
-      <div class="swiper swiper-page mb-24">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide swiper-slide-page">
-            <div class="page__img">
-              <img
-                data-src="https://picsum.photos/600/600?random=12"
-                class="swiper-lazy"
-              >
-              <div class="swiper-lazy-preloader"></div>
-            </div>
-          </div>
-          <div class="swiper-slide swiper-slide-page">
-            <div class="page__img">
-              <img
-                data-src="https://picsum.photos/600/600?random=13"
-                class="swiper-lazy"
-              >
-              <div class="swiper-lazy-preloader"></div>
-            </div>
-          </div>
-          <div class="swiper-slide swiper-slide-page">
-            <div class="page__img">
-              <img
-                data-src="https://picsum.photos/600/600?random=14"
-                class="swiper-lazy"
-              >
-              <div class="swiper-lazy-preloader"></div>
-            </div>
-          </div>
-        </div>
-        <div class="swiper-pagination swiper-pagination-page"></div>
-        <div class="swiper-button-prev swiper-button-prev-page"></div>
-        <div class="swiper-button-next swiper-button-next-page"></div>
-      </div>
-      <!-- 內頁 - 資訊 -->
-      <!-- 景點資訊 : 時段、地點、電話、票價、類別、網站 -->
-      <!-- 美食資訊 : 時段、地點、電話、類別 -->
-      <!-- 住宿資訊 : 地點、電話、類別、 -->
-      <!-- 活動資訊 : 時段、地點、主辦單位、備註(Cycle)、類別 -->
-      <div class="info mb-24">
-        <ul class="info__list">
-          <li class="info__item info__item-time flex-start-start">
-            <div class="info__title flex-center">
-              <div class="icon-time icon-mr4"></div>
-              <span class="info__text">開放時段 :</span>
-            </div>
-            <p class="info__content">
-              每日開放每日開放每日開放每日開放每日開放每日開放每日開放每日開放每日開放每日開放每日開放每日開放</p>
-          </li>
-          <li class="info__item info__item-location flex-start-start">
-            <div class="info__title flex-center">
-              <div class="icon-location icon-mr4"></div>
-              <span class="info__text">所在地點 :</span>
-            </div>
-            <p class="info__content">花蓮縣975鳳林鎮林榮里永福街20號</p>
-          </li>
-          <li class="info__item info__item-call flex-start-start">
-            <div class="info__title flex-center">
-              <div class="icon-call icon-mr4"></div>
-              <span class="info__text">聯絡電話 :</span>
-            </div>
-            <p class="info__content"><a href="tel:886-3-8771410">886-3-8771410</a></p>
-          </li>
-          <li class="info__item info__item-ticket flex-start-start">
-            <div class="info__title flex-center">
-              <div class="icon-ticket icon-mr4"></div>
-              <span class="info__text">票價資訊 :</span>
-            </div>
-            <p class="info__content">
-              1.全票：$350元2.優待票：$250元（13歲(含)以上至18歲以下青少年、65歲以上老人）3.學童票：$200元（6歲-12歲(含)之童）4.博幼票：$175元（身障朋友及陪...</p>
-          </li>
-          <li class="info__item info__item-class flex-start-start">
-            <div class="info__title flex-self-center">
-              <div class="icon-tag icon-mr4"></div>
-              <span class="info__text">分類標籤 :</span>
-            </div>
-            <p class="info__content">
-              <a
-                href="javascript:;"
-                class="info__content-tag"
-              >遊憩類</a>
-              <a
-                href="javascript:;"
-                class="info__content-tag"
-              >自然風景類</a>
-            </p>
-          </li>
-          <li class="info__item info__item-web flex-start-start">
-            <div class="info__title flex-self-center">
-              <div class="icon-web icon-mr4"></div>
-              <span class="info__text">網站連結 :</span>
-            </div>
-            <p class="info__content">
-              <a
-                class="info__url"
-                href="http://www.erv-nsa.gov.tw"
-                target="_blank"
-              >http://www.erv-nsa.gov.tw</a>
-            </p>
-          </li>
-        </ul>
-      </div>
-      <!-- 介紹 -->
-      <div class="intro mb-24">
-        <h2 class="intro__title">景點介紹</h2>
-        <div class="intro__content">
-          <!-- 載入 DescriptionDetail -->
-        </div>
-      </div>
-      <!-- 地圖 -->
-      <div class="map mb-40">
-        <h2 class="intro__title">地圖位置</h2>
-        <div id="myMap"></div>
-      </div>
-      <!-- 鄰近的景點 -->
-      <div class="nearSpot mb-40">
-        <h2 class="intro__title">鄰近的景點</h2>
-        <div class="swiper swiper-nearSpot">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide swiper-slide-nearSpot">
-              <a
-                href="javascript:;"
-                class="card d-b"
-              >
-                <div class="card-img">
-                  <button class="card-shareBtn"></button>
-                  <img
-                    data-src="https://picsum.photos/500/400?random=2"
-                    class="swiper-lazy"
-                  >
-                  <div class="swiper-lazy-preloader"></div>
-                </div>
-                <div class="card-info">
-                  <h3 class="card-title">天長地久橋</h3>
-                  <div class="card-otherInfo flex-start-center">
-                    <div class="card-location flex-start-center">
-                      <div class="icon-location icon-mr4"></div>
-                      <span class="card-otherInfoText">嘉義縣</span>
-                    </div>
-                    <div class="card-class flex-start-center">
-                      <div class="icon-tag icon-mr4"></div>
-                      <span class="card-otherInfoText">自然風景類</span>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </div>
-            <div class="swiper-slide swiper-slide-nearSpot">
-              <a
-                href="javascript:;"
-                class="card d-b"
-              >
-                <div class="card-img">
-                  <button class="card-shareBtn"></button>
-                  <img
-                    data-src="https://picsum.photos/500/400?random=20"
-                    class="swiper-lazy"
-                  >
-                  <div class="swiper-lazy-preloader"></div>
-                </div>
-                <div class="card-info">
-                  <h3 class="card-title">天長地久橋</h3>
-                  <div class="card-otherInfo flex-start-center">
-                    <div class="card-location flex-start-center">
-                      <div class="icon-location icon-mr4"></div>
-                      <span class="card-otherInfoText">嘉義縣</span>
-                    </div>
-                    <div class="card-class flex-start-center">
-                      <div class="icon-tag icon-mr4"></div>
-                      <span class="card-otherInfoText">自然風景類</span>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </div>
-            <div class="swiper-slide swiper-slide-nearSpot">
-              <a
-                href="javascript:;"
-                class="card d-b"
-              >
-                <div class="card-img">
-                  <button class="card-shareBtn"></button>
-                  <img
-                    data-src="https://picsum.photos/500/400?random=21"
-                    class="swiper-lazy"
-                  >
-                  <div class="swiper-lazy-preloader"></div>
-                </div>
-                <div class="card-info">
-                  <h3 class="card-title">天長地久橋</h3>
-                  <div class="card-otherInfo flex-start-center">
-                    <div class="card-location flex-start-center">
-                      <div class="icon-location icon-mr4"></div>
-                      <span class="card-otherInfoText">嘉義縣</span>
-                    </div>
-                    <div class="card-class flex-start-center">
-                      <div class="icon-tag icon-mr4"></div>
-                      <span class="card-otherInfoText">自然風景類</span>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </div>
-            <div class="swiper-slide swiper-slide-nearSpot">
-              <a
-                href="javascript:;"
-                class="card d-b"
-              >
-                <div class="card-img">
-                  <button class="card-shareBtn"></button>
-                  <img
-                    data-src="https://picsum.photos/500/400?random=22"
-                    class="swiper-lazy"
-                  >
-                  <div class="swiper-lazy-preloader"></div>
-                </div>
-                <div class="card-info">
-                  <h3 class="card-title">天長地久橋</h3>
-                  <div class="card-otherInfo flex-start-center">
-                    <div class="card-location flex-start-center">
-                      <div class="icon-location icon-mr4"></div>
-                      <span class="card-otherInfoText">嘉義縣</span>
-                    </div>
-                    <div class="card-class flex-start-center">
-                      <div class="icon-tag icon-mr4"></div>
-                      <span class="card-otherInfoText">自然風景類</span>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </div>
-            <div class="swiper-slide swiper-slide-nearSpot">
-              <a
-                href="javascript:;"
-                class="card d-b"
-              >
-                <div class="card-img">
-                  <button class="card-shareBtn"></button>
-                  <img
-                    data-src="https://picsum.photos/500/400?random=23"
-                    class="swiper-lazy"
-                  >
-                  <div class="swiper-lazy-preloader"></div>
-                </div>
-                <div class="card-info">
-                  <h3 class="card-title">天長地久橋</h3>
-                  <div class="card-otherInfo flex-start-center">
-                    <div class="card-location flex-start-center">
-                      <div class="icon-location icon-mr4"></div>
-                      <span class="card-otherInfoText">嘉義縣</span>
-                    </div>
-                    <div class="card-class flex-start-center">
-                      <div class="icon-tag icon-mr4"></div>
-                      <span class="card-otherInfoText">自然風景類</span>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </div>
-            <div class="swiper-slide swiper-slide-nearSpot">
-              <a
-                href="javascript:;"
-                class="card d-b"
-              >
-                <div class="card-img">
-                  <button class="card-shareBtn"></button>
-                  <img
-                    data-src="https://picsum.photos/500/400?random=24"
-                    class="swiper-lazy"
-                  >
-                  <div class="swiper-lazy-preloader"></div>
-                </div>
-                <div class="card-info">
-                  <h3 class="card-title">天長地久橋</h3>
-                  <div class="card-otherInfo flex-start-center">
-                    <div class="card-location flex-start-center">
-                      <div class="icon-location icon-mr4"></div>
-                      <span class="card-otherInfoText">嘉義縣</span>
-                    </div>
-                    <div class="card-class flex-start-center">
-                      <div class="icon-tag icon-mr4"></div>
-                      <span class="card-otherInfoText">自然風景類</span>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </div>
-          </div>
-          <!-- navigation buttons -->
-          <div class="swiper-button-prev swiper-button-prev-nearSpot"></div>
-          <div class="swiper-button-next swiper-button-next-nearSpot"></div>
+        <!-- 頁碼 -->
+        <div class="filterPage__pagination flex-center mb-40">
+          <button class="filterPage__pagination-prev mr-12">
+            <span class="material-icons d-ib">
+              chevron_left
+            </span>
+          </button>
+          <ul class="filterPage__pagination-list flex-center">
+            <li class="filterPage__pagination-num flex-center">
+              <a href="javascript:;">1</a>
+            </li>
+            <li class="filterPage__pagination-num flex-center">
+              <a href="javascript:;">2</a>
+            </li>
+            <li class="filterPage__pagination-num flex-center">
+              <a href="javascript:;">3</a>
+            </li>
+            <li class="filterPage__pagination-omit flex-center">
+              <a href="javascript:;">...</a>
+            </li>
+            <li class="filterPage__pagination-num flex-center">
+              <a href="javascript:;">20</a>
+            </li>
+          </ul>
+          <button class="filterPage__pagination-next ml-12">
+            <span class="material-icons d-ib">
+              navigate_next
+            </span>
+          </button>
         </div>
       </div>
     </div>
@@ -961,8 +1770,22 @@
     crossorigin='anonymous'
   ></script>
   <!-- my js -->
-  <script src="all.js"></script>
-  <script src="module/swiper.js"></script>
+  <script
+    type="module"
+    src="api.js"
+  ></script>
+  <script
+    type="module"
+    src="main.js"
+  ></script>
+  <script
+    type="module"
+    src="all.js"
+  ></script>
+  <script
+    type="module"
+    src="module/swiper.js"
+  ></script>
 </body>
 
 </html>

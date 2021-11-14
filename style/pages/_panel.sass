@@ -5,7 +5,7 @@
   width: 116.5px
 
 .panel
-  padding: 40px 24px 0 24px
+  padding: 40px 24px 24px 24px
   position: sticky
   top: 0
   width: 354px
@@ -16,7 +16,7 @@
   overscroll-behavior: contain
   transition: all .3s
   +shadow
-  +pad
+  +padPro
     position: fixed
     width: 100vw
     z-index: 10
@@ -41,7 +41,7 @@
     +backgroundImg($icon-toggle-hz)
     background-size: contain
     display: none
-    +pad
+    +padPro
       display: block
 
 .citySelect, .search
@@ -51,6 +51,8 @@
   border-radius: 8px
   border: 1px solid $lineGray
   position: relative
+  +mobile
+    margin-bottom: 16px
 
 .citySelect
   padding: 8px 12px
@@ -81,7 +83,7 @@
     position: absolute
     left: 0
     top: 120%
-    z-index: 3
+    z-index: 5
     width: 100%
     max-height: 0
     background-color: #fff
@@ -108,6 +110,7 @@
     +font(18, 700)
     color: $textBlack
     padding: 8px 0
+    user-select: none
     & ~ .citySelect__areaTitle
       margin-top: 8px
   &__filterList
@@ -144,6 +147,7 @@
     line-height: 1.5
     border: 1px solid $primaryGreen
     border-radius: 8px
+    user-select: none
     transition: transform .2s
     &:hover
       color: #fff
@@ -206,10 +210,17 @@
 
 .theme
   padding-top: 24px
+  border-bottom: 1px solid $lineGray
+  margin-bottom: 24px
+  +mobile
+    padding-top: 16px
+    margin-bottom: 16px
   &__title
     +font(18, 700)
   &__list
     padding: 24px 0
+    +mobile
+      padding: 12px 0
   &__item
     width: calc(50% - 8px)
     margin-bottom: 12px
@@ -236,3 +247,7 @@
       > i
         +font(48)
         color: #fff
+    &.active
+      transform: translate(-3px, -3px)
+      border: 1px solid $primaryGreen
+      +shadow
