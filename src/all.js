@@ -100,7 +100,7 @@ function clearCity(e) {
   if (!e.target.closest('.citySelect__close')) return
   cityName.textContent = '目的地'
   cityName.classList.remove('citySelect__cityName--selected')
-  cityName.dataset.city = ''
+  cityName.dataset.city = 'all'
 }
 
 // 精選主題選擇
@@ -111,10 +111,9 @@ function themeSelect(e) {
   themeBtn.classList.toggle('active')
 
   themeBtn.dataset.select === 'false' ?
-    themeBtn.dataset.select = true :
-    themeBtn.dataset.select = false
-
-  if (prevThemeBtn) {
+    themeBtn.dataset.select = 'true' :
+    themeBtn.dataset.select = 'false'
+  if (prevThemeBtn && prevThemeBtn !== themeBtn) {
     prevThemeBtn.classList.remove('active')
     prevThemeBtn.dataset.select = 'false'
   }
@@ -122,7 +121,11 @@ function themeSelect(e) {
 }
 
 // 搜尋 Task
-let filterObj = {}
+let filterObj = {
+  keyword: '',
+  city: '',
+  sort: ''
+}
 function searchHandler() {
   // 檢查 精選主題 是否有選擇
   const themeBtn = document.querySelectorAll('.theme__btn')
@@ -131,6 +134,7 @@ function searchHandler() {
   })
   if (themeSelectStatus) {
     alert('請選擇「精選主題」')
+    console.log('prevThemeBtn: ', prevThemeBtn)
     return
   }
 
@@ -160,6 +164,8 @@ citySelect.addEventListener('click', clearCity, false)
 themeList.addEventListener('click', themeSelect, false)
 search.addEventListener('click', searchHandler, false)
 
+// ----- Export -----
+export { filterObj }
 
 // ----- Content -----
 // 假資料待 Api get

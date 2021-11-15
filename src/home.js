@@ -6,7 +6,7 @@ import {
 } from "./api.js";
 
 export const HOME_render = () => {
-  let cities = [
+  const cities = [
     { en: 'Keelung', zh: '基隆市', name: '基隆', area: 'north' },
     { en: 'Taipei', zh: '臺北市', name: '台北', area: 'north' },
     { en: 'NewTaipei', zh: '新北市', name: '新北', area: 'north' },
@@ -87,6 +87,7 @@ export const HOME_render = () => {
           item['Picture']['PictureUrl1'] :
           noImageUrl
         }
+                onerror="this.src='img/noimage.png'"
                 class="swiper-lazy"
               >
               <div class="swiper-lazy-preloader"></div>
@@ -118,7 +119,7 @@ export const HOME_render = () => {
     const moreFood = `
   <li class="cardSpec__more card">
     <a
-      href="#/food"
+      href="#/food/all"
       class="cardSpec__moreText flex-center"
     ><span>更多美食...</span></a>
   </li>
@@ -150,6 +151,7 @@ export const HOME_render = () => {
           item['Picture']['PictureUrl1'] :
           noImageUrl
         }
+              onerror="this.src='img/noimage.png'"
               alt="food photo"
             >
           </div>
@@ -181,7 +183,7 @@ export const HOME_render = () => {
     const moreHotel = `
     <li class="cardSpec__more card">
       <a
-        href="#/hotel"
+        href="#/hotel/all"
         class="cardSpec__moreText flex-center"
       ><span>更多住宿...</span></a>
     </li>
@@ -212,6 +214,7 @@ export const HOME_render = () => {
           item['Picture']['PictureUrl1'] :
           noImageUrl
         }
+              onerror="this.src='img/noimage.png'"
               alt="food photo"
             >
           </div>
@@ -243,7 +246,7 @@ export const HOME_render = () => {
     const { activityAllTop } = ACTIVITY_apiRequest()
     const moreActivity = `
       <a
-        href="#/active"
+        href="#/active/all"
         class="cardSpec__moreText cardSpec__moreText-full flex-center"
       >
         <span>更多活動...</span>
@@ -297,6 +300,7 @@ export const HOME_render = () => {
           item['Picture']['PictureUrl1'] :
           noImageUrl
         }
+            onerror="this.src='img/noimage.png'"
             alt="active photo"
           >
         </div>
