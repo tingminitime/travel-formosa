@@ -1,92 +1,19 @@
+import {
+  SPOT_apiRequest,
+  FOOD_apiRequest,
+  HOTEL_apiRequest,
+  ACTIVITY_apiRequest
+} from "./api.js";
+import {
+  HOME_defaultHTML,
+  FILTER_defaultHTML,
+  PAGE_defaultHTML
+} from './module/template.js'
 import { HOME_render } from './home.js'
 import { INIT_swiper } from './module/swiper.js'
-import { SPOT_router } from './module/sort.js'
+import { cities } from './module/template.js'
 
 const content = document.querySelector('#content')
-const HOME_defaultHTML = /* html */`
-<!-- ----- 主頁 ----- -->
-<div class="homePage">
-  <!-- Banner -->
-  <div class="swiper swiper-header mb-40">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide">
-        <div class="banner__container flex-start-center">
-          <h2 class="banner__title">探索。<br>福爾摩沙</h2>
-        </div>
-      </div>
-      <div class="swiper-slide">
-        <div class="banner__container flex-start-center">
-          <h2 class="banner__title">尋找。<br>熱門景點</h2>
-        </div>
-      </div>
-      <div class="swiper-slide">
-        <div class="banner__container flex-start-center">
-          <h2 class="banner__title">參與。<br>文化活動</h2>
-        </div>
-      </div>
-    </div>
-    <div class="swiper-pagination swiper-pagination-header"></div>
-  </div>
-  <!-- 熱門景點 -->
-  <div class="hotSpot mb-40">
-    <div class="content__title flex-sb-center">
-      <h3 class="content__titleText flex-start-center">
-        <div class="icon-location-purple icon-mr4"></div>
-        <span class="d-ib">熱門景點</span>
-      </h3>
-      <a
-        href="#/spot/all"
-        class="content__more"
-      >更多熱門景點</a>
-    </div>
-    <!-- 最多 8 個 -->
-    <div class="swiper swiper-hotSpot">
-      <div class="swiper-wrapper swiper-wrapper-hotSpot">
-        <!-- 載入資料 -->
-      </div>
-      <!-- navigation buttons -->
-      <div class="swiper-button-prev swiper-button-prev-hotSpot"></div>
-      <div class="swiper-button-next swiper-button-next-hotSpot"></div>
-    </div>
-  </div>
-  <!-- 美食品嚐 -->
-  <div class="food mb-40">
-    <div class="content__title flex-sb-center">
-      <h3 class="content__titleText flex-start-center">
-        <div class="icon-location-purple icon-mr4"></div>
-        <span class="d-ib">美食品嚐</span>
-      </h3>
-    </div>
-    <!-- 最多 5 個 -->
-    <ul class="cardSpec__list flex-sb-center flex-wrap">
-    </ul>
-  </div>
-  <!-- 住宿推薦 -->
-  <div class="hotel mb-40">
-    <div class="content__title flex-sb-center">
-      <h3 class="content__titleText flex-start-center">
-        <div class="icon-location-purple icon-mr4"></div>
-        <span class="d-ib">住宿推薦</span>
-      </h3>
-    </div>
-    <!-- 最多 5 個 -->
-    <ul class="cardSpec__list flex-sb-center flex-wrap">
-    </ul>
-  </div>
-  <!-- 活動快訊 -->
-  <div class="active mb-40">
-    <div class="content__title flex-sb-center">
-      <h3 class="content__titleText flex-start-center">
-        <div class="icon-location-purple icon-mr4"></div>
-        <span class="d-ib">活動快訊</span>
-      </h3>
-    </div>
-    <!-- 最多 5 個 -->
-    <ul class="cardFull__list">
-    </ul>
-  </div>
-</div>
-`
 
 // ----- 預設連結並渲染畫面 -----
 window.onload = function () {
@@ -109,7 +36,7 @@ function renderByUrl(url) {
   hashParams.shift()
   console.log(hashParams)
 
-  // 網址轉換內容
+  // 主頁路由管理
   if (url === "" || url === "#/" || url === "#/home") {
     // 主頁 Content HTML
     content.innerHTML = HOME_defaultHTML
@@ -122,26 +49,39 @@ function renderByUrl(url) {
   }
 }
 
+// 找參數可用 new URLSearchParams
+// 路由管理
 function ROUTE_handler(hashArray) {
-  const [sort, ...otherParams] = hashArray
-  switch (sort) {
-    case 'spot':
-      // console.log('分類是', sort)
-      SPOT_router(hashArray)
-      break
-    case 'food':
-      console.log('分類是', sort)
-      break
-    case 'hotel':
-      console.log('分類是', sort)
-      break
-    case 'active':
-      console.log('分類是', sort)
-      break
-    default:
-      content.innerHTML = /*html*/`
-        <h2>找不到頁面</h2>
-      `
+  const [sort, city, id] = hashArray
+  console.log('分類是', sort)
+
+  if (city && !id) {
+    console.log('沒有ID')
+    const { spotAll, spotCity } = SPOT_apiRequest()
+    // 篩選頁面 HTML 初始化
+    content.innerHTML = FILTER_defaultHTML
+
+    // 篩選頁面的標題
+    const filterTitle = document.querySelector('.filterPage__title')
+
+    // 是否為關鍵字搜尋 ?q='keyword' ( false 為是 )
+    const cityStatus = cities.some(item => item['en'] === city)
+    if (!cityStatus) {
+      console.log('關鍵字搜尋')
+    } else {
+      console.log('全部或區域搜尋')
+    }
+  }
+  else if (id) {
+    console.log('有ID')
+    // 介紹頁面 HTML 初始化
+    content.innerHTML = PAGE_defaultHTML
+
+    // 回上一頁
+    const PAGE_backBtn = document.querySelector('.title__backBtn')
+    PAGE_backBtn.addEventListener('click', function (e) {
+      history.back()
+    }, false)
   }
 }
 
@@ -154,3 +94,5 @@ function ROUTE_handler(hashArray) {
 window.addEventListener('hashchange', function (e) {
   renderByUrl(location.hash)
 })
+
+export { renderByUrl }

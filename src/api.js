@@ -42,12 +42,15 @@ export const SPOT_apiRequest = () => {
   const spotIdFilter = id => spotRequest.get(`?$filter=ID eq ${id}&$format=JSON`)
   // 取隨機首幾筆 (必須有照片)
   const spotAllTop = (top, skip) => spotRequest.get(`?$filter=Picture/PictureUrl1 ne null&$top=${top}&$skip=${skip}&$format=JSON`)
+  // 取得全台景點
+  const spotAll = () => spotRequest.get(`?$filter=Picture/PictureUrl1 ne null&$format=JSON`)
   // 取得城市景點
   const spotCity = city => spotRequest.get(`/${city}?$format=JSON`)
   // 取得附近景點
-  const spotNear = (lat, lon) => spotRequest.get(`?$spatialFilter=nearby(${lat},${lon},1000)&$format=JSON
+  const spotNear = (lat, lon, distance) => spotRequest.get(`?$spatialFilter=nearby(${lat},${lon},${distance})&$format=JSON
   `)
-  return { spotAllFilter, spotIdFilter, spotAllTop, spotCity, spotNear }
+
+  return { spotAllFilter, spotIdFilter, spotAllTop, spotAll, spotCity, spotNear }
 }
 
 // 美食 api

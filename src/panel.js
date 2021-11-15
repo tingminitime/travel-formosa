@@ -1,29 +1,5 @@
-import { SORT_apiRequest } from "./api.js"
-
-let cities = [
-  { en: 'Keelung', zh: '基隆市', name: '基隆', area: 'north' },
-  { en: 'Taipei', zh: '臺北市', name: '台北', area: 'north' },
-  { en: 'NewTaipei', zh: '新北市', name: '新北', area: 'north' },
-  { en: 'Taoyuan', zh: '桃園市', name: '桃園', area: 'north' },
-  { en: 'Hsinchu', zh: '新竹市', name: '竹市', area: 'north' },
-  { en: 'HsinchuCounty', zh: '新竹縣', name: '竹縣', area: 'north' },
-  { en: 'YilanCounty', zh: '宜蘭縣', name: '宜蘭', area: 'north' },
-  { en: 'MiaoliCounty', zh: '苗栗縣', name: '苗栗', area: 'central' },
-  { en: 'Taichung', zh: '臺中市', name: '台中', area: 'central' },
-  { en: 'ChanghuaCounty', zh: '彰化縣', name: '彰化', area: 'central' },
-  { en: 'NantouCounty', zh: '南投縣', name: '南投', area: 'central' },
-  { en: 'YunlinCounty', zh: '雲林縣', name: '雲林', area: 'central' },
-  { en: 'ChiayiCounty', zh: '嘉義縣', name: '嘉縣', area: 'south' },
-  { en: 'Chiayi', zh: '嘉義市', name: '嘉市', area: 'south' },
-  { en: 'Tainan', zh: '臺南市', name: '台南', area: 'south' },
-  { en: 'Kaohsiung', zh: '高雄市', name: '高雄', area: 'south' },
-  { en: 'PingtungCounty', zh: '屏東縣', name: '屏東', area: 'south' },
-  { en: 'HualienCounty', zh: '花蓮縣', name: '花蓮', area: 'east' },
-  { en: 'TaitungCounty', zh: '臺東縣', name: '臺東', area: 'east' },
-  { en: 'KinmenCounty', zh: '金門縣', name: '金門', area: 'island' },
-  { en: 'PenghuCounty', zh: '澎湖縣', name: '澎湖', area: 'island' },
-  { en: 'LienchiangCounty', zh: '連江縣', name: '連江', area: 'island' },
-]
+import { renderByUrl } from './router.js'
+import { cities } from './module/template.js'
 
 const body = document.querySelector('body')
 const panel = document.querySelector('.panel')
@@ -121,12 +97,12 @@ function themeSelect(e) {
 }
 
 // 搜尋 Task
-let filterObj = {
-  keyword: '',
-  city: '',
-  sort: ''
-}
 function searchHandler() {
+  let filterObj = {
+    keyword: '',
+    city: '',
+    sort: ''
+  }
   // 檢查 精選主題 是否有選擇
   const themeBtn = document.querySelectorAll('.theme__btn')
   const themeSelectStatus = [...themeBtn].every(item => {
@@ -150,6 +126,11 @@ function searchHandler() {
   })
   filterObj['sort'] = selectThemeBtn.dataset.sort
 
+  const { keyword, city, sort } = filterObj
+  const url = keyword ? `#/${sort}/${city}?q=${keyword}` : `#/${sort}/${city}`
+  console.log(url)
+  history.pushState(null, null, url)
+  renderByUrl(location.hash)
   console.log(filterObj)
 }
 
@@ -163,9 +144,6 @@ areaSection.addEventListener('click', selectCity, false)
 citySelect.addEventListener('click', clearCity, false)
 themeList.addEventListener('click', themeSelect, false)
 search.addEventListener('click', searchHandler, false)
-
-// ----- Export -----
-export { filterObj }
 
 // ----- Content -----
 // 假資料待 Api get

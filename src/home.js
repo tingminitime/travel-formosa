@@ -4,32 +4,9 @@ import {
   HOTEL_apiRequest,
   ACTIVITY_apiRequest
 } from "./api.js";
+import { cities } from './module/template.js'
 
 export const HOME_render = () => {
-  const cities = [
-    { en: 'Keelung', zh: '基隆市', name: '基隆', area: 'north' },
-    { en: 'Taipei', zh: '臺北市', name: '台北', area: 'north' },
-    { en: 'NewTaipei', zh: '新北市', name: '新北', area: 'north' },
-    { en: 'Taoyuan', zh: '桃園市', name: '桃園', area: 'north' },
-    { en: 'Hsinchu', zh: '新竹市', name: '竹市', area: 'north' },
-    { en: 'HsinchuCounty', zh: '新竹縣', name: '竹縣', area: 'north' },
-    { en: 'YilanCounty', zh: '宜蘭縣', name: '宜蘭', area: 'north' },
-    { en: 'MiaoliCounty', zh: '苗栗縣', name: '苗栗', area: 'central' },
-    { en: 'Taichung', zh: '臺中市', name: '台中', area: 'central' },
-    { en: 'ChanghuaCounty', zh: '彰化縣', name: '彰化', area: 'central' },
-    { en: 'NantouCounty', zh: '南投縣', name: '南投', area: 'central' },
-    { en: 'YunlinCounty', zh: '雲林縣', name: '雲林', area: 'central' },
-    { en: 'ChiayiCounty', zh: '嘉義縣', name: '嘉縣', area: 'south' },
-    { en: 'Chiayi', zh: '嘉義市', name: '嘉市', area: 'south' },
-    { en: 'Tainan', zh: '臺南市', name: '台南', area: 'south' },
-    { en: 'Kaohsiung', zh: '高雄市', name: '高雄', area: 'south' },
-    { en: 'PingtungCounty', zh: '屏東縣', name: '屏東', area: 'south' },
-    { en: 'HualienCounty', zh: '花蓮縣', name: '花蓮', area: 'east' },
-    { en: 'TaitungCounty', zh: '臺東縣', name: '臺東', area: 'east' },
-    { en: 'KinmenCounty', zh: '金門縣', name: '金門', area: 'island' },
-    { en: 'PenghuCounty', zh: '澎湖縣', name: '澎湖', area: 'island' },
-    { en: 'LienchiangCounty', zh: '連江縣', name: '連江', area: 'island' },
-  ]
 
   const noImageUrl = 'img/noimage.png'
 
@@ -77,7 +54,7 @@ export const HOME_render = () => {
       html += `
         <div class="swiper-slide swiper-slide-hotSpot">
           <a
-            href="#/spot/${cityEnFilter(item['City'])}/${item['ID']}"
+            href="#/ScenicSpot/${cityEnFilter(item['City'])}/${item['ID']}"
             class="card d-b"
           >
             <div class="card-img">
@@ -119,7 +96,7 @@ export const HOME_render = () => {
     const moreFood = `
   <li class="cardSpec__more card">
     <a
-      href="#/food/all"
+      href="#/Restaurant/all"
       class="cardSpec__moreText flex-center"
     ><span>更多美食...</span></a>
   </li>
@@ -140,7 +117,7 @@ export const HOME_render = () => {
       html += `
       <li class="cardSpec__item">
         <a
-          href="#/food/${cityEnFilter(item['City'])}/${item['ID']}"
+          href="#/Restaurant/${cityEnFilter(item['City'])}/${item['ID']}"
           class="card cardSpec d-b"
         >
           <div class="cardSpec-img cardSpec-mask">
@@ -183,7 +160,7 @@ export const HOME_render = () => {
     const moreHotel = `
     <li class="cardSpec__more card">
       <a
-        href="#/hotel/all"
+        href="#/Hotel/all"
         class="cardSpec__moreText flex-center"
       ><span>更多住宿...</span></a>
     </li>
@@ -204,7 +181,7 @@ export const HOME_render = () => {
       html += `
       <li class="cardSpec__item">
         <a
-          href="#/hotel/${cityEnFilter(item['City'])}/${item['ID']}"
+          href="#/Hotel/${cityEnFilter(item['City'])}/${item['ID']}"
           class="card cardSpec d-b"
         >
           <div class="cardSpec-img cardSpec-mask">
@@ -246,7 +223,7 @@ export const HOME_render = () => {
     const { activityAllTop } = ACTIVITY_apiRequest()
     const moreActivity = `
       <a
-        href="#/active/all"
+        href="#/Activity/all"
         class="cardSpec__moreText cardSpec__moreText-full flex-center"
       >
         <span>更多活動...</span>
@@ -276,7 +253,7 @@ export const HOME_render = () => {
       html += `
     <li class="cardFull__item mb-24">
       <a
-        href="#/active/${cityEnFilter(item['City'])}/${item['ID']}"
+        href="#/Activity/${cityEnFilter(item['City'])}/${item['ID']}"
         class="cardFull flex-sb-center"
       >
         <div class="cardFull__info">
