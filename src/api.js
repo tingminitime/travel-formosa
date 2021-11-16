@@ -28,16 +28,19 @@ const activityRequest = axios.create({
   headers: GetAuthorizationHeader()
 })
 
-// 全部分類 api
+// 自訂分類 api
 export const SORT_apiRequest = () => {
-  const sortFilter = sort => sortRequest.get()
-  return { sortFilter }
+  const sortAllFilter = (sort, keyword) => sortRequest.get(`/${sort}?$filter=contains(Name,'${keyword}')&$format=JSON`)
+  const sortCityFilter = (sort, city, keyword) => sortRequest.get(`/${sort}/${city}?$filter=contains(Name,'${keyword}')&$format=JSON`)
+  return { sortAllFilter, sortCityFilter }
 }
 
 // 景點 api
 export const SPOT_apiRequest = () => {
-  // 關鍵字搜尋
+  // 關鍵字搜尋 - 全部
   const spotAllFilter = keyword => spotRequest.get(`?$filter=contains(Name,'${keyword}')&$format=JSON`)
+  // 關鍵字搜尋 - 城市
+  const spotCityFilter = (city, keyword) => spotRequest.get(`${city}?$filter=contains(Name,'${keyword}')&$format=JSON`)
   // 點擊卡片 => ID搜尋
   const spotIdFilter = id => spotRequest.get(`?$filter=ID eq ${id}&$format=JSON`)
   // 取隨機首幾筆 (必須有照片)
@@ -50,7 +53,7 @@ export const SPOT_apiRequest = () => {
   const spotNear = (lat, lon, distance) => spotRequest.get(`?$spatialFilter=nearby(${lat},${lon},${distance})&$format=JSON
   `)
 
-  return { spotAllFilter, spotIdFilter, spotAllTop, spotAll, spotCity, spotNear }
+  return { spotAllFilter, spotCityFilter, spotIdFilter, spotAllTop, spotAll, spotCity, spotNear }
 }
 
 // 美食 api

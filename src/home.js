@@ -12,7 +12,9 @@ export const HOME_render = () => {
 
   // 找出 city 的 en
   function cityEnFilter(name) {
-    const targetCityEn = cities.find(item => item['zh'] === name)
+    // 更新 : 因為 api 資料有些沒有 city 欄位，改用地址取出縣市
+    const cityZh = name.slice(0, 3)
+    const targetCityEn = cities.find(item => item['zh'] === cityZh)
     return targetCityEn['en']
   }
 
@@ -54,7 +56,7 @@ export const HOME_render = () => {
       html += `
         <div class="swiper-slide swiper-slide-hotSpot">
           <a
-            href="#/ScenicSpot/${cityEnFilter(item['City'])}/${item['ID']}"
+            href="#/ScenicSpot/${cityEnFilter(item['City'] ? item['City'] : item['Address'])}/${item['ID']}"
             class="card d-b"
           >
             <div class="card-img">

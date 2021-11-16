@@ -97,12 +97,13 @@ function themeSelect(e) {
 }
 
 // 搜尋 Task
+let filterObj = {
+  keyword: '',
+  city: '',
+  sort: ''
+}
+
 function searchHandler() {
-  let filterObj = {
-    keyword: '',
-    city: '',
-    sort: ''
-  }
   // 檢查 精選主題 是否有選擇
   const themeBtn = document.querySelectorAll('.theme__btn')
   const themeSelectStatus = [...themeBtn].every(item => {
@@ -126,10 +127,12 @@ function searchHandler() {
   })
   filterObj['sort'] = selectThemeBtn.dataset.sort
 
+  // 搜尋後 => 變換 url hash
   const { keyword, city, sort } = filterObj
-  const url = keyword ? `#/${sort}/${city}?q=${keyword}` : `#/${sort}/${city}`
-  console.log(url)
+  const url = keyword ? `#/${sort}/${city}?search=${keyword}` : `#/${sort}/${city}`
+  // console.log(url)
   history.pushState(null, null, url)
+  // router 判斷渲染畫面
   renderByUrl(location.hash)
   console.log(filterObj)
 }
@@ -144,6 +147,9 @@ areaSection.addEventListener('click', selectCity, false)
 citySelect.addEventListener('click', clearCity, false)
 themeList.addEventListener('click', themeSelect, false)
 search.addEventListener('click', searchHandler, false)
+
+// ----- export -----
+export { filterObj }
 
 // ----- Content -----
 // 假資料待 Api get

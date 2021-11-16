@@ -120,8 +120,8 @@ const FILTER_defaultHTML = /* html */`
     <button class="filterPage__sortSelect mr-12">🔥 熱門程度</button>
     <button class="filterPage__sortSelect mr-12">👍 推薦</button>
   </div>
-  <div class="filterPage__cardRender">
-  </div>
+  <ul class="filterPage__list flex-sb-start flex-wrap mb-24">
+  </ul>
   <!-- 頁碼 -->
   <div class="filterPage__pagination flex-center mb-40">
     <button class="filterPage__pagination-prev mr-12">
