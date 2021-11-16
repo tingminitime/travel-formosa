@@ -124,33 +124,33 @@ const FILTER_defaultHTML = /* html */`
   </ul>
   <!-- 頁碼 -->
   <div class="filterPage__pagination flex-center mb-40">
-    <button class="filterPage__pagination-prev mr-12">
-      <span class="material-icons d-ib">
-        chevron_left
-      </span>
-    </button>
-    <ul class="filterPage__pagination-list flex-center">
-      <li class="filterPage__pagination-num flex-center">
-        <a href="javascript:;">1</a>
-      </li>
-      <li class="filterPage__pagination-num flex-center">
-        <a href="javascript:;">2</a>
-      </li>
-      <li class="filterPage__pagination-num flex-center">
-        <a href="javascript:;">3</a>
-      </li>
-      <li class="filterPage__pagination-omit flex-center">
-        <a href="javascript:;">...</a>
-      </li>
-      <li class="filterPage__pagination-num flex-center">
-        <a href="javascript:;">20</a>
-      </li>
-    </ul>
-    <button class="filterPage__pagination-next ml-12">
-      <span class="material-icons d-ib">
-        navigate_next
-      </span>
-    </button>
+  <button class="filterPage__pagination-prev mr-12">
+    <span class="material-icons d-ib">
+      chevron_left
+    </span>
+  </button>
+  <ul class="filterPage__pagination-list flex-center">
+    <li class="filterPage__pagination-num flex-center">
+      <a href="javascript:;">1</a>
+    </li>
+    <li class="filterPage__pagination-num flex-center">
+      <a href="javascript:;">2</a>
+    </li>
+    <li class="filterPage__pagination-num flex-center">
+      <a href="javascript:;">3</a>
+    </li>
+    <li class="filterPage__pagination-omit flex-center">
+      <a href="javascript:;">...</a>
+    </li>
+    <li class="filterPage__pagination-num flex-center">
+      <a href="javascript:;">20</a>
+    </li>
+  </ul>
+  <button class="filterPage__pagination-next ml-12">
+    <span class="material-icons d-ib">
+      navigate_next
+    </span>
+  </button>
   </div>
 </div>
 `
@@ -213,36 +213,35 @@ const PAGE_defaultHTML = /* html */`
 </div>
 `
 
-export { cities, HOME_defaultHTML, FILTER_defaultHTML, PAGE_defaultHTML }
+// Pagination
+const FILTER_paginationHTML = /* html */`
+<button class="filterPage__pagination-prev mr-12">
+  <span class="material-icons d-ib">
+    chevron_left
+  </span>
+</button>
+<ul class="filterPage__pagination-list flex-center">
+  <li class="filterPage__pagination-num flex-center">
+    <a href="javascript:;">1</a>
+  </li>
+  <li class="filterPage__pagination-num flex-center">
+    <a href="javascript:;">2</a>
+  </li>
+  <li class="filterPage__pagination-num flex-center">
+    <a href="javascript:;">3</a>
+  </li>
+  <li class="filterPage__pagination-omit flex-center">
+    <a href="javascript:;">...</a>
+  </li>
+  <li class="filterPage__pagination-num flex-center">
+    <a href="javascript:;">20</a>
+  </li>
+</ul>
+<button class="filterPage__pagination-next ml-12">
+  <span class="material-icons d-ib">
+    navigate_next
+  </span>
+</button>
+`
 
-// ----- 景點 Router => 從  #/spot 開始 -----
-// export const SPOT_router = (hashArray) => {
-//   const [sort, city, id] = hashArray
-//   console.log('分類是', sort)
-
-//   if (city && !id) {
-//     // 篩選頁面 HTML 初始化
-//     content.innerHTML = FILTER_defaultHTML
-
-//     // 篩選頁面的標題
-//     const filterTitle = document.querySelector('.filterPage__title')
-//     console.log(filterTitle)
-
-//     const { spotCity } = SPOT_apiRequest()
-
-//     console.log('沒有ID')
-
-//   }
-//   else if (id) {
-//     console.log('有ID')
-//     // 介紹頁面 HTML 初始化
-//     content.innerHTML = PAGE_defaultHTML
-
-//     // 回上一頁
-//     const PAGE_backBtn = document.querySelector('.title__backBtn')
-//     PAGE_backBtn.addEventListener('click', function (e) {
-//       history.back()
-//     }, false)
-//   }
-// }
-
+export { cities, HOME_defaultHTML, FILTER_defaultHTML, PAGE_defaultHTML, FILTER_paginationHTML }

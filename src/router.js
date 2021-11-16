@@ -13,10 +13,9 @@ import {
 import { HOME_render } from './home.js'
 import { INIT_swiper } from './module/swiper.js'
 import { cities } from './module/template.js'
-import { filterObj } from './panel.js'
+import getFilterResult from './module/filter.js'
 
 const content = document.querySelector('#content')
-const noImageUrl = 'img/noimage.png'
 
 // ----- 預設連結並渲染畫面 -----
 window.onload = function () {
@@ -91,16 +90,11 @@ function ROUTE_handler(hashArray) {
 async function ROUTE_keyword(routeObj) {
   try {
     let filterData = []
-    let pageState = {
-      itemPerPage: 9,
-      currentPage: ''
-    }
-
-    const filterList = document.querySelector('.filterPage__list')
     const { sort, odataCity, keyword } = routeObj
     const { sortAllFilter, sortCityFilter } = SORT_apiRequest()
     console.log(sort, odataCity, keyword)
 
+    // 取得關鍵字搜尋資料
     if (odataCity === 'all') {
       const sortAllFilterRes = await sortAllFilter(sort, keyword)
       filterData = sortAllFilterRes.data
@@ -111,78 +105,12 @@ async function ROUTE_keyword(routeObj) {
       console.log(filterData)
     }
 
-    // 要做一頁 9 個 card 的功能
-    switch (sort) {
-      case 'ScenicSpot':
-        console.log('關鍵字搜尋的分類是 ScenicSpot')
-        const FILTER_spotHTML = filterData.reduce((html, item) => {
-          html += `
-          <li class="filterPage__item mb-24">
-            <a
-              href="#/ScenicSpot/${cityEnFilter(item['City'] ? item['City'] : item['Address'])}/${item['ID']}"
-              class="card d-b"
-            >
-              <div class="card-img">
-                <button class="card-shareBtn"></button>
-                <img
-                  src=${item['Picture']['PictureUrl1'] ?
-              item['Picture']['PictureUrl1'] :
-              noImageUrl
-            }
-                  onerror="this.src='img/noimage.png'"
-                  alt="filter page item photo"
-                >
-              </div>
-              <div class="card-info">
-                <h3 class="card-title">${item['Name']}</h3>
-                <div class="card-otherInfo flex-start-center">
-                  <div class="card-location flex-start-center">
-                    <div class="icon-location icon-mr4"></div>
-                    <span class="card-otherInfoText">${item['City']}</span>
-                  </div>
-                  <div class="card-class flex-start-center">
-                    <div class="icon-tag icon-mr4"></div>
-                    <span class="card-otherInfoText">${item['Class1'] ? item['Class1'] : '未分類'}</span>
-                  </div>
-                </div>
-              </div>
-            </a>
-          </li>
-          `
-          return html
-        }, ``)
-        filterList.innerHTML = FILTER_spotHTML
-        break
-      case 'Restaurant':
-        console.log('關鍵字搜尋的分類是 Restaurant')
-        const FILTER_foodHTML = filterData.reduce((html, item) => {
-          html += `
-          `
-          return html
-        }, ``)
-        filterList.innerHTML = FILTER_foodHTML
-        break
-      case 'Hotel':
-        console.log('關鍵字搜尋的分類是 Hotel')
-        break
-      case 'Activity':
-        console.log('關鍵字搜尋的分類是 Activity')
-        break
-      default:
-        break
-    }
+    getFilterResult(filterData, sort)
   }
   catch (err) {
     console.error(err)
   }
 }
-
-// ----- 景點 keyword -----
-
-
-// ----- 美食 keyword -----
-// ----- 住宿 keyword -----
-// ----- 活動 keyword -----
 
 // ----- 監聽歷史紀錄變化 -----
 window.addEventListener('hashchange', function (e) {

@@ -5,38 +5,24 @@ import {
   ACTIVITY_apiRequest
 } from "./api.js";
 import { cities } from './module/template.js'
+import { cityEnFilter, randomNum, dateFormat } from './module/tool.js'
 
 export const HOME_render = () => {
 
   const noImageUrl = 'img/noimage.png'
 
   // 找出 city 的 en
-  function cityEnFilter(name) {
-    // 更新 : 因為 api 資料有些沒有 city 欄位，改用地址取出縣市
-    const cityZh = name.slice(0, 3)
-    const targetCityEn = cities.find(item => item['zh'] === cityZh)
-    return targetCityEn['en']
-  }
+  // function cityEnFilter(name) {
+  //   // 更新 : 因為 api 資料有些沒有 city 欄位，改用地址取出縣市
+  //   const cityZh = name.slice(0, 3)
+  //   const targetCityEn = cities.find(item => item['zh'] === cityZh)
+  //   return targetCityEn['en']
+  // }
 
   // 取得隨機數
-  function randomNum(num) {
-    return Math.floor(Math.random() * num)
-  }
-
-  // 時間格式
-  function parseDate(date) {
-    if (isNaN(Date.parse(date))) return ''
-    let timeStamp = Date.parse(date)
-    let targetDate = new Date(timeStamp)
-    const year = targetDate.getFullYear().toString()
-    const month = (targetDate.getMonth() + 1).toString()
-    const day = targetDate.getDate().toString()
-    const hour = targetDate.getHours().toString()
-    const min = targetDate.getMinutes() < 10 ?
-      '0' + targetDate.getMinutes() :
-      targetDate.getMinutes()
-    return { year, month, day, hour, min }
-  }
+  // function randomNum(num) {
+  //   return Math.floor(Math.random() * num)
+  // }
 
   // 首頁 - 熱門景點
   async function HOME_hotSpotRender() {
@@ -53,19 +39,16 @@ export const HOME_render = () => {
     // 熱門景點 渲染
     const HOME_hotSpotList = document.querySelector('.swiper-wrapper-hotSpot')
     const HOME_hotSpotHTML = data.reduce((html, item) => {
-      html += `
+      html += /* html */`
         <div class="swiper-slide swiper-slide-hotSpot">
           <a
-            href="#/ScenicSpot/${cityEnFilter(item['City'] ? item['City'] : item['Address'])}/${item['ID']}"
+            href="#/ScenicSpot/${cityEnFilter(item['City'] ?? item['Address'])}/${item['ID']}"
             class="card d-b"
           >
             <div class="card-img">
               <button class="card-shareBtn"></button>
               <img
-                data-src=${item['Picture']['PictureUrl1'] ?
-          item['Picture']['PictureUrl1'] :
-          noImageUrl
-        }
+                data-src=${item['Picture']['PictureUrl1'] ?? noImageUrl}
                 onerror="this.src='img/noimage.png'"
                 class="swiper-lazy"
               >
@@ -116,7 +99,7 @@ export const HOME_render = () => {
     // 美食品嚐 渲染
     const HOME_foodList = document.querySelector('.food > .cardSpec__list')
     const HOME_foodHTML = data.reduce((html, item) => {
-      html += `
+      html += /* html */`
       <li class="cardSpec__item">
         <a
           href="#/Restaurant/${cityEnFilter(item['City'])}/${item['ID']}"
@@ -126,10 +109,7 @@ export const HOME_render = () => {
             <button class="card-shareBtn"></button>
             <h3 class="cardSpec-title cardSpec-title-ab">${item['Name']}</h3>
             <img
-              src=${item['Picture']['PictureUrl1'] ?
-          item['Picture']['PictureUrl1'] :
-          noImageUrl
-        }
+              src=${item['Picture']['PictureUrl1'] ?? noImageUrl}
               onerror="this.src='img/noimage.png'"
               alt="food photo"
             >
@@ -180,7 +160,7 @@ export const HOME_render = () => {
     // 住宿推薦 渲染
     const HOME_hotelList = document.querySelector('.hotel > .cardSpec__list')
     const HOME_hotelHTML = data.reduce((html, item) => {
-      html += `
+      html += /* html */`
       <li class="cardSpec__item">
         <a
           href="#/Hotel/${cityEnFilter(item['City'])}/${item['ID']}"
@@ -189,10 +169,7 @@ export const HOME_render = () => {
           <div class="cardSpec-img cardSpec-mask">
             <button class="card-shareBtn"></button>
             <img
-              src=${item['Picture']['PictureUrl1'] ?
-          item['Picture']['PictureUrl1'] :
-          noImageUrl
-        }
+              src=${item['Picture']['PictureUrl1'] ?? noImageUrl}
               onerror="this.src='img/noimage.png'"
               alt="food photo"
             >
@@ -241,51 +218,44 @@ export const HOME_render = () => {
       .catch(err => console.error('(首頁)活動快訊 資料取得失敗', err))
 
     // 活動時間格式轉換
-    data.forEach(item => {
-      const { year: startYear, month: startMon, day: startDate } = parseDate(item['StartTime'])
-      const { year: endYear, month: endMon, day: endDate } = parseDate(item['EndTime'])
-      item['StartTime'] = `${startYear}-${startMon}-${startDate}`
-      item['EndTime'] = `${endYear}-${endMon}-${endDate}`
-    })
+    dateFormat(data)
+
     console.log('(首頁)活動快訊', data)
 
     // 活動快訊 渲染
     const HOME_activityList = document.querySelector('.active > .cardFull__list')
     const HOME_activityHTML = data.reduce((html, item) => {
-      html += `
-    <li class="cardFull__item mb-24">
-      <a
-        href="#/Activity/${cityEnFilter(item['City'])}/${item['ID']}"
-        class="cardFull flex-sb-center"
-      >
-        <div class="cardFull__info">
-          <h3 class="cardFull__title">${item['Name']}</h3>
-          <div class="cardFull__location flex-start-center">
-            <div class="icon-location icon-mr4"></div>
-            <p class="cardFull__otherInfoText">
-              ${item['City']}
-            </p>
+      html += /* html */`
+      <li class="cardFull__item mb-24">
+        <a
+          href="#/Activity/${cityEnFilter(item['City'])}/${item['ID']}"
+          class="cardFull flex-sb-center"
+        >
+          <div class="cardFull__info">
+            <h3 class="cardFull__title">${item['Name']}</h3>
+            <div class="cardFull__location flex-start-center">
+              <div class="icon-location icon-mr4"></div>
+              <p class="cardFull__otherInfoText">
+                ${item['City']}
+              </p>
+            </div>
+            <div class="cardFull__date flex-start-center">
+              <div class="icon-time icon-mr4"></div>
+              <p class="cardFull__otherInfoText">
+                ${item['StartTime']} ~ ${item['EndTime']}
+              </p>
+            </div>
           </div>
-          <div class="cardFull__date flex-start-center">
-            <div class="icon-time icon-mr4"></div>
-            <p class="cardFull__otherInfoText">
-              ${item['StartTime']} ~ ${item['EndTime']}
-            </p>
+          <div class="cardFull__img">
+            <img
+              src=${item['Picture']['PictureUrl1'] ?? noImageUrl}
+              onerror="this.src='img/noimage.png'"
+              alt="active photo"
+            >
           </div>
-        </div>
-        <div class="cardFull__img">
-          <img
-            src=${item['Picture']['PictureUrl1'] ?
-          item['Picture']['PictureUrl1'] :
-          noImageUrl
-        }
-            onerror="this.src='img/noimage.png'"
-            alt="active photo"
-          >
-        </div>
-      </a>
-    </li>
-    `
+        </a>
+      </li>
+      `
       return html
     }, ``)
     HOME_activityList.innerHTML = HOME_activityHTML + moreActivity
