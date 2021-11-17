@@ -203,21 +203,6 @@ const FILTER_fewModeHTML = /* html */`
 <li class="filterPage__pagination-num flex-center">
   <a href="javascript:;">1</a>
 </li>
-<li class="filterPage__pagination-num flex-center">
-  <a href="javascript:;">2</a>
-</li>
-<li class="filterPage__pagination-num flex-center">
-  <a href="javascript:;">3</a>
-</li>
-<li class="filterPage__pagination-num flex-center">
-  <a href="javascript:;">4</a>
-</li>
-<li class="filterPage__pagination-num flex-center">
-  <a href="javascript:;">5</a>
-</li>
-<li class="filterPage__pagination-num flex-center">
-  <a href="javascript:;">6</a>
-</li>
 `
 
 // Pagination - Front page mode

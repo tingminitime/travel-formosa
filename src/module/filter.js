@@ -200,10 +200,18 @@ export default function getFilterResult(data, sort) {
   function paginationHandler(pageState) {
     const paginationList = document.querySelector('.filterPage__pagination-list')
     const { maxPages, currentPage } = pageState
-    maxPages <= 6 ? paginationList.innerHTML = FILTER_fewModeHTML
-      : currentPage <= 2 ? paginationList.innerHTML = FILTER_frontModeHTML
-        : currentPage < maxPages - 2 ? paginationList.innerHTML = FILTER_middleModeHTML
-          : paginationList.innerHTML = FILTER_lastModeHTML
+    // maxPages <= 6 ? paginationList.innerHTML = FILTER_fewModeHTML
+    //   : currentPage <= 2 ? paginationList.innerHTML = FILTER_frontModeHTML
+    //     : currentPage < maxPages - 2 ? paginationList.innerHTML = FILTER_middleModeHTML
+    //       : paginationList.innerHTML = FILTER_lastModeHTML
+
+    if (maxPages <= 6) {
+      let accumulatorHTML = ''
+      for (let i = 0; i < maxPages; i++) {
+        accumulatorHTML += FILTER_fewModeHTML
+      }
+      paginationList.innerHTML = accumulatorHTML
+    }
   }
   paginationHandler(pageState)
 
