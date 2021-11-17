@@ -99,12 +99,12 @@ async function ROUTE_keyword(routeObj) {
     if (odataCity === 'all') {
       const sortAllFilterRes = await sortAllFilter(sort, keyword)
       filterData = sortAllFilterRes.data
-      console.log(filterData)
     } else {
       const sortCityFilterRes = await sortCityFilter(sort, odataCity, keyword)
       filterData = sortCityFilterRes.data
-      console.log(filterData)
     }
+    console.log('關鍵字搜尋資料 filterData: ', filterData)
+
     if (filterData.length === 0) {
       alert('查無結果，請重新輸入關鍵字搜尋。')
       keywordInput.focus()
