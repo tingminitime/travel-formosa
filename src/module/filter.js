@@ -7,6 +7,13 @@ export default function getFilterResult(data, sort) {
   const CARDS_COUNT_PER_PAGE = 9
   const maxPages = Math.ceil(data.length / CARDS_COUNT_PER_PAGE)
   let currentPage = 1
+  history.pushState(null, null, `${location.hash}&page=${currentPage}`)
+
+  let pageState = {
+    CARDS_COUNT_PER_PAGE,
+    maxPages,
+    currentPage
+  }
 
   const renderData = data.slice(
     CARDS_COUNT_PER_PAGE * (currentPage - 1),
@@ -173,6 +180,16 @@ export default function getFilterResult(data, sort) {
       break
     default:
       break
+  }
+
+  // ----- 頁碼功能 ----- ## 要注意會偵測網址變更，要改善
+  // 1. 只有 6 頁以內 ( maxPages <= 6 )，僅用 maxPages 個頁碼，使用 FILTER_fewModeHTML
+  // 2. 超過 6 頁 ( maxPages > 6 )，以下條件判斷如何顯示頁碼 : 
+  // a. currentPage <= 2，使用 FILTER_frontModeHTML
+  // b. currentPage > 2 且 currentPage < maxPages - 2，使用 FILTER_middleModeHTML
+  // c. currentPage >= maxPages - 2，使用 FILTER_lastModeHTML
+  function paginationHandler(pageState) {
+
   }
 
 }

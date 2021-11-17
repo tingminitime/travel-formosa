@@ -10,19 +10,7 @@ import { cityEnFilter, randomNum, dateFormat } from './module/tool.js'
 export const HOME_render = () => {
 
   const noImageUrl = 'img/noimage.png'
-
-  // 找出 city 的 en
-  // function cityEnFilter(name) {
-  //   // 更新 : 因為 api 資料有些沒有 city 欄位，改用地址取出縣市
-  //   const cityZh = name.slice(0, 3)
-  //   const targetCityEn = cities.find(item => item['zh'] === cityZh)
-  //   return targetCityEn['en']
-  // }
-
-  // 取得隨機數
-  // function randomNum(num) {
-  //   return Math.floor(Math.random() * num)
-  // }
+  let HOME_API_STATUS = []
 
   // 首頁 - 熱門景點
   async function HOME_hotSpotRender() {
@@ -33,7 +21,10 @@ export const HOME_render = () => {
       .then(res => {
         data = res.data
       })
-      .catch(err => console.error('(首頁)熱門景點 資料取得失敗', err))
+      .catch(err => {
+        console.error('(首頁)熱門景點 資料取得失敗', err)
+        HOME_API_STATUS.push(false)
+      })
     console.log('(首頁)熱門景點', data)
 
     // 熱門景點 渲染
@@ -93,7 +84,10 @@ export const HOME_render = () => {
       .then(res => {
         data = res.data
       })
-      .catch(err => console.error('(首頁)美食品嚐 資料取得失敗', err))
+      .catch(err => {
+        console.error('(首頁)美食品嚐 資料取得失敗', err)
+        HOME_API_STATUS.push(false)
+      })
     console.log('(首頁)美食品嚐', data)
 
     // 美食品嚐 渲染
@@ -154,7 +148,10 @@ export const HOME_render = () => {
       .then(res => {
         data = res.data
       })
-      .catch(err => console.error('(首頁)住宿推薦 資料取得失敗', err))
+      .catch(err => {
+        console.error('(首頁)住宿推薦 資料取得失敗', err)
+        HOME_API_STATUS.push(false)
+      })
     console.log('(首頁)住宿推薦', data)
 
     // 住宿推薦 渲染
@@ -215,7 +212,10 @@ export const HOME_render = () => {
       .then(res => {
         data = res.data
       })
-      .catch(err => console.error('(首頁)活動快訊 資料取得失敗', err))
+      .catch(err => {
+        console.error('(首頁)活動快訊 資料取得失敗', err)
+        HOME_API_STATUS.push(false)
+      })
 
     // 活動時間格式轉換
     dateFormat(data)
@@ -265,4 +265,7 @@ export const HOME_render = () => {
   HOME_foodRender()
   HOME_hotelRender()
   HOME_activityRender()
+
+  // HOME_API_STATUS.length ? console.log('資料取得失敗', HOME_API_STATUS) : []
+  console.log(HOME_API_STATUS)
 }

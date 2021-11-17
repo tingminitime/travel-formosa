@@ -124,33 +124,18 @@ const FILTER_defaultHTML = /* html */`
   </ul>
   <!-- 頁碼 -->
   <div class="filterPage__pagination flex-center mb-40">
-  <button class="filterPage__pagination-prev mr-12">
-    <span class="material-icons d-ib">
-      chevron_left
-    </span>
-  </button>
-  <ul class="filterPage__pagination-list flex-center">
-    <li class="filterPage__pagination-num flex-center">
-      <a href="javascript:;">1</a>
-    </li>
-    <li class="filterPage__pagination-num flex-center">
-      <a href="javascript:;">2</a>
-    </li>
-    <li class="filterPage__pagination-num flex-center">
-      <a href="javascript:;">3</a>
-    </li>
-    <li class="filterPage__pagination-omit flex-center">
-      <a href="javascript:;">...</a>
-    </li>
-    <li class="filterPage__pagination-num flex-center">
-      <a href="javascript:;">20</a>
-    </li>
-  </ul>
-  <button class="filterPage__pagination-next ml-12">
-    <span class="material-icons d-ib">
-      navigate_next
-    </span>
-  </button>
+    <button class="filterPage__pagination-prev mr-12">
+      <span class="material-icons d-ib">
+        chevron_left
+      </span>
+    </button>
+    <ul class="filterPage__pagination-list flex-center">
+    </ul>
+    <button class="filterPage__pagination-next ml-12">
+      <span class="material-icons d-ib">
+        navigate_next
+      </span>
+    </button>
   </div>
 </div>
 `
@@ -213,35 +198,97 @@ const PAGE_defaultHTML = /* html */`
 </div>
 `
 
-// Pagination
-const FILTER_paginationHTML = /* html */`
-<button class="filterPage__pagination-prev mr-12">
-  <span class="material-icons d-ib">
-    chevron_left
-  </span>
-</button>
-<ul class="filterPage__pagination-list flex-center">
-  <li class="filterPage__pagination-num flex-center">
-    <a href="javascript:;">1</a>
-  </li>
-  <li class="filterPage__pagination-num flex-center">
-    <a href="javascript:;">2</a>
-  </li>
-  <li class="filterPage__pagination-num flex-center">
-    <a href="javascript:;">3</a>
-  </li>
-  <li class="filterPage__pagination-omit flex-center">
-    <a href="javascript:;">...</a>
-  </li>
-  <li class="filterPage__pagination-num flex-center">
-    <a href="javascript:;">20</a>
-  </li>
-</ul>
-<button class="filterPage__pagination-next ml-12">
-  <span class="material-icons d-ib">
-    navigate_next
-  </span>
-</button>
+// Pagination - Few page mode
+const FILTER_fewModeHTML = /* html */`
+<li class="filterPage__pagination-num flex-center">
+  <a href="javascript:;">1</a>
+</li>
+<li class="filterPage__pagination-num flex-center">
+  <a href="javascript:;">2</a>
+</li>
+<li class="filterPage__pagination-num flex-center">
+  <a href="javascript:;">3</a>
+</li>
+<li class="filterPage__pagination-num flex-center">
+  <a href="javascript:;">4</a>
+</li>
+<li class="filterPage__pagination-num flex-center">
+  <a href="javascript:;">5</a>
+</li>
+<li class="filterPage__pagination-num flex-center">
+  <a href="javascript:;">6</a>
+</li>
 `
 
-export { cities, HOME_defaultHTML, FILTER_defaultHTML, PAGE_defaultHTML, FILTER_paginationHTML }
+// Pagination - Front page mode
+const FILTER_frontModeHTML = /* html */`
+<li class="filterPage__pagination-num flex-center">
+  <a href="javascript:;">1</a>
+</li>
+<li class="filterPage__pagination-num flex-center">
+  <a href="javascript:;">2</a>
+</li>
+<li class="filterPage__pagination-num flex-center">
+  <a href="javascript:;">3</a>
+</li>
+<li class="filterPage__pagination-omit flex-center">
+  <a href="javascript:;">...</a>
+</li>
+<li class="filterPage__pagination-num flex-center">
+  <a href="javascript:;">20</a>
+</li>
+`
+
+// Pagination - Middle page mode
+const FILTER_middleModeHTML = /* html */`
+<li class="filterPage__pagination-num flex-center">
+  <a href="javascript:;">1</a>
+</li>
+<li class="filterPage__pagination-omit flex-center">
+  <a href="javascript:;">...</a>
+</li>
+<li class="filterPage__pagination-num flex-center">
+  <a href="javascript:;">3</a>
+</li>
+<li class="filterPage__pagination-num flex-center">
+  <a href="javascript:;">4</a>
+</li>
+<li class="filterPage__pagination-num flex-center">
+  <a href="javascript:;">5</a>
+</li>
+<li class="filterPage__pagination-omit flex-center">
+  <a href="javascript:;">...</a>
+</li>
+<li class="filterPage__pagination-num flex-center">
+  <a href="javascript:;">20</a>
+</li>
+`
+// Pagination - Last page mode
+const FILTER_lastModeHTML = /* html */`
+<li class="filterPage__pagination-num flex-center">
+  <a href="javascript:;">1</a>
+</li>
+<li class="filterPage__pagination-omit flex-center">
+  <a href="javascript:;">...</a>
+</li>
+<li class="filterPage__pagination-num flex-center">
+  <a href="javascript:;">18</a>
+</li>
+<li class="filterPage__pagination-num flex-center">
+  <a href="javascript:;">19</a>
+</li>
+<li class="filterPage__pagination-num flex-center">
+  <a href="javascript:;">20</a>
+</li>
+`
+
+export {
+  cities,
+  HOME_defaultHTML,
+  FILTER_defaultHTML,
+  PAGE_defaultHTML,
+  FILTER_fewModeHTML,
+  FILTER_frontModeHTML,
+  FILTER_middleModeHTML,
+  FILTER_lastModeHTML
+}

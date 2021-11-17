@@ -14,7 +14,7 @@ export function randomNum(num) {
   return Math.floor(Math.random() * num)
 }
 
-// 時間格式
+// 時間格式 ex : 2021-
 export function parseDate(date) {
   if (isNaN(Date.parse(date))) return ''
   let timeStamp = Date.parse(date)
