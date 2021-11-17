@@ -1,4 +1,4 @@
-import { cityEnFilter, dateFormat } from './tool.js'
+import { cityEnFilter, cityFilter, dateFormat } from './tool.js'
 
 export default function getFilterResult(data, sort) {
 
@@ -46,7 +46,7 @@ export default function getFilterResult(data, sort) {
               <div class="card-otherInfo flex-start-center">
                 <div class="card-location flex-start-center">
                   <div class="icon-location icon-mr4"></div>
-                  <span class="card-otherInfoText">${item['City']}</span>
+                  <span class="card-otherInfoText">${cityFilter(item['City'] ?? item['Address'])}</span>
                 </div>
                 <div class="card-class flex-start-center">
                   <div class="icon-tag icon-mr4"></div>

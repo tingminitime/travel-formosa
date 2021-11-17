@@ -1,12 +1,20 @@
 import { cities } from './template.js'
 
-// 找出 city 的 en
+// 找出 city 的 en (網址篩選用)
 export function cityEnFilter(name) {
   // 更新 : 因為 api 資料有些沒有 city 欄位，改用地址取出縣市
-  if (name === undefined) return 'all'
+  name ?? 'all'
   const cityZh = name.slice(0, 3)
   const targetCityEn = cities.find(item => item['zh'] === cityZh)
   return targetCityEn['en']
+}
+
+// 找出 city (顯示用)
+export function cityFilter(name) {
+  // 更新 : 因為 api 資料有些沒有 city 欄位，改用地址取出縣市
+  if (name === undefined) return '未標示'
+  const cityZh = name.slice(0, 3)
+  return cityZh
 }
 
 // 取得隨機數

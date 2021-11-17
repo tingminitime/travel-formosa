@@ -5,7 +5,7 @@ import {
   ACTIVITY_apiRequest
 } from "./api.js";
 import { cities } from './module/template.js'
-import { cityEnFilter, randomNum, dateFormat } from './module/tool.js'
+import { cityEnFilter, cityFilter, randomNum, dateFormat } from './module/tool.js'
 
 export const HOME_render = () => {
 
@@ -50,7 +50,7 @@ export const HOME_render = () => {
               <div class="card-otherInfo flex-start-center">
                 <div class="card-location flex-start-center">
                   <div class="icon-location icon-mr4"></div>
-                  <span class="card-otherInfoText">${item['City']}</span>
+                  <span class="card-otherInfoText">${cityFilter(item['City'] ?? item['Address'])}</span>
                 </div>
                 <div class="card-class flex-start-center">
                   <div class="icon-tag icon-mr4"></div>

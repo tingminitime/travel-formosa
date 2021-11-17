@@ -15,7 +15,7 @@ const toggleIcon = document.querySelector('.citySelect__toggleIcon')
 const filterList = document.querySelectorAll('.citySelect__filterList')
 const cityName = document.querySelector('.citySelect__cityName')
 // 搜尋關鍵字 input
-// const searchKeyword = document.querySelector('.search__input')
+const keywordInput = document.querySelector('.search__input')
 // 精選主題
 const themeList = document.querySelector('.theme__list')
 // 搜尋按鈕
@@ -147,6 +147,10 @@ areaSection.addEventListener('click', selectCity, false)
 citySelect.addEventListener('click', clearCity, false)
 themeList.addEventListener('click', themeSelect, false)
 search.addEventListener('click', searchHandler, false)
+keywordInput.addEventListener('keyup', function (e) {
+  if (e.keyCode === 13) searchHandler()
+  else return
+}, false)
 
 // ----- export -----
 export { filterObj }

@@ -16,6 +16,7 @@ import { cities } from './module/template.js'
 import getFilterResult from './module/filter.js'
 
 const content = document.querySelector('#content')
+const keywordInput = document.querySelector('.search__input')
 
 // ----- 預設連結並渲染畫面 -----
 window.onload = function () {
@@ -99,18 +100,15 @@ async function ROUTE_keyword(routeObj) {
       const sortAllFilterRes = await sortAllFilter(sort, keyword)
       filterData = sortAllFilterRes.data
       console.log(filterData)
-      if (filterData.length === 0) {
-        alert('查無結果，請重新輸入關鍵字搜尋。')
-        return
-      }
     } else {
       const sortCityFilterRes = await sortCityFilter(sort, odataCity, keyword)
       filterData = sortCityFilterRes.data
       console.log(filterData)
-      if (filterData.length === 0) {
-        alert('查無結果，請重新輸入關鍵字搜尋。')
-        return
-      }
+    }
+    if (filterData.length === 0) {
+      alert('查無結果，請重新輸入關鍵字搜尋。')
+      keywordInput.focus()
+      return
     }
     getFilterResult(filterData, sort)
   }
@@ -121,8 +119,9 @@ async function ROUTE_keyword(routeObj) {
 
 // ----- 監聽歷史紀錄變化 -----
 window.addEventListener('hashchange', function (e) {
+  if (location.hash.includes('&page=')) return
+  else renderByUrl(location.hash)
   console.log('偵測網址變更')
-  renderByUrl(location.hash)
-})
+}, false)
 
 export { renderByUrl }
