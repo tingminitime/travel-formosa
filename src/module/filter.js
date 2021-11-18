@@ -31,8 +31,19 @@ export default function getFilterResult(data, sort) {
     {
       className: 'filterPage__pagination-num flex-center',
       content: currentPage
-    }
+    },
+    {
+      className: 'filterPage__pagination-omit flex-center',
+      content: '...'
+    },
   ]
+
+  function getPageInfos(className, content) {
+    return {
+      className: className,
+      content: content
+    };
+  }
 
   function PAGE_handler() {
 
@@ -46,8 +57,15 @@ export default function getFilterResult(data, sort) {
     elData.forEach(el => {
       el_li = el_li.cloneNode(false)
       el_a = el_a.cloneNode(false)
-      el_li.setAttribute('class', '')
-      aEle.setAttribute("href", "javascript:;");
+      el_a.setAttribute('href', 'javascript:;');
+      if (el.className !== 'filterPage__pagination-num') {
+        el_li.setAttribute('class', 'filterPage__pagination-omit flex-center');
+      } else {
+        el_li.setAttribute("class", el.className + ' flex-center');
+      }
+      el_a.innerHTML = el.content;
+      liEle.appendChild(aEle);
+      fragment.appendChild(liEle);
     })
   }
 
