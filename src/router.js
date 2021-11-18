@@ -119,6 +119,7 @@ async function ROUTE_keyword(routeObj) {
 
 // ----- 監聽歷史紀錄變化 -----
 window.addEventListener('hashchange', function (e) {
+  // Filter 換頁不觸發 renderByUrl
   if (location.hash.includes('&page=')) return
   else renderByUrl(location.hash)
   console.log('偵測網址變更')

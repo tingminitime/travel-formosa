@@ -120,7 +120,7 @@ const FILTER_defaultHTML = /* html */`
     <button class="filterPage__sortSelect mr-12">🔥 熱門程度</button>
     <button class="filterPage__sortSelect mr-12">👍 推薦</button>
   </div>
-  <ul class="filterPage__list flex-sb-start flex-wrap mb-24">
+  <ul class="filterPage__list flex flex-wrap mb-24">
   </ul>
   <!-- 頁碼 -->
   <div class="filterPage__pagination flex-center mb-40">
@@ -208,62 +208,62 @@ const FILTER_fewModeHTML = /* html */`
 // Pagination - Front page mode
 const FILTER_frontModeHTML = /* html */`
 <li class="filterPage__pagination-num flex-center">
+  <a href="javascript:;">F</a>
+</li>
+<li class="filterPage__pagination-num flex-center">
   <a href="javascript:;">1</a>
 </li>
 <li class="filterPage__pagination-num flex-center">
-  <a href="javascript:;">2</a>
-</li>
-<li class="filterPage__pagination-num flex-center">
-  <a href="javascript:;">3</a>
+  <a href="javascript:;">1</a>
 </li>
 <li class="filterPage__pagination-omit flex-center">
   <a href="javascript:;">...</a>
 </li>
 <li class="filterPage__pagination-num flex-center">
-  <a href="javascript:;">20</a>
+  <a href="javascript:;">L</a>
 </li>
 `
 
 // Pagination - Middle page mode
 const FILTER_middleModeHTML = /* html */`
 <li class="filterPage__pagination-num flex-center">
+  <a href="javascript:;">F</a>
+</li>
+<li class="filterPage__pagination-omit flex-center">
+  <a href="javascript:;">...</a>
+</li>
+<li class="filterPage__pagination-num flex-center">
+  <a href="javascript:;">1</a>
+</li>
+<li class="filterPage__pagination-num flex-center">
+  <a href="javascript:;">1</a>
+</li>
+<li class="filterPage__pagination-num flex-center">
   <a href="javascript:;">1</a>
 </li>
 <li class="filterPage__pagination-omit flex-center">
   <a href="javascript:;">...</a>
 </li>
 <li class="filterPage__pagination-num flex-center">
-  <a href="javascript:;">3</a>
-</li>
-<li class="filterPage__pagination-num flex-center">
-  <a href="javascript:;">4</a>
-</li>
-<li class="filterPage__pagination-num flex-center">
-  <a href="javascript:;">5</a>
-</li>
-<li class="filterPage__pagination-omit flex-center">
-  <a href="javascript:;">...</a>
-</li>
-<li class="filterPage__pagination-num flex-center">
-  <a href="javascript:;">20</a>
+  <a href="javascript:;">L</a>
 </li>
 `
 // Pagination - Last page mode
 const FILTER_lastModeHTML = /* html */`
 <li class="filterPage__pagination-num flex-center">
-  <a href="javascript:;">1</a>
+  <a href="javascript:;">F</a>
 </li>
 <li class="filterPage__pagination-omit flex-center">
   <a href="javascript:;">...</a>
 </li>
 <li class="filterPage__pagination-num flex-center">
-  <a href="javascript:;">18</a>
+  <a href="javascript:;">1</a>
 </li>
 <li class="filterPage__pagination-num flex-center">
-  <a href="javascript:;">19</a>
+  <a href="javascript:;">1</a>
 </li>
 <li class="filterPage__pagination-num flex-center">
-  <a href="javascript:;">20</a>
+  <a href="javascript:;">L</a>
 </li>
 `
 

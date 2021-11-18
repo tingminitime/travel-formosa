@@ -219,7 +219,6 @@ export const HOME_render = () => {
 
     // 活動時間格式轉換
     dateFormat(data)
-
     console.log('(首頁)活動快訊', data)
 
     // 活動快訊 渲染
@@ -261,11 +260,20 @@ export const HOME_render = () => {
     HOME_activityList.innerHTML = HOME_activityHTML + moreActivity
   }
 
-  HOME_hotSpotRender()
-  HOME_foodRender()
-  HOME_hotelRender()
-  HOME_activityRender()
+  async function task() {
+    try {
+      await HOME_hotSpotRender()
+      await HOME_foodRender()
+      await HOME_hotelRender()
+      await HOME_activityRender()
+    }
+    catch (err) {
+      console.error(err)
+      console.log(HOME_API_STATUS)
+    }
+  }
+  task()
 
   // HOME_API_STATUS.length ? console.log('資料取得失敗', HOME_API_STATUS) : []
-  console.log(HOME_API_STATUS)
+
 }

@@ -9,21 +9,50 @@ import {
 export default function getFilterResult(data, sort) {
 
   const filterList = document.querySelector('.filterPage__list')
+  const paginationBtn = document.querySelector('.filterPage__pagination-list')
   const noImageUrl = 'img/noimage.png'
+
   const CARDS_COUNT_PER_PAGE = 9
   const maxPages = Math.ceil(data.length / CARDS_COUNT_PER_PAGE)
   let currentPage = 1
   history.pushState(null, null, `${location.hash}&page=${currentPage}`)
 
-  let pageState = {
-    maxPages,
-    currentPage
-  }
-
   const renderData = data.slice(
     CARDS_COUNT_PER_PAGE * (currentPage - 1),
     CARDS_COUNT_PER_PAGE * currentPage
   )
+
+  let PAGE_className = {
+    num: 'filterPage__pagination-num flex-center',
+    omit: 'filterPage__pagination-omit flex-center'
+  }
+
+  let PAGE_htmlInfo = [
+    {
+      className: 'filterPage__pagination-num flex-center',
+      content: currentPage
+    }
+  ]
+
+  function PAGE_handler() {
+
+  }
+
+  // 建立 HTML 模板
+  function createHTML(elData) {
+    let fragment = document.createDocumentFragment()
+    let el_li = document.createElement('li')
+    let el_a = document.createElement('a')
+    elData.forEach(el => {
+      el_li = el_li.cloneNode(false)
+      el_a = el_a.cloneNode(false)
+      el_li.setAttribute('class', '')
+      aEle.setAttribute("href", "javascript:;");
+    })
+  }
+
+  FILTER_renderHTML(sort, renderData)
+  // initPagination(currentPage)
 
   // 依頁碼狀態及不同分類 => 渲染畫面
   function FILTER_renderHTML(sort, data) {
@@ -189,22 +218,19 @@ export default function getFilterResult(data, sort) {
         break
     }
   }
-  FILTER_renderHTML(sort, renderData)
 
   // ----- 頁碼功能 ----- ## 要注意會偵測網址變更，要改善
-  // 1. 只有 6 頁以內 ( maxPages <= 6 )，僅用 maxPages 個頁碼，使用 FILTER_fewModeHTML
-  // 2. 超過 6 頁 ( maxPages > 6 )，以下條件判斷如何顯示頁碼 : 
-  // a. currentPage <= 2，使用 FILTER_frontModeHTML
-  // b. currentPage > 2 且 currentPage < maxPages - 2，使用 FILTER_middleModeHTML
-  // c. currentPage >= maxPages - 2，使用 FILTER_lastModeHTML
-  function paginationHandler(pageState) {
-    const paginationList = document.querySelector('.filterPage__pagination-list')
-    const { maxPages, currentPage } = pageState
-    // maxPages <= 6 ? paginationList.innerHTML = FILTER_fewModeHTML
-    //   : currentPage <= 2 ? paginationList.innerHTML = FILTER_frontModeHTML
-    //     : currentPage < maxPages - 2 ? paginationList.innerHTML = FILTER_middleModeHTML
-    //       : paginationList.innerHTML = FILTER_lastModeHTML
+  function initPagination(currentPage) {
+    // 1. 只有 6 頁以內 ( maxPages <= 6 )，僅用 maxPages 個頁碼，使用 FILTER_fewModeHTML
+    // 2. 超過 6 頁 ( maxPages > 6 )，以下條件判斷如何顯示頁碼 : 
+    // a. currentPage <= 2，使用 FILTER_frontModeHTML
+    // b. currentPage > 2 且 currentPage < maxPages - 2，使用 FILTER_middleModeHTML
+    // c. currentPage >= maxPages - 2，使用 FILTER_lastModeHTML
 
+    const paginationList = document.querySelector('.filterPage__pagination-list')
+    console.log('目前 currentPage: ', currentPage)
+
+    // 判斷該 render 哪個頁碼 template
     if (maxPages <= 6) {
       let accumulatorHTML = ''
       for (let i = 0; i < maxPages; i++) {
@@ -212,7 +238,23 @@ export default function getFilterResult(data, sort) {
       }
       paginationList.innerHTML = accumulatorHTML
     }
+    else if (maxPages > 6 && currentPage <= 2) {
+      paginationList.innerHTML = FILTER_frontModeHTML
+    }
+    else if (maxPages - 2 > currentPage && currentPage > 2) {
+      paginationList.innerHTML = FILTER_middleModeHTML
+    }
+    else if (maxPages - 2 <= currentPage) {
+      paginationList.innerHTML = FILTER_lastModeHTML
+    }
+
   }
-  paginationHandler(pageState)
+
+  function setPage(e) {
+    console.log(e.target)
+  }
+
+  console.log(paginationBtn)
+  paginationBtn.addEventListener('click', setPage, false)
 
 }

@@ -1796,11 +1796,13 @@ button {
 .filterPage__item {
   width: \min(31.3333%, 330px);
   min-width: 229px;
+  margin-right: 2%;
 }
 
 @media (max-width: 767px) {
   .filterPage__item {
     width: 100%;
+    margin-right: 0;
   }
 }
 
