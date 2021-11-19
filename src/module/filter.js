@@ -13,6 +13,7 @@ export default function getFilterResult(data, sort) {
   const noImageUrl = 'img/noimage.png'
 
   const CARDS_COUNT_PER_PAGE = 9
+  let aroundCurr = 1
   const maxPages = Math.ceil(data.length / CARDS_COUNT_PER_PAGE)
   let currentPage = 1
   history.pushState(null, null, `${location.hash}&page=${currentPage}`)
@@ -23,17 +24,18 @@ export default function getFilterResult(data, sort) {
   )
 
   let PAGE_className = {
-    num: 'filterPage__pagination-num flex-center',
-    omit: 'filterPage__pagination-omit flex-center'
+    num: 'filterPage__pagination-num',
+    omit: 'filterPage__pagination-omit',
+    notCurrent: 'notCurrent'
   }
 
   let PAGE_htmlInfo = [
     {
-      className: 'filterPage__pagination-num flex-center',
+      className: 'current',
       content: currentPage
     },
     {
-      className: 'filterPage__pagination-omit flex-center',
+      className: 'filterPage__pagination-omit',
       content: '...'
     },
   ]
@@ -45,11 +47,7 @@ export default function getFilterResult(data, sort) {
     };
   }
 
-  function PAGE_handler() {
-
-  }
-
-  // 建立 HTML 模板
+  // 建立 HTML 模板 ( 傳陣列資料 )
   function createHTML(elData) {
     let fragment = document.createDocumentFragment()
     let el_li = document.createElement('li')
@@ -57,20 +55,64 @@ export default function getFilterResult(data, sort) {
     elData.forEach(el => {
       el_li = el_li.cloneNode(false)
       el_a = el_a.cloneNode(false)
-      el_a.setAttribute('href', 'javascript:;');
-      if (el.className !== 'filterPage__pagination-num') {
-        el_li.setAttribute('class', 'filterPage__pagination-omit flex-center');
-      } else {
-        el_li.setAttribute("class", el.className + ' flex-center');
-      }
-      el_a.innerHTML = el.content;
-      liEle.appendChild(aEle);
-      fragment.appendChild(liEle);
+      el_li.setAttribute('class', 'filterPage__pagination-item flex-center')
+      el_a.setAttribute('href', 'javascript:;')
+      el_a.setAttribute('class', el['className'])
+      el_a.innerHTML = el.content
+      el_li.appendChild(el_a)
+      fragment.appendChild(el_li)
     })
+    return fragment // <li><a>...</a></li>
   }
 
+  // 封裝兩個插入節點 ( 參數 fragment 為父層 node )
+  function addFragmentBefore(fragment, data) {
+    fragment.insertBefore(createHTML(data), fragment.firstChild)
+  }
+  function addFragmentAfter(fragment, data) {
+    fragment.appendChild(createHTML(data))
+  }
+
+  function renderNoEllipsis() {
+    let fragment = document.createDocumentFragment()
+    if (currentPage < aroundCurr + 1) {
+      // 在「前幾頁」狀態，依照 aroundCurr 數量決定 begin ~ end 渲染幾個 li > a
+      fragment.appendChild(renderDom(1, aroundCurr * 2 + 1))
+    } else if (currentPage > maxPages - aroundCurr) {
+      // 在「後幾頁」狀態，依照 aroundCurr 數量決定 begin ~ end 渲染幾個 li > a
+      fragment.appendChild(renderDom(maxPages - aroundCurr * 2, maxPages))
+    } else {
+      // 在「中間頁」狀態，依照 aroundCurr 數量決定 begin ~ end 渲染幾個 li > a
+      fragment.appendChild(renderDom(currentPage - aroundCurr * 2, currentPage + aroundCurr * 2))
+    }
+    return fragment
+  }
+
+  function renderEllipsis() {
+    let fragment = document.createDocumentFragment()
+    // 先在 fragment 裡面加入目前頁碼的 li
+    addFragmentAfter(fragment, [getPageInfos(PAGE_className['num'] + ' current', currentPage)])
+    for (let i = 1; i <= aroundCurr; i++) {
+      if (currentPage - i > 1) {
+
+      }
+    }
+  }
+
+  // fewMode 總頁數 <= 7 頁時使用
+  function renderDom(begin, end) {
+    let fragment = document.createDocumentFragment()
+    let str = '' // className
+    for (let i = begin; i <= end; i++) {
+      str = currentPage === i ? PAGE_className['num'] + ' current' : PAGE_className['num']
+      addFragmentAfter(fragment, [getPageInfos(str, i)])
+    }
+    return fragment
+  }
+
+
   FILTER_renderHTML(sort, renderData)
-  // initPagination(currentPage)
+  initPagination(currentPage)
 
   // 依頁碼狀態及不同分類 => 渲染畫面
   function FILTER_renderHTML(sort, data) {

@@ -200,70 +200,70 @@ const PAGE_defaultHTML = /* html */`
 
 // Pagination - Few page mode
 const FILTER_fewModeHTML = /* html */`
-<li class="filterPage__pagination-num flex-center">
+<li class="filterPage__pagination-item flex-center">
   <a href="javascript:;">1</a>
 </li>
 `
 
 // Pagination - Front page mode
 const FILTER_frontModeHTML = /* html */`
-<li class="filterPage__pagination-num flex-center">
-  <a href="javascript:;">F</a>
+<li class="filterPage__pagination-item flex-center">
+  <a href="javascript:;" class="filterPage__pagination-num">F</a>
 </li>
-<li class="filterPage__pagination-num flex-center">
-  <a href="javascript:;">1</a>
+<li class="filterPage__pagination-item flex-center">
+  <a href="javascript:;" class="filterPage__pagination-num">1</a>
 </li>
-<li class="filterPage__pagination-num flex-center">
-  <a href="javascript:;">1</a>
+<li class="filterPage__pagination-item flex-center">
+  <a href="javascript:;" class="filterPage__pagination-num">1</a>
 </li>
-<li class="filterPage__pagination-omit flex-center">
-  <a href="javascript:;">...</a>
+<li class="filterPage__pagination-item flex-center">
+  <a href="javascript:;" class="filterPage__pagination-omit">...</a>
 </li>
-<li class="filterPage__pagination-num flex-center">
-  <a href="javascript:;">L</a>
+<li class="filterPage__pagination-item flex-center">
+  <a href="javascript:;" class="filterPage__pagination-num">L</a>
 </li>
 `
 
 // Pagination - Middle page mode
 const FILTER_middleModeHTML = /* html */`
-<li class="filterPage__pagination-num flex-center">
-  <a href="javascript:;">F</a>
+<li class="filterPage__pagination-item flex-center">
+  <a href="javascript:;" class="filterPage__pagination-num">F</a>
 </li>
-<li class="filterPage__pagination-omit flex-center">
-  <a href="javascript:;">...</a>
+<li class="filterPage__pagination-item flex-center">
+  <a href="javascript:;" class="filterPage__pagination-omit">...</a>
 </li>
-<li class="filterPage__pagination-num flex-center">
-  <a href="javascript:;">1</a>
+<li class="filterPage__pagination-item flex-center">
+  <a href="javascript:;" class="filterPage__pagination-num">1</a>
 </li>
-<li class="filterPage__pagination-num flex-center">
-  <a href="javascript:;">1</a>
+<li class="filterPage__pagination-item flex-center">
+  <a href="javascript:;" class="filterPage__pagination-num">1</a>
 </li>
-<li class="filterPage__pagination-num flex-center">
-  <a href="javascript:;">1</a>
+<li class="filterPage__pagination-item flex-center">
+  <a href="javascript:;" class="filterPage__pagination-num">1</a>
 </li>
-<li class="filterPage__pagination-omit flex-center">
-  <a href="javascript:;">...</a>
+<li class="filterPage__pagination-item flex-center">
+  <a href="javascript:;" class="filterPage__pagination-omit">...</a>
 </li>
-<li class="filterPage__pagination-num flex-center">
-  <a href="javascript:;">L</a>
+<li class="filterPage__pagination-item flex-center">
+  <a href="javascript:;" class="filterPage__pagination-num">L</a>
 </li>
 `
 // Pagination - Last page mode
 const FILTER_lastModeHTML = /* html */`
-<li class="filterPage__pagination-num flex-center">
-  <a href="javascript:;">F</a>
+<li class="filterPage__pagination-item flex-center">
+  <a href="javascript:;"  class="filterPage__pagination-num">F</a>
 </li>
-<li class="filterPage__pagination-omit flex-center">
-  <a href="javascript:;">...</a>
+<li class="filterPage__pagination-item flex-center">
+  <a href="javascript:;"  class="filterPage__pagination-omit">...</a>
 </li>
-<li class="filterPage__pagination-num flex-center">
-  <a href="javascript:;">1</a>
+<li class="filterPage__pagination-item flex-center">
+  <a href="javascript:;"  class="filterPage__pagination-num">1</a>
 </li>
-<li class="filterPage__pagination-num flex-center">
-  <a href="javascript:;">1</a>
+<li class="filterPage__pagination-item flex-center">
+  <a href="javascript:;"  class="filterPage__pagination-num">1</a>
 </li>
-<li class="filterPage__pagination-num flex-center">
-  <a href="javascript:;">L</a>
+<li class="filterPage__pagination-item flex-center">
+  <a href="javascript:;"  class="filterPage__pagination-num">L</a>
 </li>
 `
 

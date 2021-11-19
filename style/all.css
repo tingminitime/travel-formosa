@@ -1817,42 +1817,35 @@ button {
 }
 
 .filterPage__pagination-prev, .filterPage__pagination-next, .filterPage__pagination-num {
-  width: 44px;
-  height: 44px;
-}
-
-.filterPage__pagination-prev, .filterPage__pagination-next, .filterPage__pagination-num > a {
   color: #3FB195;
   border: 1px solid #3FB195;
   border-radius: 8px;
 }
 
-.filterPage__pagination-prev:hover, .filterPage__pagination-next:hover, .filterPage__pagination-num > a:hover {
+.filterPage__pagination-prev:hover, .filterPage__pagination-next:hover, .filterPage__pagination-num:hover {
   color: #fff;
   background-color: #3FB195;
 }
 
-.filterPage__pagination-num > a {
-  width: 100%;
-}
-
-.filterPage__pagination-num > a.current {
-  color: #fff;
-  background-color: #3FB195;
+.filterPage__pagination-prev, .filterPage__pagination-next {
+  width: 44px;
+  height: 44px;
 }
 
 .filterPage__pagination-prev > span, .filterPage__pagination-next > span {
   vertical-align: middle;
 }
 
-.filterPage__pagination-num > a, .filterPage__pagination-omit {
+.filterPage__pagination-num, .filterPage__pagination-omit {
+  width: 44px;
   text-align: center;
   line-height: 44px;
+  color: #3FB195;
 }
 
-.filterPage__pagination-omit > a {
-  color: #3FB195;
-  width: 44px;
+.filterPage__pagination-num.current {
+  color: #fff;
+  background-color: #3FB195;
 }
 
 .nav {

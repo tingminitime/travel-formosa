@@ -204,26 +204,23 @@
         +mobile
           margin-left: 8px
     &-prev, &-next, &-num
-      width: 44px
-      height: 44px
-    &-prev, &-next, &-num > a
       color: $primaryGreen
       border: 1px solid $primaryGreen
       border-radius: 8px
       &:hover
         color: #fff
         background-color: $primaryGreen
-    &-num > a
-      width: 100%
+    &-prev, &-next
+      width: 44px
+      height: 44px
+      > span
+        vertical-align: middle
+    &-num, &-omit
+      width: 44px
+      text-align: center
+      line-height: 44px
+      color: $primaryGreen
+    &-num
       &.current
         color: #fff
         background-color: $primaryGreen
-    &-prev, &-next
-      > span
-        vertical-align: middle
-    &-num > a, &-omit
-      text-align: center
-      line-height: 44px
-    &-omit > a
-      color: $primaryGreen
-      width: 44px

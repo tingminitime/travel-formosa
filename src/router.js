@@ -110,6 +110,7 @@ async function ROUTE_keyword(routeObj) {
       keywordInput.focus()
       return
     }
+    // 執行篩選頁面資料渲染 & 頁碼模組
     getFilterResult(filterData, sort)
   }
   catch (err) {
