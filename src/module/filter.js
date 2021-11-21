@@ -1,44 +1,27 @@
 import { cityEnFilter, cityFilter, dateFormat } from './tool.js'
-import {
-  FILTER_fewModeHTML,
-  FILTER_frontModeHTML,
-  FILTER_middleModeHTML,
-  FILTER_lastModeHTML
-} from './template.js'
+import { pageInfo } from '../listener.js'
 
 export default function getFilterResult(data, sort) {
 
   const filterList = document.querySelector('.filterPage__list')
-  const paginationBtn = document.querySelector('.filterPage__pagination-list')
+  const paginationList = document.querySelector('.filterPage__pagination-list')
+  const prevPageBtn = document.querySelector('.filterPage__pagination-prev')
+  const nextPageBtn = document.querySelector('.filterPage__pagination-next')
   const noImageUrl = 'img/noimage.png'
 
   const CARDS_COUNT_PER_PAGE = 9
-  let aroundCurr = 1
+  let aroundCurr = 2
   const maxPages = Math.ceil(data.length / CARDS_COUNT_PER_PAGE)
-  let currentPage = 1
-  history.pushState(null, null, `${location.hash}&page=${currentPage}`)
-
-  const renderData = data.slice(
-    CARDS_COUNT_PER_PAGE * (currentPage - 1),
-    CARDS_COUNT_PER_PAGE * currentPage
-  )
+  // let currentPage = 1
+  let hash = location.hash
+  // history.pushState(null, null, `${hash}&page=${currentPage}`)
+  history.pushState(null, null, `${hash}&page=1`)
+  console.log('maxPages: ', maxPages)
 
   let PAGE_className = {
     num: 'filterPage__pagination-num',
     omit: 'filterPage__pagination-omit',
-    notCurrent: 'notCurrent'
   }
-
-  let PAGE_htmlInfo = [
-    {
-      className: 'current',
-      content: currentPage
-    },
-    {
-      className: 'filterPage__pagination-omit',
-      content: '...'
-    },
-  ]
 
   function getPageInfos(className, content) {
     return {
@@ -46,7 +29,44 @@ export default function getFilterResult(data, sort) {
       content: content
     };
   }
+  function initPage() {
+    const currentPage = pageInfo['currentPage']
+    console.log('currentPage: ', currentPage)
+    paginationList.innerHTML = ''
+    let fragment
+    const renderData = data.slice(
+      CARDS_COUNT_PER_PAGE * (currentPage - 1),
+      CARDS_COUNT_PER_PAGE * currentPage
+    )
+    FILTER_renderHTML(sort, renderData)
 
+    if (maxPages <= 7) fragment = renderNoEllipsis(currentPage)
+    else if (maxPages > 7) fragment = renderEllipsis(currentPage)
+    paginationList.appendChild(fragment)
+  }
+  initPage()
+
+  function setPage(e) {
+    if (!e.target.classList.contains('filterPage__pagination-num')) return
+    // currentPage = parseInt(e.target.dataset.page)
+    pageInfo['currentPage'] = parseInt(e.target.dataset.page)
+    console.log(pageInfo)
+    history.pushState(null, null, `${hash}&page=${pageInfo['currentPage']}`)
+    initPage()
+  }
+
+  paginationList.addEventListener('click', setPage, false)
+  // ----- 監聽歷史紀錄變化 -----
+  window.addEventListener('hashchange', function (e) {
+    // Filter 換頁不觸發 renderByUrl
+    if (location.hash.includes('&page=')) {
+      pageInfo['currentPage'] = parseInt(location.hash.split('&page=')[1])
+      initPage()
+    }
+    console.log('偵測hash變更')
+  }, false)
+
+  // ----- 頁碼功能 ----- ## 要注意會偵測網址變更，要改善
   // 建立 HTML 模板 ( 傳陣列資料 )
   function createHTML(elData) {
     let fragment = document.createDocumentFragment()
@@ -58,7 +78,8 @@ export default function getFilterResult(data, sort) {
       el_li.setAttribute('class', 'filterPage__pagination-item flex-center')
       el_a.setAttribute('href', 'javascript:;')
       el_a.setAttribute('class', el['className'])
-      el_a.innerHTML = el.content
+      el_a.setAttribute('data-page', el['content'])
+      el_a.innerHTML = el['content']
       el_li.appendChild(el_a)
       fragment.appendChild(el_li)
     })
@@ -73,52 +94,61 @@ export default function getFilterResult(data, sort) {
     fragment.appendChild(createHTML(data))
   }
 
-  function renderNoEllipsis() {
+  function renderNoEllipsis(currentPage) {
     let fragment = document.createDocumentFragment()
-    if (currentPage < aroundCurr + 1) {
-      // 在「前幾頁」狀態，依照 aroundCurr 數量決定 begin ~ end 渲染幾個 li > a
-      fragment.appendChild(renderDom(1, aroundCurr * 2 + 1))
-    } else if (currentPage > maxPages - aroundCurr) {
-      // 在「後幾頁」狀態，依照 aroundCurr 數量決定 begin ~ end 渲染幾個 li > a
-      fragment.appendChild(renderDom(maxPages - aroundCurr * 2, maxPages))
-    } else {
-      // 在「中間頁」狀態，依照 aroundCurr 數量決定 begin ~ end 渲染幾個 li > a
-      fragment.appendChild(renderDom(currentPage - aroundCurr * 2, currentPage + aroundCurr * 2))
+    fragment.appendChild(renderDom(1, maxPages, currentPage))
+    return fragment
+  }
+
+  function renderEllipsis(currentPage) {
+    let fragment = document.createDocumentFragment()
+    // 先在 fragment 裡面加入目前頁碼的 li
+    addFragmentAfter(fragment, [getPageInfos(PAGE_className['num'] + ' current', currentPage)])
+    // 目前頁碼前後一頁處理
+    for (let i = 1; i <= aroundCurr; i++) {
+      // 目前頁碼大於 2，加入上一頁碼
+      if (currentPage - i > 1) {
+        addFragmentBefore(fragment, [getPageInfos(PAGE_className['num'], currentPage - i)])
+      }
+      // 目前頁碼 < 倒數第二頁，加入下一頁碼
+      if (currentPage + i < maxPages) {
+        addFragmentAfter(fragment, [getPageInfos(PAGE_className['num'], currentPage + i)])
+      }
+    }
+    // 在前面加入省略符號條件
+    if (currentPage - (aroundCurr + 1) > 1) {
+      addFragmentBefore(fragment, [getPageInfos(PAGE_className['omit'], '...')])
+    }
+    if (currentPage > 1) {
+      addFragmentBefore(fragment, [getPageInfos(PAGE_className['num'], 1)])
+    }
+    // 在後面加入省略符號條件
+    if (currentPage + aroundCurr + 1 < maxPages) {
+      addFragmentAfter(fragment, [getPageInfos(PAGE_className['omit'], '...')])
+    }
+    // 目前頁碼 < 最後一頁，就在最後面加入最後一頁頁碼
+    if (currentPage < maxPages) {
+      addFragmentAfter(fragment, [getPageInfos(PAGE_className['num'], maxPages)])
     }
     return fragment
   }
 
-  function renderEllipsis() {
-    let fragment = document.createDocumentFragment()
-    // 先在 fragment 裡面加入目前頁碼的 li
-    addFragmentAfter(fragment, [getPageInfos(PAGE_className['num'] + ' current', currentPage)])
-    for (let i = 1; i <= aroundCurr; i++) {
-      if (currentPage - i > 1) {
-
-      }
-    }
-  }
-
   // fewMode 總頁數 <= 7 頁時使用
-  function renderDom(begin, end) {
+  function renderDom(begin, end, currentPage) {
     let fragment = document.createDocumentFragment()
     let str = '' // className
     for (let i = begin; i <= end; i++) {
       str = currentPage === i ? PAGE_className['num'] + ' current' : PAGE_className['num']
       addFragmentAfter(fragment, [getPageInfos(str, i)])
     }
+    console.log(str)
     return fragment
   }
-
-
-  FILTER_renderHTML(sort, renderData)
-  initPagination(currentPage)
 
   // 依頁碼狀態及不同分類 => 渲染畫面
   function FILTER_renderHTML(sort, data) {
     switch (sort) {
       case 'ScenicSpot':
-        console.log('關鍵字搜尋的分類是 ScenicSpot')
         const FILTER_spotHTML = data.reduce((html, item) => {
           html += /* html */`
           <li class="filterPage__item mb-24">
@@ -158,7 +188,6 @@ export default function getFilterResult(data, sort) {
         filterList.innerHTML = FILTER_spotHTML
         break
       case 'Restaurant':
-        console.log('關鍵字搜尋的分類是 Restaurant')
         const FILTER_foodHTML = data.reduce((html, item) => {
           html += /* html */`
           <li class="filterPage__item mb-24">
@@ -197,7 +226,6 @@ export default function getFilterResult(data, sort) {
         filterList.innerHTML = FILTER_foodHTML
         break
       case 'Hotel':
-        console.log('關鍵字搜尋的分類是 Hotel')
         const FILTER_hotelHTML = data.reduce((html, item) => {
           html += /* html */`
           <li class="filterPage__item mb-24">
@@ -236,7 +264,6 @@ export default function getFilterResult(data, sort) {
         filterList.innerHTML = FILTER_hotelHTML
         break
       case 'Activity':
-        console.log('關鍵字搜尋的分類是 Activity')
         dateFormat(data)
         const FILTER_activityHTML = data.reduce((html, item) => {
           html += /* html */`
@@ -278,43 +305,5 @@ export default function getFilterResult(data, sort) {
         break
     }
   }
-
-  // ----- 頁碼功能 ----- ## 要注意會偵測網址變更，要改善
-  function initPagination(currentPage) {
-    // 1. 只有 6 頁以內 ( maxPages <= 6 )，僅用 maxPages 個頁碼，使用 FILTER_fewModeHTML
-    // 2. 超過 6 頁 ( maxPages > 6 )，以下條件判斷如何顯示頁碼 : 
-    // a. currentPage <= 2，使用 FILTER_frontModeHTML
-    // b. currentPage > 2 且 currentPage < maxPages - 2，使用 FILTER_middleModeHTML
-    // c. currentPage >= maxPages - 2，使用 FILTER_lastModeHTML
-
-    const paginationList = document.querySelector('.filterPage__pagination-list')
-    console.log('目前 currentPage: ', currentPage)
-
-    // 判斷該 render 哪個頁碼 template
-    if (maxPages <= 6) {
-      let accumulatorHTML = ''
-      for (let i = 0; i < maxPages; i++) {
-        accumulatorHTML += FILTER_fewModeHTML
-      }
-      paginationList.innerHTML = accumulatorHTML
-    }
-    else if (maxPages > 6 && currentPage <= 2) {
-      paginationList.innerHTML = FILTER_frontModeHTML
-    }
-    else if (maxPages - 2 > currentPage && currentPage > 2) {
-      paginationList.innerHTML = FILTER_middleModeHTML
-    }
-    else if (maxPages - 2 <= currentPage) {
-      paginationList.innerHTML = FILTER_lastModeHTML
-    }
-
-  }
-
-  function setPage(e) {
-    console.log(e.target)
-  }
-
-  console.log(paginationBtn)
-  paginationBtn.addEventListener('click', setPage, false)
 
 }

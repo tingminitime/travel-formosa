@@ -20,13 +20,6 @@ const keywordInput = document.querySelector('.search__input')
 
 // ----- 預設連結並渲染畫面 -----
 window.onload = function () {
-  // ----- My Desktop -----
-  // history.pushState(null, null, '/F2E_3rd/week1/')
-  // ----- My Notebook -----
-  // history.pushState(null, null, '/F2E_3rd/travel-formosa/')
-  // ----- Github -----
-  // history.pushState(null, null, '/travel-formosa/')
-
   history.pushState(null, null, location.pathname)
   renderByUrl(location.hash)
 }
@@ -93,7 +86,7 @@ async function ROUTE_keyword(routeObj) {
     let filterData = []
     const { sort, odataCity, keyword } = routeObj
     const { sortAllFilter, sortCityFilter } = SORT_apiRequest()
-    console.log(sort, odataCity, keyword)
+    console.log('關鍵字網址分析: ', sort, odataCity, keyword)
 
     // 取得關鍵字搜尋資料
     if (odataCity === 'all') {
@@ -112,6 +105,7 @@ async function ROUTE_keyword(routeObj) {
     }
     // 執行篩選頁面資料渲染 & 頁碼模組
     getFilterResult(filterData, sort)
+    console.log('關鍵字搜尋的分類是: ', sort)
   }
   catch (err) {
     console.error(err)
@@ -119,11 +113,13 @@ async function ROUTE_keyword(routeObj) {
 }
 
 // ----- 監聽歷史紀錄變化 -----
-window.addEventListener('hashchange', function (e) {
-  // Filter 換頁不觸發 renderByUrl
-  if (location.hash.includes('&page=')) return
-  else renderByUrl(location.hash)
-  console.log('偵測網址變更')
-}, false)
+// window.addEventListener('hashchange', function (e) {
+//   // Filter 換頁不觸發 renderByUrl
+//   if (!location.hash.includes('&page=')) {
+//     currentPage = location.hash.split('&page=')[1]
+//   }
+//   else renderByUrl(location.hash)
+//   console.log('偵測網址變更')
+// }, false)
 
 export { renderByUrl }
