@@ -9,8 +9,7 @@ export default function getFilterResult(data, sort) {
   const nextPageBtn = document.querySelector('.filterPage__pagination-next')
   const noImageUrl = 'img/noimage.png'
 
-  const CARDS_COUNT_PER_PAGE = 9
-  let aroundCurr = 2
+  const { CARDS_COUNT_PER_PAGE, aroundCurr } = pageInfo
   const maxPages = Math.ceil(data.length / CARDS_COUNT_PER_PAGE)
   // let currentPage = 1
   let hash = location.hash
@@ -48,14 +47,11 @@ export default function getFilterResult(data, sort) {
 
   function setPage(e) {
     if (!e.target.classList.contains('filterPage__pagination-num')) return
-    // currentPage = parseInt(e.target.dataset.page)
     pageInfo['currentPage'] = parseInt(e.target.dataset.page)
     console.log(pageInfo)
     history.pushState(null, null, `${hash}&page=${pageInfo['currentPage']}`)
     initPage()
   }
-
-  paginationList.addEventListener('click', setPage, false)
 
   // ----- 頁碼功能 ----- ## 要注意會偵測網址變更，要改善
   // 建立 HTML 模板 ( 傳陣列資料 )
@@ -134,6 +130,20 @@ export default function getFilterResult(data, sort) {
     }
     console.log(str)
     return fragment
+  }
+
+  function setPage_PREV_NEXT(e) {
+    if (e.target.closest('.filterPage__pagination-prev')) {
+      pageInfo['currentPage'] - 1 < 1 ?
+        pageInfo['currentPage'] = 1 :
+        pageInfo['currentPage'] -= 1
+    } else if (e.target.closest('.filterPage__pagination-next')) {
+      pageInfo['currentPage'] + 1 > maxPages ?
+        pageInfo['currentPage'] = maxPages :
+        pageInfo['currentPage'] += 1
+    }
+    history.pushState(null, null, `${hash}&page=${pageInfo['currentPage']}`)
+    initPage()
   }
 
   // 依頁碼狀態及不同分類 => 渲染畫面
@@ -297,7 +307,8 @@ export default function getFilterResult(data, sort) {
     }
   }
 
-  // ----- 監聽歷史紀錄變化 -----
+  // ----- 監聽 -----
+  // 歷史紀錄變化
   window.addEventListener('hashchange', function (e) {
     // Filter 換頁不觸發 renderByUrl
     if (location.hash.includes('&page=')) {
@@ -306,5 +317,12 @@ export default function getFilterResult(data, sort) {
     }
     console.log('偵測hash變更')
   }, false)
+
+  // 按頁碼
+  paginationList.addEventListener('click', setPage, false)
+
+  // 上 / 下一頁
+  prevPageBtn.addEventListener('click', setPage_PREV_NEXT, false)
+  nextPageBtn.addEventListener('click', setPage_PREV_NEXT, false)
 
 }
