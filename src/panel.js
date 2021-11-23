@@ -199,7 +199,7 @@ if (navigator.geolocation) {
       const latitude = success.coords.latitude
       const timestamp = success.timestamp
       let formatTimestamp = new Date(timestamp)
-      console.log(success)
+      // console.log(success)
       console.log(`(成功獲取當前位置) 經度: ${longitude} 緯度: ${latitude} 時間: ${formatTimestamp}`)
       // render view current position
       myMap.setView([latitude, longitude], 15)

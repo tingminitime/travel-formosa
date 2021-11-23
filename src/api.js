@@ -38,8 +38,9 @@ export const SORT_apiRequest = () => {
   const SORT_noKeywordAllFilter = sort => sortRequest.get(`/${sort}?$format=JSON`)
   // 無關鍵字搜尋 - 分類、城市
   const SORT_noKeywordCityFilter = (sort, city) => sortRequest.get(`/${sort}/${city}?$format=JSON`)
+  const SORT_pageFilter = (sort, id) => sortRequest.get(`/${sort}?$filter=ID eq '${id}'&$format=JSON`)
 
-  return { SORT_keywordAllFilter, SORT_keywordCityFilter, SORT_noKeywordAllFilter, SORT_noKeywordCityFilter }
+  return { SORT_keywordAllFilter, SORT_keywordCityFilter, SORT_noKeywordAllFilter, SORT_noKeywordCityFilter, SORT_pageFilter }
 }
 
 // 景點 api

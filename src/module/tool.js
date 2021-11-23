@@ -1,9 +1,8 @@
 import { cities } from './template.js'
 
 // 找出 city 的 en (網址篩選用)
-export function cityEnFilter(name) {
+export function cityEnFilter(name = 'all') {
   // 更新 : 因為 api 資料有些沒有 city 欄位，改用地址取出縣市
-  name ?? 'all'
   const cityZh = name.slice(0, 3)
   const targetCityEn = cities.find(item => item['zh'] === cityZh)
   return targetCityEn['en']

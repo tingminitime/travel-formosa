@@ -140,7 +140,7 @@
               class="citySelect__filterList flex flex-wrap"
               data-area="north"
             >
-              <!-- 載入資料 -->
+              <!-- panel.js 載入資料 -->
             </ul>
             <h3
               class="citySelect__areaTitle"
@@ -150,6 +150,7 @@
               class="citySelect__filterList flex flex-wrap"
               data-area="central"
             >
+              <!-- panel.js 載入資料 -->
             </ul>
             <h3
               class="citySelect__areaTitle"
@@ -159,6 +160,7 @@
               class="citySelect__filterList flex flex-wrap"
               data-area="south"
             >
+              <!-- panel.js 載入資料 -->
             </ul>
             <h3
               class="citySelect__areaTitle"
@@ -168,6 +170,7 @@
               class="citySelect__filterList flex flex-wrap"
               data-area="east"
             >
+              <!-- panel.js 載入資料 -->
             </ul>
             <h3
               class="citySelect__areaTitle"
@@ -177,6 +180,7 @@
               class="citySelect__filterList flex flex-wrap"
               data-area="island"
             >
+              <!-- panel.js 載入資料 -->
             </ul>
           </div>
         </div>
@@ -323,7 +327,10 @@
       id="content"
     >
       <!-- ----- 主頁 ----- -->
+      <!-- home.js 載入資料 -->
       <!-- ----- 內頁 ----- -->
+      <!-- router.js 載入基本結構 -->
+      <!-- page.js 載入資料 -->
       <div class="page d-n">
         <div class="title mb-24 flex-sb-center">
           <div class="title__info flex-start-center">
@@ -479,6 +486,8 @@
         </div>
       </div>
       <!-- ----- 篩選後頁面 ----- -->
+      <!-- router.js 載入基本結構 -->
+      <!-- filter.js 載入資料 -->
       <div class="filterPage d-n">
         <h2 class="filterPage__title mb-16">嘉義</h2>
         <div class="filterPage__sort flex-start-center mb-24">
@@ -494,97 +503,15 @@
           </ul>
           <!-- 美食 -->
           <ul class="filterPage__list flex-sb-start flex-wrap mb-24">
-            <li class="filterPage__item mb-24">
-              <a
-                href="javascript:;"
-                class="card cardSpec d-b"
-              >
-                <div class="cardSpec-img cardSpec-mask">
-                  <button class="card-shareBtn"></button>
-                  <h3 class="cardSpec-title cardSpec-title-ab">七股 / 龍門客棧餐廳(獲選參加2010台灣美食展特色餐廳)</h3>
-                  <img
-                    src="https://picsum.photos/500/400?random=4"
-                    alt="food photo"
-                  >
-                </div>
-                <div class="cardSpec-info flex flex-wrap">
-                  <div class="cardSpec-location flex-center">
-                    <div class="icon-location icon-mr4"></div>
-                    <p class="cardSpec-otherInfoText">
-                      臺南市724七股區中寮里8-41號（七股鹽山光復國小旁）
-                    </p>
-                  </div>
-                  <div class="cardSpec-operate flex-center">
-                    <div class="icon-time icon-mr4"></div>
-                    <p class="cardSpec-otherInfoText">
-                      週一~週五：10:00~15:00（週二公休）
-                      週六~週日：10:00~21:00
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </li>
+            <!-- filter.js 載入資料 -->
           </ul>
           <!-- 住宿 -->
           <ul class="filterPage__list flex-sb-start flex-wrap mb-24">
-            <li class="filterPage__item mb-24">
-              <a
-                href="javascript:;"
-                class="card cardSpec d-b"
-              >
-                <div class="cardSpec-img cardSpec-mask">
-                  <button class="card-shareBtn"></button>
-                  <img
-                    src="https://picsum.photos/500/400?random=5"
-                    alt="food photo"
-                  >
-                </div>
-                <div class="cardSpec-info flex flex-wrap">
-                  <h3 class="cardSpec-title">台北商旅(大安館)</h3>
-                  <div class="cardSpec-location flex-center">
-                    <div class="icon-location icon-mr4"></div>
-                    <p class="cardSpec-otherInfoText">
-                      臺南市724七股區中寮里8-41號（七股鹽山光復國小旁）
-                    </p>
-                  </div>
-                  <div class="cardSpec-call flex-center">
-                    <div class="icon-call icon-mr4"></div>
-                    <p class="cardSpec-otherInfoText">
-                      886-4-25855997
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </li>
+            <!-- filter.js 載入資料 -->
           </ul>
           <!-- 活動 最多 5 個 -->
           <ul class="filterPage__list flex-sb-start flex-wrap mb-24">
-            <li class="cardFull__item mb-24">
-              <a
-                href="javascript:;"
-                class="cardFull flex-sb-center"
-              >
-                <div class="cardFull__info">
-                  <h3 class="cardFull__title">新竹市玻璃設計藝術節</h3>
-                  <div class="cardFull__location flex-start-center">
-                    <div class="icon-location icon-mr4"></div>
-                    <p class="cardFull__otherInfoText">
-                      新竹市
-                    </p>
-                  </div>
-                  <div class="cardFull__date flex-start-center">
-                    <div class="icon-time icon-mr4"></div>
-                    <p class="cardFull__otherInfoText">2021-10-01 ~ 2021-10-31</p>
-                  </div>
-                </div>
-                <div class="cardFull__img">
-                  <img
-                    src="https://picsum.photos/200/300?random=8"
-                    alt="active photo"
-                  >
-                </div>
-              </a>
-            </li>
+            <!-- filter.js 載入資料 -->
           </ul>
         </div>
         <!-- 頁碼 -->
@@ -667,6 +594,10 @@
   <script
     type="module"
     src="src/module/tool.js"
+  ></script>
+  <script
+    type="module"
+    src="src/module/page.js"
   ></script>
   <script
     type="module"

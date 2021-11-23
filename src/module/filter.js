@@ -1,5 +1,6 @@
 import { cityEnFilter, cityFilter, dateFormat } from './tool.js'
 import { pageInfo } from '../listener.js'
+import { renderByUrl } from '../router.js'
 
 export default function getFilterResult(data, sort) {
 
@@ -193,7 +194,7 @@ export default function getFilterResult(data, sort) {
           html += /* html */`
           <li class="filterPage__item mb-24">
             <a
-              href="#/Restaurant/${cityEnFilter(item['City'])}/${item['ID']}"
+              href="#/Restaurant/${cityEnFilter(item['City'] ?? item['Address'])}/${item['ID']}"
               class="card cardSpec d-b"
             >
               <div class="cardSpec-img cardSpec-mask">
@@ -209,7 +210,7 @@ export default function getFilterResult(data, sort) {
                 <div class="cardSpec-location flex-center">
                   <div class="icon-location icon-mr4"></div>
                   <p class="cardSpec-otherInfoText">
-                    ${item['City'] + item['Address']}
+                    ${item['Address'] ?? item['City']}
                   </p>
                 </div>
                 <div class="cardSpec-operate flex-center">
@@ -231,7 +232,7 @@ export default function getFilterResult(data, sort) {
           html += /* html */`
           <li class="filterPage__item mb-24">
             <a
-              href="#/Hotel/${cityEnFilter(item['City'])}/${item['ID']}"
+              href="#/Hotel/${cityEnFilter(item['City'] ?? item['Address'])}/${item['ID']}"
               class="card cardSpec d-b"
             >
               <div class="cardSpec-img cardSpec-mask">
@@ -247,7 +248,7 @@ export default function getFilterResult(data, sort) {
                 <div class="cardSpec-location flex-center">
                   <div class="icon-location icon-mr4"></div>
                   <p class="cardSpec-otherInfoText">
-                    ${item['Address']}
+                    ${item['Address'] ?? item['City']}
                   </p>
                 </div>
                 <div class="cardSpec-call flex-center">
@@ -270,7 +271,7 @@ export default function getFilterResult(data, sort) {
           html += /* html */`
           <li class="cardFull__item mb-24">
             <a
-              href="#/Activity/${cityEnFilter(item['City'] ?? item['Address'])}/${item['ID']}"
+              href="#/Activity/${cityEnFilter(item['City'])}/${item['ID']}"
               class="cardFull flex-sb-center"
             >
               <div class="cardFull__info">
@@ -314,6 +315,8 @@ export default function getFilterResult(data, sort) {
     if (location.hash.includes('&page=')) {
       pageInfo['currentPage'] = parseInt(location.hash.split('&page=')[1])
       initPage()
+    } else {
+      renderByUrl(location.hash)
     }
     console.log('偵測hash變更')
   }, false)

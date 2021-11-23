@@ -1,9 +1,5 @@
 import {
   SORT_apiRequest,
-  SPOT_apiRequest,
-  FOOD_apiRequest,
-  HOTEL_apiRequest,
-  ACTIVITY_apiRequest
 } from "./api.js";
 import {
   HOME_defaultHTML,
@@ -13,7 +9,9 @@ import {
 import { HOME_render } from './home.js'
 import { INIT_swiper } from './module/swiper.js'
 import { cities } from './module/template.js'
+import { randomNum } from './module/tool.js'
 import getFilterResult from './module/filter.js'
+import getPageResult from './module/page.js'
 
 const content = document.querySelector('#content')
 const keywordInput = document.querySelector('.search__input')
@@ -73,11 +71,7 @@ function ROUTE_handler(hashArray) {
   else if (id) {
     // 介紹頁面 HTML 初始化
     content.innerHTML = PAGE_defaultHTML
-    // 回上一頁
-    const PAGE_backBtn = document.querySelector('.title__backBtn')
-    PAGE_backBtn.addEventListener('click', function (e) {
-      history.back()
-    }, false)
+    PAGE_request({ sort, city, id })
   }
 }
 
@@ -86,11 +80,17 @@ async function ROUTE_noKeyword(routeObj) {
     let filterData = []
     const { sort, city } = routeObj
     const { SORT_noKeywordAllFilter, SORT_noKeywordCityFilter } = SORT_apiRequest()
+    const dataReqMax = 2500
     console.log('無關鍵字網址分析: ', sort, city)
 
     if (city === 'all') {
       const noKeywordAllFilterRes = await SORT_noKeywordAllFilter(sort)
-      filterData = noKeywordAllFilterRes.data
+      // 隨機取資料中長度 dataReqMax 的資料
+      const resLength = noKeywordAllFilterRes.data.length
+      let takeRandomIndex = randomNum(resLength - dataReqMax)
+      resLength >= dataReqMax ?
+        filterData = noKeywordAllFilterRes.data.slice(takeRandomIndex, takeRandomIndex + dataReqMax) :
+        filterData = noKeywordAllFilterRes.data
     } else {
       const noKeywordCityFilterRes = await SORT_noKeywordCityFilter(sort, city)
       filterData = noKeywordCityFilterRes.data
@@ -117,12 +117,18 @@ async function ROUTE_keyword(routeObj) {
     let filterData = []
     const { sort, odataCity, keyword } = routeObj
     const { SORT_keywordAllFilter, SORT_keywordCityFilter } = SORT_apiRequest()
+    const dataReqMax = 2500
     console.log('關鍵字網址分析: ', sort, odataCity, keyword)
 
     // 取得關鍵字搜尋資料
     if (odataCity === 'all') {
-      const sortAllFilterRes = await SORT_keywordAllFilter(sort, keyword)
-      filterData = sortAllFilterRes.data
+      const keywordAllFilterRes = await SORT_keywordAllFilter(sort, keyword)
+      // 隨機取資料中長度 dataReqMax 的資料
+      const resLength = keywordAllFilterRes.data.length
+      let takeRandomIndex = randomNum(resLength - dataReqMax)
+      resLength >= dataReqMax ?
+        filterData = keywordAllFilterRes.data.slice(takeRandomIndex, takeRandomIndex + dataReqMax) :
+        filterData = keywordAllFilterRes.data
     } else {
       const sortCityFilterRes = await SORT_keywordCityFilter(sort, odataCity, keyword)
       filterData = sortCityFilterRes.data
@@ -141,6 +147,22 @@ async function ROUTE_keyword(routeObj) {
   catch (err) {
     console.error('關鍵字搜尋失敗: ', err)
   }
+}
+
+async function PAGE_request(routeObj) {
+  try {
+    const { sort, city, id } = routeObj
+    const { SORT_pageFilter } = SORT_apiRequest()
+    const pageFilterRes = await SORT_pageFilter(sort, id)
+    let pageData = pageFilterRes.data[0]
+    console.log('pageData: ', pageData)
+
+    getPageResult(pageData, sort)
+  }
+  catch (err) {
+    console.error('ID資料取得失敗: ', err)
+  }
+
 }
 
 // ----- 監聽歷史紀錄變化 -----

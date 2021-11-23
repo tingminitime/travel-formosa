@@ -1,6 +1,6 @@
 // 縣市資料
 const cities = [
-  { en: 'all', zh: '全部', name: '全部', area: 'all' },
+  { en: 'all', zh: 'all', name: '全部', area: 'all' },
   { en: 'Keelung', zh: '基隆市', name: '基隆', area: 'north' },
   { en: 'Taipei', zh: '臺北市', name: '台北', area: 'north' },
   { en: 'NewTaipei', zh: '新北市', name: '新北', area: 'north' },
@@ -154,8 +154,8 @@ const PAGE_defaultHTML = /* html */`
   </div>
   <!-- 內頁 - 照片 -->
   <div class="swiper swiper-page mb-24">
-  <div class="swiper-wrapper">
-    <!-- 載入輪播照片 -->
+    <div class="swiper-wrapper swiper-wrapper-page">
+      <!-- 載入輪播照片 -->
     </div>
     <div class="swiper-pagination swiper-pagination-page"></div>
     <div class="swiper-button-prev swiper-button-prev-page"></div>
@@ -194,6 +194,19 @@ const PAGE_defaultHTML = /* html */`
       <div class="swiper-button-prev swiper-button-prev-nearSpot"></div>
       <div class="swiper-button-next swiper-button-next-nearSpot"></div>
     </div>
+  </div>
+</div>
+`
+
+// 介紹頁面 - 輪播
+const PAGE_slide = /* html */`
+<div class="swiper-slide swiper-slide-page">
+  <div class="page__img">
+    <img
+      data-src="https://picsum.photos/600/600?random=12"
+      class="swiper-lazy"
+    >
+    <div class="swiper-lazy-preloader"></div>
   </div>
 </div>
 `
