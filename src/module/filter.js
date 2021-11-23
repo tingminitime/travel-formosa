@@ -56,15 +56,6 @@ export default function getFilterResult(data, sort) {
   }
 
   paginationList.addEventListener('click', setPage, false)
-  // ----- 監聽歷史紀錄變化 -----
-  window.addEventListener('hashchange', function (e) {
-    // Filter 換頁不觸發 renderByUrl
-    if (location.hash.includes('&page=')) {
-      pageInfo['currentPage'] = parseInt(location.hash.split('&page=')[1])
-      initPage()
-    }
-    console.log('偵測hash變更')
-  }, false)
 
   // ----- 頁碼功能 ----- ## 要注意會偵測網址變更，要改善
   // 建立 HTML 模板 ( 傳陣列資料 )
@@ -305,5 +296,15 @@ export default function getFilterResult(data, sort) {
         break
     }
   }
+
+  // ----- 監聽歷史紀錄變化 -----
+  window.addEventListener('hashchange', function (e) {
+    // Filter 換頁不觸發 renderByUrl
+    if (location.hash.includes('&page=')) {
+      pageInfo['currentPage'] = parseInt(location.hash.split('&page=')[1])
+      initPage()
+    }
+    console.log('偵測hash變更')
+  }, false)
 
 }

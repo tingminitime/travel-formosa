@@ -30,9 +30,16 @@ const activityRequest = axios.create({
 
 // 自訂分類 api
 export const SORT_apiRequest = () => {
-  const sortAllFilter = (sort, keyword) => sortRequest.get(`/${sort}?$filter=contains(Name,'${keyword}')&$format=JSON`)
-  const sortCityFilter = (sort, city, keyword) => sortRequest.get(`/${sort}/${city}?$filter=contains(Name,'${keyword}')&$format=JSON`)
-  return { sortAllFilter, sortCityFilter }
+  // 關鍵字搜尋 - 分類
+  const SORT_keywordAllFilter = (sort, keyword) => sortRequest.get(`/${sort}?$filter=contains(Name,'${keyword}')&$format=JSON`)
+  // 關鍵字搜尋 - 分類、城市
+  const SORT_keywordCityFilter = (sort, city, keyword) => sortRequest.get(`/${sort}/${city}?$filter=contains(Name,'${keyword}')&$format=JSON`)
+  // 無關鍵字搜尋 - 分類
+  const SORT_noKeywordAllFilter = sort => sortRequest.get(`/${sort}?$format=JSON`)
+  // 無關鍵字搜尋 - 分類、城市
+  const SORT_noKeywordCityFilter = (sort, city) => sortRequest.get(`/${sort}/${city}?$format=JSON`)
+
+  return { SORT_keywordAllFilter, SORT_keywordCityFilter, SORT_noKeywordAllFilter, SORT_noKeywordCityFilter }
 }
 
 // 景點 api

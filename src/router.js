@@ -66,6 +66,7 @@ function ROUTE_handler(hashArray) {
       ROUTE_keyword({ sort, odataCity, keyword })
     } else {
       console.log('無關鍵字，全部or區域搜尋功能')
+      ROUTE_noKeyword({ sort, city })
     }
   }
   // 有 ID
@@ -80,23 +81,53 @@ function ROUTE_handler(hashArray) {
   }
 }
 
+async function ROUTE_noKeyword(routeObj) {
+  try {
+    let filterData = []
+    const { sort, city } = routeObj
+    const { SORT_noKeywordAllFilter, SORT_noKeywordCityFilter } = SORT_apiRequest()
+    console.log('無關鍵字網址分析: ', sort, city)
+
+    if (city === 'all') {
+      const noKeywordAllFilterRes = await SORT_noKeywordAllFilter(sort)
+      filterData = noKeywordAllFilterRes.data
+    } else {
+      const noKeywordCityFilterRes = await SORT_noKeywordCityFilter(sort, city)
+      filterData = noKeywordCityFilterRes.data
+    }
+    console.log('(無關鍵字搜尋資料)filterData: ', filterData)
+
+    if (filterData.length === 0) {
+      alert('查無結果，請重新輸入關鍵字搜尋。')
+      keywordInput.focus()
+      return
+    }
+    // 執行篩選頁面資料渲染 & 頁碼模組
+    getFilterResult(filterData, sort)
+    console.log('無關鍵字搜尋的分類是: ', sort)
+  }
+  catch (err) {
+    console.log('無關鍵字搜尋失敗: ', err)
+  }
+}
+
 // 精選主題在這個 function 判斷
 async function ROUTE_keyword(routeObj) {
   try {
     let filterData = []
     const { sort, odataCity, keyword } = routeObj
-    const { sortAllFilter, sortCityFilter } = SORT_apiRequest()
+    const { SORT_keywordAllFilter, SORT_keywordCityFilter } = SORT_apiRequest()
     console.log('關鍵字網址分析: ', sort, odataCity, keyword)
 
     // 取得關鍵字搜尋資料
     if (odataCity === 'all') {
-      const sortAllFilterRes = await sortAllFilter(sort, keyword)
+      const sortAllFilterRes = await SORT_keywordAllFilter(sort, keyword)
       filterData = sortAllFilterRes.data
     } else {
-      const sortCityFilterRes = await sortCityFilter(sort, odataCity, keyword)
+      const sortCityFilterRes = await SORT_keywordCityFilter(sort, odataCity, keyword)
       filterData = sortCityFilterRes.data
     }
-    console.log('關鍵字搜尋資料 filterData: ', filterData)
+    console.log('(關鍵字搜尋資料)filterData: ', filterData)
 
     if (filterData.length === 0) {
       alert('查無結果，請重新輸入關鍵字搜尋。')
@@ -108,7 +139,7 @@ async function ROUTE_keyword(routeObj) {
     console.log('關鍵字搜尋的分類是: ', sort)
   }
   catch (err) {
-    console.error(err)
+    console.error('關鍵字搜尋失敗: ', err)
   }
 }
 
