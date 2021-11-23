@@ -4,7 +4,6 @@ import {
   HOTEL_apiRequest,
   ACTIVITY_apiRequest
 } from "./api.js";
-import { cities } from './module/template.js'
 import { cityEnFilter, cityFilter, randomNum, dateFormat } from './module/tool.js'
 
 export const HOME_render = () => {

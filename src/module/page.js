@@ -1,8 +1,11 @@
+import { INIT_swiper } from '../module/swiper.js'
 export default function getPageResult(data, sort) {
+
   const noImageUrl = 'img/noimage.png'
   const PAGE_backBtn = document.querySelector('.title__backBtn')
   const title = document.querySelector('.title__text')
   const pageSlide = document.querySelector('.swiper-wrapper-page')
+  const { swiper_header, swiper_hotSpot, swiper_page, swiper_nearSpot } = INIT_swiper()
 
   title.textContent = data['Name']
 
@@ -27,9 +30,9 @@ export default function getPageResult(data, sort) {
       return html
     }, ``)
     console.log(PAGE_slideHTML)
-    pageSlide.innerHTML = PAGE_slideHTML
+    return PAGE_slideHTML
   }
-  pageSlideHandler()
+  pageSlide.innerHTML = pageSlideHandler()
 
   switch (sort) {
     case 'ScenicSpot':
@@ -48,5 +51,8 @@ export default function getPageResult(data, sort) {
   PAGE_backBtn.addEventListener('click', function (e) {
     history.back()
   }, false)
+
+  // Swiper初始化
+  // swiper_page()
 
 }

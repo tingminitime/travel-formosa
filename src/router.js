@@ -15,6 +15,7 @@ import getPageResult from './module/page.js'
 
 const content = document.querySelector('#content')
 const keywordInput = document.querySelector('.search__input')
+const { swiper_header, swiper_hotSpot, swiper_page, swiper_nearSpot } = INIT_swiper()
 
 // ----- 預設連結並渲染畫面 -----
 window.onload = function () {
@@ -36,7 +37,8 @@ function renderByUrl(url) {
     // 執行主頁資料渲染
     HOME_render()
     // Swiper初始化
-    INIT_swiper()
+    swiper_header()
+    swiper_hotSpot()
   } else {
     ROUTE_handler(hashParams)
   }
@@ -72,6 +74,8 @@ function ROUTE_handler(hashArray) {
     // 介紹頁面 HTML 初始化
     content.innerHTML = PAGE_defaultHTML
     PAGE_request({ sort, city, id })
+    // Swiper初始化
+    swiper_page()
   }
 }
 
@@ -158,6 +162,9 @@ async function PAGE_request(routeObj) {
     console.log('pageData: ', pageData)
 
     getPageResult(pageData, sort)
+    // Swiper初始化
+    swiper_page()
+    swiper_nearSpot()
   }
   catch (err) {
     console.error('ID資料取得失敗: ', err)

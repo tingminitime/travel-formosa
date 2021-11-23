@@ -1,132 +1,142 @@
-export function INIT_swiper() {
-  const swiper_header = new Swiper('.swiper-header', {
-    speed: 800,
-    spaceBetween: 100,
-    grabCursor: true,
+export const INIT_swiper = () => {
+  const swiper_header = () => {
+    new Swiper('.swiper-header', {
+      speed: 800,
+      spaceBetween: 100,
+      grabCursor: true,
 
-    // Optional parameters
-    direction: 'horizontal',
-    loop: true,
-    autoplay: {
-      delay: 3000,
-      disableOnInteraction: false,
-    },
-
-    // If we need pagination
-    pagination: {
-      el: '.swiper-pagination-header',
-    },
-
-    // And if we need scrollbar
-    scrollbar: {
-      el: '.swiper-scrollbar',
-    },
-  })
-
-  const swiper_hotSpot = new Swiper('.swiper-hotSpot', {
-    speed: 400,
-    spaceBetween: 12,
-    grabCursor: true,
-    slidesPerView: 'auto',
-    lazy: {
-      loadPrevNext: true,
-      loadPrevNextAmount: 100,
-    },
-    breakpoints: {
-      320: {
-        spaceBetween: 12
+      // Optional parameters
+      direction: 'horizontal',
+      loop: true,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
       },
-      767: {
-        spaceBetween: 12
+
+      // If we need pagination
+      pagination: {
+        el: '.swiper-pagination-header',
       },
-      992: {
-        spaceBetween: 24
+
+      // And if we need scrollbar
+      scrollbar: {
+        el: '.swiper-scrollbar',
       },
-    },
+    })
+  }
 
-    // Optional parameters
-    direction: 'horizontal',
-    loop: false,
-
-    // Navigation arrows
-    navigation: {
-      nextEl: '.swiper-button-next-hotSpot',
-      prevEl: '.swiper-button-prev-hotSpot',
-    },
-
-    // And if we need scrollbar
-    scrollbar: {
-      el: '.swiper-scrollbar',
-    },
-  })
-
-  const swiper_page = new Swiper('.swiper-page', {
-    speed: 800,
-    spaceBetween: 20,
-    grabCursor: true,
-    lazy: {
-      loadPrevNext: true,
-      loadPrevNextAmount: 10,
-    },
-
-    // Optional parameters
-    direction: 'horizontal',
-    loop: false,
-    autoplay: {
-      delay: 3000,
-      disableOnInteraction: false,
-    },
-
-    // If we need pagination
-    pagination: {
-      el: '.swiper-pagination-page',
-    },
-
-    navigation: {
-      nextEl: '.swiper-button-next-page',
-      prevEl: '.swiper-button-prev-page',
-    },
-
-    // And if we need scrollbar
-    scrollbar: {
-      el: '.swiper-scrollbar',
-    },
-  })
-
-  const swiper_nearSpot = new Swiper('.swiper-nearSpot', {
-    speed: 400,
-    spaceBetween: 12,
-    grabCursor: true,
-    slidesPerView: 'auto',
-    lazy: {
-      loadPrevNext: true,
-      loadPrevNextAmount: 100,
-    },
-    breakpoints: {
-      320: {
-        spaceBetween: 12
+  const swiper_hotSpot = () => {
+    new Swiper('.swiper-hotSpot', {
+      speed: 400,
+      spaceBetween: 12,
+      grabCursor: true,
+      slidesPerView: 'auto',
+      lazy: {
+        loadPrevNext: true,
+        loadPrevNextAmount: 100,
       },
-      767: {
-        spaceBetween: 12
+      breakpoints: {
+        320: {
+          spaceBetween: 12
+        },
+        767: {
+          spaceBetween: 12
+        },
+        992: {
+          spaceBetween: 24
+        },
       },
-      992: {
-        spaceBetween: 24
+
+      // Optional parameters
+      direction: 'horizontal',
+      loop: false,
+
+      // Navigation arrows
+      navigation: {
+        nextEl: '.swiper-button-next-hotSpot',
+        prevEl: '.swiper-button-prev-hotSpot',
       },
-    },
 
-    // Optional parameters
-    direction: 'horizontal',
-    loop: false,
+      // And if we need scrollbar
+      scrollbar: {
+        el: '.swiper-scrollbar',
+      },
+    })
+  }
 
-    // Navigation arrows
-    navigation: {
-      nextEl: '.swiper-button-next-nearSpot',
-      prevEl: '.swiper-button-prev-nearSpot',
-    },
+  const swiper_page = () => {
+    new Swiper('.swiper-page', {
+      speed: 800,
+      spaceBetween: 20,
+      grabCursor: true,
+      lazy: {
+        loadPrevNext: true,
+        loadPrevNextAmount: 10,
+      },
 
-    // And if we need scrollbar
-    scrollbar: {
-      el: '.swiper-scrollbar',
-    },
-  })
+      // Optional parameters
+      direction: 'horizontal',
+      loop: false,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+      },
+
+      // If we need pagination
+      pagination: {
+        el: '.swiper-pagination-page',
+      },
+
+      navigation: {
+        nextEl: '.swiper-button-next-page',
+        prevEl: '.swiper-button-prev-page',
+      },
+
+      // And if we need scrollbar
+      scrollbar: {
+        el: '.swiper-scrollbar',
+      },
+    })
+  }
+
+  const swiper_nearSpot = () => {
+    new Swiper('.swiper-nearSpot', {
+      speed: 400,
+      spaceBetween: 12,
+      grabCursor: true,
+      slidesPerView: 'auto',
+      lazy: {
+        loadPrevNext: true,
+        loadPrevNextAmount: 100,
+      },
+      breakpoints: {
+        320: {
+          spaceBetween: 12
+        },
+        767: {
+          spaceBetween: 12
+        },
+        992: {
+          spaceBetween: 24
+        },
+      },
+
+      // Optional parameters
+      direction: 'horizontal',
+      loop: false,
+
+      // Navigation arrows
+      navigation: {
+        nextEl: '.swiper-button-next-nearSpot',
+        prevEl: '.swiper-button-prev-nearSpot',
+      },
+
+      // And if we need scrollbar
+      scrollbar: {
+        el: '.swiper-scrollbar',
+      },
+    })
+  }
+
+  return { swiper_header, swiper_hotSpot, swiper_page, swiper_nearSpot }
 }
