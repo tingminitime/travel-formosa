@@ -198,23 +198,198 @@ const PAGE_defaultHTML = /* html */`
 </div>
 `
 
-// 介紹頁面 - 輪播
-const PAGE_slide = /* html */`
-<div class="swiper-slide swiper-slide-page">
-  <div class="page__img">
-    <img
-      data-src="https://picsum.photos/600/600?random=12"
-      class="swiper-lazy"
-    >
-    <div class="swiper-lazy-preloader"></div>
+// 內頁 - 資訊
+// 景點資訊 : 時段、地點、電話、票價、類別、網站
+// 美食資訊 : 時段、地點、電話、類別、網站
+// 住宿資訊 : 地點、電話、類別、
+// 活動資訊 : 時段、地點、主辦單位、備註(Cycle)、類別
+
+const PAGE_infoListHTML = {
+  time: /* html */`
+  <!-- 開放時段 -->
+  <li class="info__item info__item-time flex-start-start">
+    <div class="info__title flex-center">
+      <div class="icon-time icon-mr4"></div>
+      <span class="info__text">開放時段 :</span>
+    </div>
+    <p class="info__content" data-info="time" data-prop="OpenTime"></p>
+  </li>
+  `,
+  date: /* html */`
+  <!-- 活動日期 -->
+  <li class="info__item info__item-date flex-start-start">
+    <div class="info__title flex-center">
+      <div class="icon-time icon-mr4"></div>
+      <span class="info__text">活動日期 :</span>
+    </div>
+    <p class="info__content" data-info="date" data-prop="Date"></p>
+  </li>
+  `,
+  location: /* html */`
+  <!-- 所在地點 -->
+  <li class="info__item info__item-location flex-start-start">
+    <div class="info__title flex-center">
+      <div class="icon-location icon-mr4"></div>
+      <span class="info__text">所在地點 :</span>
+    </div>
+    <p class="info__content" data-info="location" data-prop="Address"></p>
+  </li>
+  `,
+  call: /* html */`
+  <!-- 聯絡電話 -->
+  <li class="info__item info__item-call flex-start-start">
+    <div class="info__title flex-center">
+      <div class="icon-call icon-mr4"></div>
+      <span class="info__text">聯絡電話 :</span>
+    </div>
+    <p class="info__content">
+      <a href="tel:886-3-8771410" data-info="call" data-prop="Phone"></a>
+    </p>
+  </li>
+  `,
+  ticket: /* html */`
+  <!-- 票價資訊 -->
+  <li class="info__item info__item-ticket flex-start-start">
+    <div class="info__title flex-center">
+      <div class="icon-ticket icon-mr4"></div>
+      <span class="info__text">票價資訊 :</span>
+    </div>
+    <p class="info__content" data-info="ticket" data-prop="TicketInfo"></p>
+  </li>
+  `,
+  organizer: /* html */`
+  <!-- 主辦單位 -->
+  <li class="info__item info__item-organizer flex-start-start">
+    <div class="info__title flex-center">
+      <div class="icon-organizer icon-mr4"></div>
+      <span class="info__text">主辦單位 :</span>
+    </div>
+    <p class="info__content" data-info="organizer" data-prop="Organizer"></p>
+  </li>
+  `,
+  tag: /* html */`
+  <!-- 分類標籤 -->
+  <li class="info__item info__item-class flex-start-start">
+    <div class="info__title flex-self-center">
+      <div class="icon-tag icon-mr4"></div>
+      <span class="info__text">分類標籤 :</span>
+    </div>
+    <p class="info__content" data-info="tag" data-prop="Class">
+      <!-- page.js 載入資料 -->
+    </p>
+  </li>
+  `,
+  web: /* html */`
+  <!-- 網站連結 -->
+  <li class="info__item info__item-web flex-start-start">
+    <div class="info__title flex-self-center">
+      <div class="icon-web icon-mr4"></div>
+      <span class="info__text">網站連結 :</span>
+    </div>
+    <p class="info__content">
+      <a
+        class="info__url"
+        href="javascript:;"
+        target="_blank"
+        data-info="web"
+        data-prop="WebsiteUrl"
+      ></a>
+    </p>
+  </li>
+  `,
+}
+
+// 開放時段
+const PAGE_infoTimeHTML = /* html */`
+<!-- 開放時段 -->
+<li class="info__item info__item-time flex-start-start">
+  <div class="info__title flex-center">
+    <div class="icon-time icon-mr4"></div>
+    <span class="info__text">開放時段 :</span>
   </div>
-</div>
+  <p class="info__content"></p>
+</li>
 `
 
+// 所在地點
+const PAGE_infoLocationHTML = /* html */`
+<!-- 所在地點 -->
+<li class="info__item info__item-location flex-start-start">
+  <div class="info__title flex-center">
+    <div class="icon-location icon-mr4"></div>
+    <span class="info__text">所在地點 :</span>
+  </div>
+  <p class="info__content"></p>
+</li>
+`
+
+// 聯絡電話
+const PAGE_infoCallHTML = /* html */`
+<!-- 聯絡電話 -->
+<li class="info__item info__item-call flex-start-start">
+  <div class="info__title flex-center">
+    <div class="icon-call icon-mr4"></div>
+    <span class="info__text">聯絡電話 :</span>
+  </div>
+  <p class="info__content"><a href="tel:886-3-8771410"></a></p>
+</li>
+`
+
+// 票價資訊
+const PAGE_infoTicketHTML = /* html */`
+<!-- 票價資訊 -->
+<li class="info__item info__item-ticket flex-start-start">
+  <div class="info__title flex-center">
+    <div class="icon-ticket icon-mr4"></div>
+    <span class="info__text">票價資訊 :</span>
+  </div>
+  <p class="info__content"></p>
+</li>
+`
+
+// 分類標籤
+const PAGE_infoTagHTML = /* html */`
+<!-- 分類標籤 -->
+<li class="info__item info__item-class flex-start-start">
+  <div class="info__title flex-self-center">
+    <div class="icon-tag icon-mr4"></div>
+    <span class="info__text">分類標籤 :</span>
+  </div>
+  <p class="info__content">
+    <a
+      href="javascript:;"
+      class="info__content-tag"
+    >遊憩類</a>
+    <a
+      href="javascript:;"
+      class="info__content-tag"
+    >自然風景類</a>
+  </p>
+</li>
+`
+
+// 網站連結
+const PAGE_infoWebHTML = /* html */`
+<!-- 網站連結 -->
+<li class="info__item info__item-web flex-start-start">
+  <div class="info__title flex-self-center">
+    <div class="icon-web icon-mr4"></div>
+    <span class="info__text">網站連結 :</span>
+  </div>
+  <p class="info__content">
+    <a
+      class="info__url"
+      href="http://www.erv-nsa.gov.tw"
+      target="_blank"
+    >http://www.erv-nsa.gov.tw</a>
+  </p>
+</li>
+`
 
 export {
   cities,
   HOME_defaultHTML,
   FILTER_defaultHTML,
   PAGE_defaultHTML,
+  PAGE_infoListHTML
 }

@@ -40,13 +40,6 @@
     integrity='sha512-1xoFisiGdy9nvho8EgXuXvnpR5GAMSjFwp40gSRE3NwdUdIMIKuPa7bqoUhLD0O/5tPNhteAsE5XyyMi5reQVA=='
     crossorigin='anonymous'
   />
-  <!-- leaflet.markercluster Default CSS -->
-  <link
-    rel='stylesheet'
-    href='https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.min.css'
-    integrity='sha512-fYyZwU1wU0QWB4Yutd/Pvhy5J1oWAwFXun1pt+Bps04WSe4Aq6tyHlT4+MHSJhD8JlLfgLuC4CbCnX5KHSjyCg=='
-    crossorigin='anonymous'
-  />
   <!-- leaflet.markercluster CSS -->
   <link
     rel='stylesheet'
@@ -366,71 +359,7 @@
         <!-- 活動資訊 : 時段、地點、主辦單位、備註(Cycle)、類別 -->
         <div class="info mb-24">
           <ul class="info__list">
-            <!-- 開放時段 -->
-            <li class="info__item info__item-time flex-start-start">
-              <div class="info__title flex-center">
-                <div class="icon-time icon-mr4"></div>
-                <span class="info__text">開放時段 :</span>
-              </div>
-              <p class="info__content">
-                每日開放每日開放每日開放每日開放每日開放每日開放每日開放每日開放每日開放每日開放每日開放每日開放</p>
-            </li>
-            <!-- 所在地點 -->
-            <li class="info__item info__item-location flex-start-start">
-              <div class="info__title flex-center">
-                <div class="icon-location icon-mr4"></div>
-                <span class="info__text">所在地點 :</span>
-              </div>
-              <p class="info__content">花蓮縣975鳳林鎮林榮里永福街20號</p>
-            </li>
-            <!-- 聯絡電話 -->
-            <li class="info__item info__item-call flex-start-start">
-              <div class="info__title flex-center">
-                <div class="icon-call icon-mr4"></div>
-                <span class="info__text">聯絡電話 :</span>
-              </div>
-              <p class="info__content"><a href="tel:886-3-8771410">886-3-8771410</a></p>
-            </li>
-            <!-- 票價資訊 -->
-            <li class="info__item info__item-ticket flex-start-start">
-              <div class="info__title flex-center">
-                <div class="icon-ticket icon-mr4"></div>
-                <span class="info__text">票價資訊 :</span>
-              </div>
-              <p class="info__content">
-                1.全票：$350元2.優待票：$250元（13歲(含)以上至18歲以下青少年、65歲以上老人）3.學童票：$200元（6歲-12歲(含)之童）4.博幼票：$175元（身障朋友及陪...</p>
-            </li>
-            <!-- 分類標籤 -->
-            <li class="info__item info__item-class flex-start-start">
-              <div class="info__title flex-self-center">
-                <div class="icon-tag icon-mr4"></div>
-                <span class="info__text">分類標籤 :</span>
-              </div>
-              <p class="info__content">
-                <a
-                  href="javascript:;"
-                  class="info__content-tag"
-                >遊憩類</a>
-                <a
-                  href="javascript:;"
-                  class="info__content-tag"
-                >自然風景類</a>
-              </p>
-            </li>
-            <!-- 網站連結 -->
-            <li class="info__item info__item-web flex-start-start">
-              <div class="info__title flex-self-center">
-                <div class="icon-web icon-mr4"></div>
-                <span class="info__text">網站連結 :</span>
-              </div>
-              <p class="info__content">
-                <a
-                  class="info__url"
-                  href="http://www.erv-nsa.gov.tw"
-                  target="_blank"
-                >http://www.erv-nsa.gov.tw</a>
-              </p>
-            </li>
+            <!-- page.js 載入資料 -->
           </ul>
         </div>
         <!-- 介紹 -->
@@ -564,12 +493,6 @@
     integrity='sha512-SeiQaaDh73yrb56sTW/RgVdi/mMqNeM2oBwubFHagc5BkixSpP1fvqF47mKzPGWYSSy4RwbBunrJBQ4Co8fRWA=='
     crossorigin='anonymous'
   ></script>
-  <!-- leaflet.markercluster -->
-  <script
-    src='https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.min.js'
-    integrity='sha512-TiMWaqipFi2Vqt4ugRzsF8oRoGFlFFuqIi30FFxEPNw58Ov9mOy6LgC05ysfkxwLE0xVeZtmr92wVg9siAFRWA=='
-    crossorigin='anonymous'
-  ></script>
   <!-- axios -->
   <script
     src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js'
@@ -585,11 +508,11 @@
   <!-- my js -->
   <script
     type="module"
-    src="src/module/swiper.js"
+    src="src/api.js"
   ></script>
   <script
     type="module"
-    src="src/api.js"
+    src="src/module/swiper.js"
   ></script>
   <script
     type="module"
@@ -605,11 +528,15 @@
   ></script>
   <script
     type="module"
-    src="src/home.js"
+    src="src/module/template.js"
   ></script>
   <script
     type="module"
-    src="src/module/template.js"
+    src="src/module/maps.js"
+  ></script>
+  <script
+    type="module"
+    src="src/home.js"
   ></script>
   <script
     type="module"

@@ -45,3 +45,16 @@ export function dateFormat(data) {
     item['EndTime'] = `${endYear}-${endMon}-${endDate}`
   })
 }
+
+// 介紹文字斷行
+export function chineseBreakWord(para) {
+  let contentAry = para.split('。')
+  contentAry.pop()
+  const paragraph = contentAry.reduce((html, para) => {
+    html += `
+    <p>${para}。</p>
+    `
+    return html
+  }, ``)
+  return paragraph
+}

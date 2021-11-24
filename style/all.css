@@ -531,6 +531,17 @@ button {
   background-size: 20px 20px;
 }
 
+.icon-organizer {
+  background-image: url(../img/icon-organizer.svg);
+  background-repeat: no-repeat;
+  width: 20px;
+  min-width: 20px;
+  height: 20px;
+  min-height: 20px;
+  background-position: center;
+  background-size: 20px 20px;
+}
+
 .icon-mr4 {
   margin-right: 4px;
 }
@@ -1846,6 +1857,16 @@ button {
 .filterPage__pagination-num.current {
   color: #fff;
   background-color: #3FB195;
+}
+
+.map__popTitle {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: .05rem;
+}
+
+.leaflet-popup-content p {
+  margin: 0;
 }
 
 .nav {
