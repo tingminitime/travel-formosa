@@ -1,4 +1,4 @@
-import { PAGE_infoListHTML } from './template.js'
+import { PAGE_infoListHTML, theme } from './template.js'
 import { dateFormat, chineseBreakWord } from './tool.js'
 import { initMap } from './maps.js'
 
@@ -8,6 +8,7 @@ export default function getPageResult(data, sort) {
   const title = document.querySelector('.title__text')
   const pageSlide = document.querySelector('.swiper-wrapper-page')
   const infoList = document.querySelector('.info__list')
+  const introTitle = document.querySelector('.intro__title')
   const intro = document.querySelector('.intro__content')
 
   // 標題文字
@@ -142,6 +143,9 @@ export default function getPageResult(data, sort) {
 
   // 介紹
   function pageIntroRender() {
+    const introSort = theme.find(item => item['en'] === sort)
+    console.log(introSort)
+    introTitle.textContent = `${introSort['zh']}介紹`
     intro.innerHTML = chineseBreakWord(data['DescriptionDetail'] ?? data['Description'])
   }
   pageIntroRender()

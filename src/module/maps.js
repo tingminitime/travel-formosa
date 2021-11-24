@@ -3,7 +3,7 @@
 // let markers = L.markerClusterGroup();
 
 export function initMap(mapObj) {
-  const { lat, lon, name, location } = mapObj
+  let { lat, lon, name, location } = mapObj
   let myMap = L.map('myMap').setView([lat, lon], 15);
 
   // Mapbox 服務

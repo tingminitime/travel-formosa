@@ -25,6 +25,14 @@ const cities = [
   { en: 'LienchiangCounty', zh: '連江縣', name: '連江', area: 'island' },
 ]
 
+// 主題資料
+const theme = [
+  { en: 'Activity', zh: '活動' },
+  { en: 'ScenicSpot', zh: '景點' },
+  { en: 'Restaurant', zh: '美食' },
+  { en: 'Hotel', zh: '住宿' },
+]
+
 // 首頁基本 HTML
 const HOME_defaultHTML = /* html */`
 <!-- ----- 主頁 ----- -->
@@ -173,7 +181,7 @@ const PAGE_defaultHTML = /* html */`
   </div>
   <!-- 介紹 -->
   <div class="intro mb-24">
-    <h2 class="intro__title">[主題]介紹</h2>
+    <h2 class="intro__title">介紹</h2>
     <div class="intro__content">
       <!-- 載入 DescriptionDetail -->
     </div>
@@ -388,6 +396,7 @@ const PAGE_infoWebHTML = /* html */`
 
 export {
   cities,
+  theme,
   HOME_defaultHTML,
   FILTER_defaultHTML,
   PAGE_defaultHTML,
