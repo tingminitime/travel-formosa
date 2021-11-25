@@ -6,7 +6,7 @@ import {
 } from './module/template.js'
 import { HOME_render } from './home.js'
 import { INIT_swiper } from './module/swiper.js'
-import { cities } from './module/template.js'
+import { cities, loadingHTML } from './module/template.js'
 import { randomNum } from './module/tool.js'
 import getFilterResult from './module/filter.js'
 import getPageResult from './module/page.js'
@@ -167,17 +167,6 @@ async function PAGE_request(routeObj) {
   catch (err) {
     console.error('ID資料取得失敗: ', err)
   }
-
 }
-
-// ----- 監聽歷史紀錄變化 -----
-// window.addEventListener('hashchange', function (e) {
-//   // Filter 換頁不觸發 renderByUrl
-//   if (!location.hash.includes('&page=')) {
-//     currentPage = location.hash.split('&page=')[1]
-//   }
-//   else renderByUrl(location.hash)
-//   console.log('偵測網址變更')
-// }, false)
 
 export { renderByUrl }

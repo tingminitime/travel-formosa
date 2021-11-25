@@ -129,6 +129,9 @@ const FILTER_defaultHTML = /* html */`
     <button class="filterPage__sortSelect mr-12">👍 推薦</button>
   </div>
   <ul class="filterPage__list flex flex-wrap mb-24">
+    <li class="flex-center" style="width: 100%; height:20vw">
+      <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+    </li>
   </ul>
   <!-- 頁碼 -->
   <div class="filterPage__pagination flex-center mb-40">
@@ -307,91 +310,9 @@ const PAGE_infoListHTML = {
   `,
 }
 
-// 開放時段
-const PAGE_infoTimeHTML = /* html */`
-<!-- 開放時段 -->
-<li class="info__item info__item-time flex-start-start">
-  <div class="info__title flex-center">
-    <div class="icon-time icon-mr4"></div>
-    <span class="info__text">開放時段 :</span>
-  </div>
-  <p class="info__content"></p>
-</li>
-`
-
-// 所在地點
-const PAGE_infoLocationHTML = /* html */`
-<!-- 所在地點 -->
-<li class="info__item info__item-location flex-start-start">
-  <div class="info__title flex-center">
-    <div class="icon-location icon-mr4"></div>
-    <span class="info__text">所在地點 :</span>
-  </div>
-  <p class="info__content"></p>
-</li>
-`
-
-// 聯絡電話
-const PAGE_infoCallHTML = /* html */`
-<!-- 聯絡電話 -->
-<li class="info__item info__item-call flex-start-start">
-  <div class="info__title flex-center">
-    <div class="icon-call icon-mr4"></div>
-    <span class="info__text">聯絡電話 :</span>
-  </div>
-  <p class="info__content"><a href="tel:886-3-8771410"></a></p>
-</li>
-`
-
-// 票價資訊
-const PAGE_infoTicketHTML = /* html */`
-<!-- 票價資訊 -->
-<li class="info__item info__item-ticket flex-start-start">
-  <div class="info__title flex-center">
-    <div class="icon-ticket icon-mr4"></div>
-    <span class="info__text">票價資訊 :</span>
-  </div>
-  <p class="info__content"></p>
-</li>
-`
-
-// 分類標籤
-const PAGE_infoTagHTML = /* html */`
-<!-- 分類標籤 -->
-<li class="info__item info__item-class flex-start-start">
-  <div class="info__title flex-self-center">
-    <div class="icon-tag icon-mr4"></div>
-    <span class="info__text">分類標籤 :</span>
-  </div>
-  <p class="info__content">
-    <a
-      href="javascript:;"
-      class="info__content-tag"
-    >遊憩類</a>
-    <a
-      href="javascript:;"
-      class="info__content-tag"
-    >自然風景類</a>
-  </p>
-</li>
-`
-
-// 網站連結
-const PAGE_infoWebHTML = /* html */`
-<!-- 網站連結 -->
-<li class="info__item info__item-web flex-start-start">
-  <div class="info__title flex-self-center">
-    <div class="icon-web icon-mr4"></div>
-    <span class="info__text">網站連結 :</span>
-  </div>
-  <p class="info__content">
-    <a
-      class="info__url"
-      href="http://www.erv-nsa.gov.tw"
-      target="_blank"
-    >http://www.erv-nsa.gov.tw</a>
-  </p>
-</li>
+// Loading
+const loadingHTML = /* html */`
+<div class="lds-ring"><div></div><div></div><div></div><div></div></div>
 `
 
 export {
@@ -400,5 +321,6 @@ export {
   HOME_defaultHTML,
   FILTER_defaultHTML,
   PAGE_defaultHTML,
-  PAGE_infoListHTML
+  PAGE_infoListHTML,
+  loadingHTML
 }
