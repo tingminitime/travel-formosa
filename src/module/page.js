@@ -1,5 +1,6 @@
 import { PAGE_infoListHTML, theme } from './template.js'
-import { dateFormat, chineseBreakWord } from './tool.js'
+import { SPOT_apiRequest } from "../api.js";
+import { cityEnFilter, cityFilter, dateFormat, chineseBreakWord } from './tool.js'
 import { initMap } from './maps.js'
 
 export default function getPageResult(data, sort) {
@@ -10,9 +11,20 @@ export default function getPageResult(data, sort) {
   const infoList = document.querySelector('.info__list')
   const introTitle = document.querySelector('.intro__title')
   const intro = document.querySelector('.intro__content')
-
-  // 標題文字
+  const mapContainer = document.querySelector('.mapContainer')
+  const { PositionLat: lat, PositionLon: lon } = data['Position']
   title.textContent = data['Name']
+
+  pageSlideHandler()
+  pageInfoRender()
+  pageIntroRender()
+  mapLocationRender()
+  nearSpotRequest({
+    lat,
+    lon,
+    distance: 2000,
+    cardCount: 10
+  })
 
   // 輪播照片
   function pageSlideHandler() {
@@ -35,9 +47,9 @@ export default function getPageResult(data, sort) {
       `
       return html
     }, ``)
-    return PAGE_slideHTML
+    pageSlide.innerHTML = PAGE_slideHTML
   }
-  pageSlide.innerHTML = pageSlideHandler()
+
 
   // 資訊列表
   function pageInfoRender() {
@@ -95,7 +107,6 @@ export default function getPageResult(data, sort) {
         break
     }
   }
-  pageInfoRender()
 
   // 資訊列表 - 基本架構
   function pageInfoCompose(ary) {
@@ -148,18 +159,80 @@ export default function getPageResult(data, sort) {
     introTitle.textContent = `${introSort['zh']}介紹`
     intro.innerHTML = chineseBreakWord(data['DescriptionDetail'] ?? data['Description'])
   }
-  pageIntroRender()
 
   // 地圖位置
-  const { PositionLat: lat, PositionLon: lon } = data['Position']
-  console.log(`緯度: ${lat}，經度: ${lon}`)
-  const mapObj = {
-    lat,
-    lon,
-    name: data['Name'],
-    location: data['Address'] ?? data['City']
+  function mapLocationRender() {
+    // 每次進介紹頁面先初始化地圖 html
+    mapContainer.innerHTML = /* html */`
+    <h2 class="intro__title">地圖位置</h2>
+    <div id="mapBlock"></div>
+    `
+    console.log(`緯度: ${lat}，經度: ${lon}`)
+    initMap({
+      lat,
+      lon,
+      name: data['Name'],
+      location: data['Address'] ?? data['City']
+    })
   }
-  initMap(mapObj)
+
+
+  // 鄰近景點
+  async function nearSpotRequest(nearSpotSet) {
+    try {
+      const PAGE_nearSpot = document.querySelector('.swiper-wrapper-nearSpot')
+      const { lat, lon, distance, cardCount } = nearSpotSet
+      const { spotNear } = SPOT_apiRequest()
+      const spotNearRes = await spotNear(lat, lon, distance)
+      let nearSpotData = []
+
+      nearSpotData = spotNearRes.data
+      let showNearSpotData = []
+      nearSpotData.length < cardCount
+        ? showNearSpotData = nearSpotData.slice(0, nearSpotData.length)
+        : showNearSpotData = nearSpotData.slice(0, cardCount)
+      console.log('showNearSpotData: ', showNearSpotData)
+
+      const PAGE_nearSpotHTML = showNearSpotData.reduce((html, item) => {
+        html += /* html */`
+        <div class="swiper-slide swiper-slide-nearSpot">
+          <a
+            href="#/ScenicSpot/${cityEnFilter(item['City'] ?? item['Address'])}/${item['ID']}"
+            class="card d-b"
+          >
+            <div class="card-img">
+              <button class="card-shareBtn"></button>
+              <img
+                data-src=${item['Picture']['PictureUrl1'] ?? noImageUrl}
+                onerror="this.src='img/noimage.png'"
+                class="swiper-lazy"
+              >
+              <div class="swiper-lazy-preloader"></div>
+            </div>
+            <div class="card-info">
+              <h3 class="card-title">${item['Name']}</h3>
+              <div class="card-otherInfo flex-start-center">
+                <div class="card-location flex-start-center">
+                  <div class="icon-location icon-mr4"></div>
+                  <span class="card-otherInfoText">${cityFilter(item['City'] ?? item['Address'])}</span>
+                </div>
+                <div class="card-class flex-start-center">
+                  <div class="icon-tag icon-mr4"></div>
+                  <span class="card-otherInfoText">${item['Class1'] ? item['Class1'] : '未分類'}</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+        `
+        return html
+      }, ``)
+      PAGE_nearSpot.innerHTML = PAGE_nearSpotHTML
+    }
+    catch (err) {
+      console.log('附近景點資料取得失敗: ', err)
+    }
+  }
 
   // 回上一頁
   PAGE_backBtn.addEventListener('click', function (e) {

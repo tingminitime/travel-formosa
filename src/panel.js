@@ -60,11 +60,11 @@ function toggleFilterList(e) {
 
 function closeFilterList(e) {
   areaSection.classList.remove('active')
+  toggleIcon.classList.remove('active')
 }
 
 // 點擊篩選地區後 => 傳入 cityName 文字
 function selectCity(e) {
-  // console.log(e.target)
   if (!e.target.classList.contains('citySelect__filterBtn')) return
   cityName.textContent = e.target.textContent
   cityName.classList.add('citySelect__cityName--selected')

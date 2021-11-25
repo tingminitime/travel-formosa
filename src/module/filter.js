@@ -12,9 +12,7 @@ export default function getFilterResult(data, sort) {
 
   const { CARDS_COUNT_PER_PAGE, aroundCurr } = pageInfo
   const maxPages = Math.ceil(data.length / CARDS_COUNT_PER_PAGE)
-  // let currentPage = 1
   let hash = location.hash
-  // history.pushState(null, null, `${hash}&page=${currentPage}`)
   history.pushState(null, null, `${hash}&page=1`)
   console.log('maxPages: ', maxPages)
 

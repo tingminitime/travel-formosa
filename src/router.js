@@ -1,6 +1,4 @@
-import {
-  SORT_apiRequest,
-} from "./api.js";
+import { SORT_apiRequest } from "./api.js";
 import {
   HOME_defaultHTML,
   FILTER_defaultHTML,

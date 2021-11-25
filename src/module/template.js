@@ -187,15 +187,15 @@ const PAGE_defaultHTML = /* html */`
     </div>
   </div>
   <!-- 地圖 -->
-  <div class="map mb-40">
+  <div class="mapContainer mb-40">
     <h2 class="intro__title">地圖位置</h2>
-    <div id="myMap"></div>
+    <div id="mapBlock"></div>
   </div>
-  <!-- 鄰近的景點 最多 6 個 -->
+  <!-- 鄰近的景點 最多 10 個 -->
   <div class="nearSpot mb-40">
     <h2 class="intro__title">鄰近的景點</h2>
     <div class="swiper swiper-nearSpot">
-      <div class="swiper-wrapper">
+      <div class="swiper-wrapper swiper-wrapper-nearSpot">
         <!-- 載入輪播景點 -->
       </div>
       <!-- navigation buttons -->

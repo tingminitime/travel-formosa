@@ -1757,7 +1757,7 @@ button {
   margin-top: 12px;
 }
 
-#myMap {
+#mapBlock {
   z-index: 8;
   width: 100%;
   height: \min(40vh, 380px);
@@ -1859,7 +1859,7 @@ button {
   background-color: #3FB195;
 }
 
-.map__popTitle {
+.mapBlock__popTitle {
   font-size: 18px;
   font-weight: 700;
   letter-spacing: .05rem;

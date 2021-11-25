@@ -4,7 +4,7 @@
 
 export function initMap(mapObj) {
   let { lat, lon, name, location } = mapObj
-  let myMap = L.map('myMap').setView([lat, lon], 15);
+  let myMap = L.map('mapBlock').setView([lat, lon], 15);
 
   // Mapbox 服務
   L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
@@ -18,8 +18,8 @@ export function initMap(mapObj) {
 
   let marker = L.marker([lat, lon]).addTo(myMap);
   marker.bindPopup(/* html */`
-    <h2 class="map__popTitle">${name}</h2>
-    <p class="map__location">地址: <br>${location}</p>
+    <h2 class="mapBlock__popTitle">${name}</h2>
+    <p class="mapBlock__location">地址: <br>${location}</p>
   `).openPopup();
   myMap.addLayer(marker)
 
@@ -38,12 +38,12 @@ export function getLocation() {
         // console.log(success)
         console.log(`(成功獲取當前位置) 經度: ${longitude} 緯度: ${latitude} 時間: ${formatTimestamp}`)
         // render view current position
-        mapId.setView([latitude, longitude], 15)
+        myMap.setView([latitude, longitude], 15)
 
         markers.addLayer(L.marker([latitude, longitude]))
-          .addTo(mapId)
+          .addTo(myMap)
 
-        mapId.addLayer(markers)
+        myMap.addLayer(markers)
       },
       // error 獲取位置失敗
       error => console.error(error.code, error.message)
