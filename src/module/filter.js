@@ -307,17 +307,20 @@ export default function getFilterResult(data, sort) {
   }
 
   // ----- 監聽 -----
-  // 歷史紀錄變化
-  window.addEventListener('hashchange', function (e) {
+  function pageHashChange(e) {
     // Filter 換頁不觸發 renderByUrl
     if (location.hash.includes('&page=')) {
       pageInfo['currentPage'] = parseInt(location.hash.split('&page=')[1])
       initPage()
     } else {
       renderByUrl(location.hash)
+      window.removeEventListener('hashchange', pageHashChange, false)
     }
     console.log('偵測hash變更')
-  }, false)
+  }
+
+  // 歷史紀錄變化
+  window.addEventListener('hashchange', pageHashChange, false)
 
   // 按頁碼
   paginationList.addEventListener('click', setPage, false)
