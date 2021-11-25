@@ -1,4 +1,4 @@
-import { cities } from './template.js'
+import { cities, noDataHTML } from './template.js'
 
 // 找出 city 的 en (網址篩選用)
 export function cityEnFilter(name = 'all') {
@@ -48,6 +48,7 @@ export function dateFormat(data) {
 
 // 介紹文字斷行
 export function chineseBreakWord(para) {
+  if (para === undefined) return noDataHTML
   let contentAry = para.split('。')
   contentAry.pop()
   const paragraph = contentAry.reduce((html, para) => {

@@ -315,6 +315,18 @@ const loadingHTML = /* html */`
 <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
 `
 
+// 附近景點無資訊
+const noDataHTML = /* html */`
+<p class="intro__noData">無相關資訊</p>
+`
+
+function noDataFragment() {
+  let el_p = document.createElement('p')
+  el_p.setAttribute('class', 'intro__noData')
+  el_p.textContent = '無相關資訊'
+  return el_p
+}
+
 export {
   cities,
   theme,
@@ -322,5 +334,7 @@ export {
   FILTER_defaultHTML,
   PAGE_defaultHTML,
   PAGE_infoListHTML,
-  loadingHTML
+  loadingHTML,
+  noDataHTML,
+  noDataFragment
 }

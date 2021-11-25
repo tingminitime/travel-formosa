@@ -1,4 +1,4 @@
-import { PAGE_infoListHTML, theme } from './template.js'
+import { PAGE_infoListHTML, theme, noDataHTML, noDataFragment } from './template.js'
 import { SPOT_apiRequest } from "../api.js";
 import { cityEnFilter, cityFilter, dateFormat, chineseBreakWord } from './tool.js'
 import { initMap } from './maps.js'
@@ -180,7 +180,9 @@ export default function getPageResult(data, sort) {
   // 鄰近景點
   async function nearSpotRequest(nearSpotSet) {
     try {
+      const nearSpot = document.querySelector('.nearSpot')
       const PAGE_nearSpot = document.querySelector('.swiper-wrapper-nearSpot')
+      console.log(nearSpot)
       const { lat, lon, distance, cardCount } = nearSpotSet
       const { spotNear } = SPOT_apiRequest()
       const spotNearRes = await spotNear(lat, lon, distance)
@@ -227,7 +229,10 @@ export default function getPageResult(data, sort) {
         `
         return html
       }, ``)
-      PAGE_nearSpot.innerHTML = PAGE_nearSpotHTML
+
+      showNearSpotData.length === 0
+        ? nearSpot.appendChild(noDataFragment())
+        : PAGE_nearSpot.innerHTML = PAGE_nearSpotHTML
     }
     catch (err) {
       console.log('附近景點資料取得失敗: ', err)

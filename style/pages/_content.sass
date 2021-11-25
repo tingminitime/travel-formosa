@@ -1,7 +1,7 @@
 .content
   width: calc(100% - 354px)
   max-width: 100%
-  padding: 24px
+  padding: 24px 24px 48px 24px
   flex: 1
   overflow: auto
   +padPro
@@ -159,6 +159,10 @@
       line-height: 1.5
     > p + p
       margin-top: 12px
+  &__noData
+    +font(24, 700)
+    color: $textGray
+    text-align: center
 
 #mapBlock
   z-index: 8

@@ -1541,7 +1541,7 @@ button {
 .content {
   width: calc(100% - 354px);
   max-width: 100%;
-  padding: 24px;
+  padding: 24px 24px 48px 24px;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
@@ -1814,6 +1814,14 @@ button {
 
 .intro__content > p + p {
   margin-top: 12px;
+}
+
+.intro__noData {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: .05rem;
+  color: #666666;
+  text-align: center;
 }
 
 #mapBlock {
