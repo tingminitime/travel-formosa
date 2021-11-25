@@ -147,7 +147,7 @@ export default function getFilterResult(data, sort) {
     initPage()
   }
 
-  // 依頁碼狀態及不同分類 => 渲染畫面
+  // ----- 依頁碼狀態及不同分類 => 渲染畫面 -----
   function FILTER_renderHTML(sort, data) {
     switch (sort) {
       case 'ScenicSpot':
@@ -308,6 +308,7 @@ export default function getFilterResult(data, sort) {
     }
   }
 
+  // ----- 頁碼 RWD -----
   function togglePagination() {
     let otherPage = Array.from(document.querySelectorAll('.filterPage__pagination-num'))
     if (window.innerWidth <= 767) {
