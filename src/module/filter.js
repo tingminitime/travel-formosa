@@ -41,6 +41,8 @@ export default function getFilterResult(data, sort) {
     if (maxPages <= 7) fragment = renderNoEllipsis(currentPage)
     else if (maxPages > 7) fragment = renderEllipsis(currentPage)
     paginationList.appendChild(fragment)
+
+    togglePagination()
   }
   initPage()
 
@@ -306,15 +308,34 @@ export default function getFilterResult(data, sort) {
     }
   }
 
+  function togglePagination() {
+    let otherPage = Array.from(document.querySelectorAll('.filterPage__pagination-num'))
+    if (window.innerWidth <= 767) {
+      otherPage.forEach(item => {
+        if (!item.classList.contains('current')) {
+          item.closest('.filterPage__pagination-item').classList.add('d-n')
+        }
+      })
+    } else {
+      otherPage.forEach(item => {
+        if (!item.classList.contains('current')) {
+          item.closest('.filterPage__pagination-item').classList.remove('d-n')
+        }
+      })
+    }
+  }
+
   // ----- 監聽 -----
   function pageHashChange(e) {
     // Filter 換頁不觸發 renderByUrl
     if (location.hash.includes('&page=')) {
+      console.log('執行換頁')
       pageInfo['currentPage'] = parseInt(location.hash.split('&page=')[1])
       initPage()
     } else {
       renderByUrl(location.hash)
       window.removeEventListener('hashchange', pageHashChange, false)
+      window.removeEventListener('resize', togglePagination, false)
     }
     console.log('偵測hash變更')
   }
@@ -328,5 +349,8 @@ export default function getFilterResult(data, sort) {
   // 上 / 下一頁
   prevPageBtn.addEventListener('click', setPage_PREV_NEXT, false)
   nextPageBtn.addEventListener('click', setPage_PREV_NEXT, false)
+
+  // 手機板隱藏頁碼
+  window.addEventListener('resize', togglePagination, false)
 
 }
