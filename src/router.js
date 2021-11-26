@@ -19,6 +19,16 @@ const { swiper_header, swiper_hotSpot, swiper_page, swiper_nearSpot } = INIT_swi
 window.onload = function () {
   history.pushState(null, null, location.pathname)
   renderByUrl(location.hash)
+
+  console.log('倒數5分鐘重新整理網頁')
+  setTimeout(() => {
+    let reloadConfirm = confirm('閒置過久，請重新整理網頁 !')
+    if (reloadConfirm) {
+      window.location.reload(true)
+      console.log('已重新整理網頁，更新api驗證時間')
+    }
+    else return
+  }, 300000)
 }
 
 // ----- 判斷連結並渲染 -----
