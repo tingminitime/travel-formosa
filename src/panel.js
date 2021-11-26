@@ -126,6 +126,8 @@ function searchHandler() {
     return item.dataset.select === 'true'
   })
   filterObj['sort'] = selectThemeBtn.dataset.sort
+  // 隱藏 panel
+  togglePanel()
 
   // 搜尋後 => 變換 url hash
   const { keyword, city, sort } = filterObj

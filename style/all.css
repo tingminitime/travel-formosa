@@ -1430,30 +1430,31 @@ button {
   font-family: 'Noto Sans TC', Arial, sans-serif;
 }
 
-.search__confirm:before {
-  content: '';
-  position: absolute;
-  left: -40%;
-  top: -50%;
-  z-index: -1;
-  width: 200px;
-  height: 200px;
-  border-radius: 400px;
-  background-color: #328b75;
-  opacity: 0;
-  -webkit-transition: all .4s;
-  transition: all .4s;
-}
-
-.search__confirm:hover:before {
-  left: 0;
-  opacity: 1;
-  -webkit-transform: scale(3);
-          transform: scale(3);
-}
-
 .search__confirm:active {
   background-color: #328b75;
+}
+
+@media (min-width: 769px) {
+  .search__confirm:before {
+    content: '';
+    position: absolute;
+    left: -40%;
+    top: -50%;
+    z-index: -1;
+    width: 200px;
+    height: 200px;
+    border-radius: 400px;
+    background-color: #328b75;
+    opacity: 0;
+    -webkit-transition: all .4s;
+    transition: all .4s;
+  }
+  .search__confirm:hover:before {
+    left: 0;
+    opacity: 1;
+    -webkit-transform: scale(3);
+            transform: scale(3);
+  }
 }
 
 .theme {
