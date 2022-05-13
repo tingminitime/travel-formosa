@@ -45,7 +45,7 @@ export const HOME_render = () => {
               <div class="swiper-lazy-preloader"></div>
             </div>
             <div class="card-info">
-              <h3 class="card-title">${item['Name']}</h3>
+              <h3 class="card-title">${item['ScenicSpotName']}</h3>
               <div class="card-otherInfo flex-start-center">
                 <div class="card-location flex-start-center">
                   <div class="icon-location icon-mr4"></div>
@@ -100,7 +100,7 @@ export const HOME_render = () => {
         >
           <div class="cardSpec-img cardSpec-mask">
             <button class="card-shareBtn"></button>
-            <h3 class="cardSpec-title cardSpec-title-ab">${item['Name']}</h3>
+            <h3 class="cardSpec-title cardSpec-title-ab">${item['RestaurantName']}</h3>
             <img
               src=${item['Picture']['PictureUrl1'] ?? noImageUrl}
               onerror="this.src='img/noimage.png'"
@@ -133,13 +133,13 @@ export const HOME_render = () => {
   async function HOME_hotelRender() {
     const { hotelAllTop } = HOTEL_apiRequest()
     const moreHotel = `
-    <li class="cardSpec__more card">
-      <a
-        href="#/Hotel/all"
-        class="cardSpec__moreText flex-center"
-      ><span>更多住宿...</span></a>
-    </li>
-  `
+      <li class="cardSpec__more card">
+        <a
+          href="#/Hotel/all"
+          class="cardSpec__moreText flex-center"
+        ><span>更多住宿...</span></a>
+      </li>
+    `
 
     let data = []
     // 取得住宿推薦資料 (必須有照片 )
@@ -171,7 +171,7 @@ export const HOME_render = () => {
             >
           </div>
           <div class="cardSpec-info flex flex-wrap">
-            <h3 class="cardSpec-title">${item['Name']}</h3>
+            <h3 class="cardSpec-title">${item['HotelName']}</h3>
             <div class="cardSpec-location flex-center">
               <div class="icon-location icon-mr4"></div>
               <p class="cardSpec-otherInfoText">
@@ -230,7 +230,7 @@ export const HOME_render = () => {
           class="cardFull flex-sb-center"
         >
           <div class="cardFull__info">
-            <h3 class="cardFull__title">${item['Name']}</h3>
+            <h3 class="cardFull__title">${item['ActivityName']}</h3>
             <div class="cardFull__location flex-start-center">
               <div class="icon-location icon-mr4"></div>
               <p class="cardFull__otherInfoText">

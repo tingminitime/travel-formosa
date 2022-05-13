@@ -40,7 +40,13 @@ export const SORT_apiRequest = () => {
   const SORT_noKeywordCityFilter = (sort, city) => sortRequest.get(`/${sort}/${city}?$format=JSON`)
   const SORT_pageFilter = (sort, id) => sortRequest.get(`/${sort}?$filter=ID eq '${id}'&$format=JSON`)
 
-  return { SORT_keywordAllFilter, SORT_keywordCityFilter, SORT_noKeywordAllFilter, SORT_noKeywordCityFilter, SORT_pageFilter }
+  return {
+    SORT_keywordAllFilter,
+    SORT_keywordCityFilter,
+    SORT_noKeywordAllFilter,
+    SORT_noKeywordCityFilter,
+    SORT_pageFilter
+  }
 }
 
 // 景點 api

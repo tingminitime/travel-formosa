@@ -170,7 +170,7 @@ export default function getFilterResult(data, sort) {
                 >
               </div>
               <div class="card-info">
-                <h3 class="card-title">${item['Name']}</h3>
+                <h3 class="card-title">${item['ScenicSpotName']}</h3>
                 <div class="card-otherInfo flex-start-center">
                   <div class="card-location flex-start-center">
                     <div class="icon-location icon-mr4"></div>
@@ -199,7 +199,7 @@ export default function getFilterResult(data, sort) {
             >
               <div class="cardSpec-img cardSpec-mask">
                 <button class="card-shareBtn"></button>
-                <h3 class="cardSpec-title cardSpec-title-ab">${item['Name']}</h3>
+                <h3 class="cardSpec-title cardSpec-title-ab">${item['RestaurantName']}</h3>
                 <img
                   src=${item['Picture']['PictureUrl1'] ?? noImageUrl}
                   onerror="this.src='img/noimage.png'"
@@ -244,7 +244,7 @@ export default function getFilterResult(data, sort) {
                 >
               </div>
               <div class="cardSpec-info flex flex-wrap">
-                <h3 class="cardSpec-title">${item['Name']}</h3>
+                <h3 class="cardSpec-title">${item['HotelName']}</h3>
                 <div class="cardSpec-location flex-center">
                   <div class="icon-location icon-mr4"></div>
                   <p class="cardSpec-otherInfoText">
@@ -275,7 +275,7 @@ export default function getFilterResult(data, sort) {
               class="cardFull flex-sb-center"
             >
               <div class="cardFull__info">
-                <h3 class="cardFull__title">${item['Name']}</h3>
+                <h3 class="cardFull__title">${item['ActivityName']}</h3>
                 <div class="cardFull__location flex-start-center">
                   <div class="icon-location icon-mr4"></div>
                   <p class="cardFull__otherInfoText">

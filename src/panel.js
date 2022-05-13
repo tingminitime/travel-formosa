@@ -111,7 +111,7 @@ function searchHandler() {
   })
   if (themeSelectStatus) {
     alert('請選擇「精選主題」')
-    console.log('prevThemeBtn: ', prevThemeBtn)
+    // console.log('prevThemeBtn: ', prevThemeBtn)
     return
   }
 
