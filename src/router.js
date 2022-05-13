@@ -55,6 +55,7 @@ function renderByUrl(url) {
 // 路由管理
 function ROUTE_handler(hashArray) {
   const [sort, city, id] = hashArray
+  console.log(hashArray)
 
   // 沒有 ID
   if (city && !id) {

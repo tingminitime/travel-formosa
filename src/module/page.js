@@ -13,7 +13,8 @@ export default function getPageResult(data, sort) {
   const intro = document.querySelector('.intro__content')
   const mapContainer = document.querySelector('.mapContainer')
   const { PositionLat: lat, PositionLon: lon } = data['Position']
-  title.textContent = data['Name']
+  title.textContent = data[`${sort}Name`]
+  console.log(data)
 
   pageSlideHandler()
   pageInfoRender()
@@ -171,7 +172,7 @@ export default function getPageResult(data, sort) {
     initMap({
       lat,
       lon,
-      name: data['Name'],
+      name: data[`${sort}Name`],
       location: data['Address'] ?? data['City']
     })
   }
@@ -182,7 +183,6 @@ export default function getPageResult(data, sort) {
     try {
       const nearSpot = document.querySelector('.nearSpot')
       const PAGE_nearSpot = document.querySelector('.swiper-wrapper-nearSpot')
-      console.log(nearSpot)
       const { lat, lon, distance, cardCount } = nearSpotSet
       const { spotNear } = SPOT_apiRequest()
       const spotNearRes = await spotNear(lat, lon, distance)
@@ -199,7 +199,7 @@ export default function getPageResult(data, sort) {
         html += /* html */`
         <div class="swiper-slide swiper-slide-nearSpot">
           <a
-            href="#/ScenicSpot/${cityEnFilter(item['City'] ?? item['Address'])}/${item['ID']}"
+            href="#/ScenicSpot/${cityEnFilter(item['City'] ?? item['Address'])}/${item['ScenicSpotID']}"
             class="card d-b"
           >
             <div class="card-img">
@@ -212,7 +212,7 @@ export default function getPageResult(data, sort) {
               <div class="swiper-lazy-preloader"></div>
             </div>
             <div class="card-info">
-              <h3 class="card-title">${item['Name']}</h3>
+              <h3 class="card-title">${item['ScenicSpotName']}</h3>
               <div class="card-otherInfo flex-start-center">
                 <div class="card-location flex-start-center">
                   <div class="icon-location icon-mr4"></div>

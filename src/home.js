@@ -32,7 +32,7 @@ export const HOME_render = () => {
       html += /* html */`
         <div class="swiper-slide swiper-slide-hotSpot">
           <a
-            href="#/ScenicSpot/${cityEnFilter(item['City'] ?? item['Address'])}/${item['ID']}"
+            href="#/ScenicSpot/${cityEnFilter(item['City'] ?? item['Address'])}/${item['ScenicSpotID']}"
             class="card d-b"
           >
             <div class="card-img">
@@ -95,7 +95,7 @@ export const HOME_render = () => {
       html += /* html */`
       <li class="cardSpec__item">
         <a
-          href="#/Restaurant/${cityEnFilter(item['City'])}/${item['ID']}"
+          href="#/Restaurant/${cityEnFilter(item['City'])}/${item['RestaurantID']}"
           class="card cardSpec d-b"
         >
           <div class="cardSpec-img cardSpec-mask">
@@ -159,7 +159,7 @@ export const HOME_render = () => {
       html += /* html */`
       <li class="cardSpec__item">
         <a
-          href="#/Hotel/${cityEnFilter(item['City'])}/${item['ID']}"
+          href="#/Hotel/${cityEnFilter(item['City'])}/${item['HotelID']}"
           class="card cardSpec d-b"
         >
           <div class="cardSpec-img cardSpec-mask">
@@ -226,7 +226,7 @@ export const HOME_render = () => {
       html += /* html */`
       <li class="cardFull__item mb-24">
         <a
-          href="#/Activity/${cityEnFilter(item['City'])}/${item['ID']}"
+          href="#/Activity/${cityEnFilter(item['City'])}/${item['ActivityID']}"
           class="cardFull flex-sb-center"
         >
           <div class="cardFull__info">
