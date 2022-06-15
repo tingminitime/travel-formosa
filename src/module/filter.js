@@ -155,7 +155,7 @@ export default function getFilterResult(data, sort) {
           html += /* html */`
           <li class="filterPage__item mb-24">
             <a
-              href="#/ScenicSpot/${cityEnFilter(item['City'] ?? item['Address'])}/${item['ID']}"
+              href="#/ScenicSpot/${cityEnFilter(item['City'] ?? item['Address'])}/${item['ScenicSpotID']}"
               class="card d-b"
             >
               <div class="card-img">
@@ -194,7 +194,7 @@ export default function getFilterResult(data, sort) {
           html += /* html */`
           <li class="filterPage__item mb-24">
             <a
-              href="#/Restaurant/${cityEnFilter(item['City'] ?? item['Address'])}/${item['ID']}"
+              href="#/Restaurant/${cityEnFilter(item['City'] ?? item['Address'])}/${item['RestaurantID']}"
               class="card cardSpec d-b"
             >
               <div class="cardSpec-img cardSpec-mask">
@@ -232,7 +232,7 @@ export default function getFilterResult(data, sort) {
           html += /* html */`
           <li class="filterPage__item mb-24">
             <a
-              href="#/Hotel/${cityEnFilter(item['City'] ?? item['Address'])}/${item['ID']}"
+              href="#/Hotel/${cityEnFilter(item['City'] ?? item['Address'])}/${item['HotelID']}"
               class="card cardSpec d-b"
             >
               <div class="cardSpec-img cardSpec-mask">
@@ -271,7 +271,7 @@ export default function getFilterResult(data, sort) {
           html += /* html */`
           <li class="cardFull__item mb-24">
             <a
-              href="#/Activity/${cityEnFilter(item['City'])}/${item['ID']}"
+              href="#/Activity/${cityEnFilter(item['City'])}/${item['ActivityID']}"
               class="cardFull flex-sb-center"
             >
               <div class="cardFull__info">

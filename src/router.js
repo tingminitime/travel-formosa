@@ -166,7 +166,9 @@ async function PAGE_request(routeObj) {
   try {
     const { sort, city, id } = routeObj
     const { SORT_pageFilter } = SORT_apiRequest()
+    console.log('SORT_pageFilter:', id)
     const pageFilterRes = await SORT_pageFilter(sort, id)
+    console.log('pageFilterRes:', pageFilterRes)
     let pageData = pageFilterRes.data[0]
     console.log('pageData: ', pageData)
 
